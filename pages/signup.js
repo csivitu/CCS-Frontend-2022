@@ -8,12 +8,13 @@ import {
   Select,
 } from "@mui/material";
 import Head from "next/head";
+import { signupRequest } from "../api/requests";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [isVitian, setIsVitian] = useState(true);
@@ -37,7 +38,7 @@ const Signup = () => {
       name,
       username,
       password,
-      confirmPassword,
+      passwordConfirmation,
       email,
       phone,
       isVitian,
@@ -46,6 +47,10 @@ const Signup = () => {
     };
 
     console.log(data);
+
+    const res = await signupRequest({ data: data });
+
+    return res;
   }
 
   return (
@@ -82,8 +87,8 @@ const Signup = () => {
           <CustomInput
             type="password"
             label="Confirm Password"
-            value={confirmPassword}
-            setValue={setConfirmPassword}
+            value={passwordConfirmation}
+            setValue={setPasswordConfirmation}
           />
           <CustomInput
             type="email"
