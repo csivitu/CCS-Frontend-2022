@@ -19,9 +19,11 @@ const Login = () => {
         ? { username: username, password: password }
         : { email: email, password: password };
 
-    console.log(data);
-
     const res = await loginRequest({ data: data });
+
+    if (res.success) {
+      
+    }
 
     console.log(res);
   }
@@ -71,7 +73,7 @@ const Login = () => {
         </form>
         <div>
           <p>
-            Don't have an account yet?{" "}
+            {"Don't have an account yet? "}
             <Link href="/signup">
               <a>Signup</a>
             </Link>
