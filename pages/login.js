@@ -37,6 +37,8 @@ const Login = () => {
 
     const res = await loginRequest({ data: data });
 
+    console.log(res);
+
     if (res.success) {
       handleSnackOpen({
         message: "Logged In successfully!",
@@ -44,6 +46,13 @@ const Login = () => {
       });
       router.push("/");
     } else {
+      if (res.message === "Email not verified") {
+        handleSnackOpen({
+          message: "Email Address not verified.",
+          variant: "error",
+        });
+        return;
+      }
       loginOption === "Username"
         ? handleSnackOpen({
             message: "Invalid username or password.",

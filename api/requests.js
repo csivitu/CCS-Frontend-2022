@@ -8,7 +8,7 @@ export const signupRequest = async ({ data }) => {
       return response.data;
     })
     .catch((err) => {
-      return err;
+      return err.response.data;
     });
 };
 

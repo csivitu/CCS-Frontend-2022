@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 import Head from "next/head";
 import { signupRequest } from "../api/requests";
@@ -9,6 +10,7 @@ import { ToastContext } from "../components/ToastContext";
 
 const Signup = () => {
   const { handleSnackOpen } = useContext(ToastContext);
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -30,6 +32,32 @@ const Signup = () => {
     { name: "Female", value: "F" },
   ];
 
+  function handleResponse(res) {
+    console.log(res);
+    if (res.success) {
+      if (res.result.success) {
+        return {
+          success: true,
+          message:
+            "Signup successful. Please verify your Email Address to login.",
+        };
+      } else {
+        return {
+          success: false,
+          message: "Duplicate " + res.result.duplicates.join(", "),
+        };
+      }
+    } else {
+      const message = res.map((e) => e.message).join(". ");
+      return {
+        success: false,
+        message: message
+          ? message
+          : "Something went wrong. Contact our technical team for furthur assistance.",
+      };
+    }
+  }
+
   async function signupHandler(e) {
     e.preventDefault();
 
@@ -47,8 +75,6 @@ const Signup = () => {
 
     const valid = validateData(data);
 
-    console.log(valid)
-
     if (!valid.success) {
       handleSnackOpen({
         message: valid.message,
@@ -57,11 +83,22 @@ const Signup = () => {
       return;
     }
 
-    console.log(data);
-
     const res = await signupRequest({ data: data });
 
-    return res;
+    const responseState = handleResponse(res);
+
+    if (responseState.success) {
+      handleSnackOpen({
+        variant: "success",
+        message: responseState.message,
+      });
+      router.push("/");
+    } else {
+      handleSnackOpen({
+        variant: "error",
+        message: responseState.message,
+      });
+    }
   }
 
   return (

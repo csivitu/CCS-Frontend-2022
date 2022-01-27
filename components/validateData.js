@@ -17,7 +17,13 @@ export const validateData = ({
   let responseMessage = [];
 
   if (username && !constants.usernameRegex.test(username)) {
-    responseMessage.push("Invalid Username.");
+    if (username.length < 3) {
+      responseMessage.push("Invalid Username: Too short.");
+    } else if (username.length > 20) {
+      responseMessage.push("Invalid Username: Too long.");
+    } else {
+      responseMessage.push("Invalid Username.");
+    }
   }
 
   if (email && !constants.vitEmailRegex.test(email)) {
@@ -25,7 +31,13 @@ export const validateData = ({
   }
 
   if (password && !constants.passwordRegex.test(password)) {
-    responseMessage.push("Invalid Password.");
+    if (password.length < 8) {
+      responseMessage.push("Invalid Password: Too short.");
+    } else if (password.length > 50) {
+      responseMessage.push("Invalid Password: Too long.");
+    } else {
+      responseMessage.push("Invalid Password.");
+    }
   }
 
   if (passwordConfirmation && passwordConfirmation !== password) {
@@ -37,7 +49,7 @@ export const validateData = ({
   }
 
   if (gender && gender !== "M" && gender !== "F") {
-    responseMessage.push("Invalid Gender");
+    responseMessage.push("Invalid Gender.");
   }
 
   const responseText = responseMessage.join(" ");
