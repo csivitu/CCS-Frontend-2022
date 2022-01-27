@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-} from "@mui/material";
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@mui/material";
 import Head from "next/head";
 import { signupRequest } from "../api/requests";
+import { CustomInput, CustomSelect } from "../components/CustomForm";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -31,7 +26,7 @@ const Signup = () => {
     { name: "Female", value: "F" },
   ];
 
-  async function submitHandler(e) {
+  async function signupHandler(e) {
     e.preventDefault();
 
     const data = {
@@ -62,8 +57,8 @@ const Signup = () => {
       <div className="flex flex-col items-center justify-center h-screen ">
         <h1> Sign Up here</h1>
         <form
-          className="w-full max-w-lg"
-          onSubmit={submitHandler}
+          className="w-full max-w-lg flex flex-col gap-2"
+          onSubmit={signupHandler}
           autoComplete="off"
         >
           <CustomInput
@@ -126,49 +121,15 @@ const Signup = () => {
             Signup
           </Button>
         </form>
+        <p>
+          Already registered?{" "}
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        </p>
       </div>
     </>
   );
 };
-
-function CustomInput({ value, setValue, label, type, disabled = false }) {
-  return (
-    <FormControl className="w-full">
-      <InputLabel className="">{label}</InputLabel>
-      <OutlinedInput
-        type={type}
-        label={label}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        required
-        disabled={disabled}
-      />
-    </FormControl>
-  );
-}
-
-function CustomSelect({ value, setValue, label, options, disabled = false }) {
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-  return (
-    <FormControl className="w-full">
-      <InputLabel>{label}</InputLabel>
-      <Select
-        value={value}
-        onChange={handleChange}
-        disabled={disabled}
-        required
-      >
-        <MenuItem value="">None</MenuItem>
-        {options.map((option) => (
-          <MenuItem value={option.value} key={"option" + option.value}>
-            {option.name}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
-}
 
 export default Signup;
