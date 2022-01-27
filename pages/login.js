@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { CustomInput, LoginToggle } from "../components/CustomForm";
 import { Button } from "@mui/material";
 import { loginRequest } from "../api/requests";
+import { ToastContext } from "../components/ToastContext";
 
 const Login = () => {
+  const { handleSnackOpen } = useContext(ToastContext);
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,10 +27,22 @@ const Login = () => {
     const res = await loginRequest({ data: data });
 
     if (res.success) {
-      
+      handleSnackOpen({
+        message: "Logged In successfully!",
+        variant: "success",
+      });
+      router.push("/");
+    } else {
+      loginOption === "Username"
+        ? handleSnackOpen({
+            message: "Invalid username or password.",
+            variant: "error",
+          })
+        : handleSnackOpen({
+            message: "Invalid email or password.",
+            variant: "error",
+          });
     }
-
-    console.log(res);
   }
   return (
     <>

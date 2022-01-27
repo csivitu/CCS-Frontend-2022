@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import { ToastProvider } from "../components/ToastContext";
 
 const cache = createCache({
   key: "css",
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <StyledEngineProvider injectFirst>
       <CacheProvider value={cache}>
-        <Component {...pageProps} />
+        <ToastProvider>
+          <Component {...pageProps} />
+        </ToastProvider>
       </CacheProvider>
     </StyledEngineProvider>
   );
