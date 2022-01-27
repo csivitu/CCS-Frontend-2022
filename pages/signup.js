@@ -57,7 +57,7 @@ const Signup = () => {
       <div className="flex flex-col items-center justify-center h-screen ">
         <h1> Sign Up here</h1>
         <form
-          className="w-full max-w-lg flex flex-col gap-2"
+          className="w-full max-w-lg flex flex-col gap-4"
           onSubmit={signupHandler}
           autoComplete="off"
         >

@@ -4,9 +4,17 @@ import {
   MenuItem,
   OutlinedInput,
   Select,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
 
-export const CustomInput = ({ value, setValue, label, type, disabled = false }) => {
+export const CustomInput = ({
+  value,
+  setValue,
+  label,
+  type,
+  disabled = false,
+}) => {
   return (
     <FormControl className="w-full">
       <InputLabel className="">{label}</InputLabel>
@@ -50,5 +58,30 @@ export const CustomSelect = ({
         ))}
       </Select>
     </FormControl>
+  );
+};
+
+export const LoginToggle = ({ value, setValue, options, disabled = false }) => {
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  return (
+    <ToggleButtonGroup
+      color="primary"
+      value={value}
+      exclusive
+      onChange={handleChange}
+      disabled={disabled}
+      className="w-full"
+    >
+      {options.map((option) => {
+        return (
+          <ToggleButton key={"option" + option} value={option}>
+            {option}
+          </ToggleButton>
+        );
+      })}
+    </ToggleButtonGroup>
   );
 };
