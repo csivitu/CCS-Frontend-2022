@@ -6,6 +6,7 @@ import { CustomInput, LoginToggle } from "../components/CustomForm";
 import { Button } from "@mui/material";
 import { loginRequest } from "../api/requests";
 import { ToastContext } from "../components/ToastContext";
+import { validateData } from "../components/validateData";
 
 const Login = () => {
   const { handleSnackOpen } = useContext(ToastContext);
@@ -23,6 +24,16 @@ const Login = () => {
       loginOption === "Username"
         ? { username: username, password: password }
         : { email: email, password: password };
+
+    const valid = validateData(data);
+
+    if (!valid.success) {
+      handleSnackOpen({
+        message: valid.message,
+        variant: "warning",
+      });
+      return;
+    }
 
     const res = await loginRequest({ data: data });
 
@@ -50,7 +61,7 @@ const Login = () => {
         <title>CCS | Login</title>
         <meta name="keywords" content="ccs" />
       </Head>
-      <div className="flex flex-col items-center justify-center h-screen ">
+      <div className="flex flex-col items-center justify-center min-h-screen ">
         <h1> Login here</h1>
         <form
           className="w-full max-w-lg flex flex-col gap-4"

@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 import { Button } from "@mui/material";
 import Head from "next/head";
 import { signupRequest } from "../api/requests";
 import { CustomInput, CustomSelect } from "../components/CustomForm";
+import { validateData } from "../components/validateData";
+import { ToastContext } from "../components/ToastContext";
 
 const Signup = () => {
+  const { handleSnackOpen } = useContext(ToastContext);
+
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -41,6 +45,18 @@ const Signup = () => {
       gender,
     };
 
+    const valid = validateData(data);
+
+    console.log(valid)
+
+    if (!valid.success) {
+      handleSnackOpen({
+        message: valid.message,
+        variant: "warning",
+      });
+      return;
+    }
+
     console.log(data);
 
     const res = await signupRequest({ data: data });
@@ -54,7 +70,7 @@ const Signup = () => {
         <title>CCS | Signup</title>
         <meta name="keywords" content="ccs" />
       </Head>
-      <div className="flex flex-col items-center justify-center h-screen ">
+      <div className="flex flex-col items-center justify-center min-h-screen ">
         <h1> Sign Up here</h1>
         <form
           className="w-full max-w-lg flex flex-col gap-4"
