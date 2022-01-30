@@ -70,8 +70,8 @@ const Login = () => {
         <title>CCS | Login</title>
         <meta name="keywords" content="ccs" />
       </Head>
-      <div className="flex flex-col items-center justify-center min-h-screen ">
-        <h1> Login here</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-white px-4">
+        <h1>Login here</h1>
         <form
           className="w-full max-w-lg flex flex-col gap-4"
           onSubmit={loginHandler}

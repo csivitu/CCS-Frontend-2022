@@ -8,7 +8,13 @@ export const signupRequest = async ({ data }) => {
       return response.data;
     })
     .catch((err) => {
-      return err.response.data;
+      if (err.response) return err.response.data;
+      else {
+        window.location.href = "/";
+        alert(
+          "Something went wrong from our end. Please try again later or contact our technical team."
+        );
+      }
     });
 };
 
@@ -25,6 +31,12 @@ export const loginRequest = async ({ data }) => {
       return response.data;
     })
     .catch((err) => {
-      return err.response.data;
+      if (err.response) return err.response.data;
+      else {
+        window.location.href = "/";
+        alert(
+          "Something went wrong from our end. Please try again later or contact our technical team."
+        );
+      }
     });
 };

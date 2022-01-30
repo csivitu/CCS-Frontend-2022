@@ -107,7 +107,7 @@ const Signup = () => {
         <title>CCS | Signup</title>
         <meta name="keywords" content="ccs" />
       </Head>
-      <div className="flex flex-col items-center justify-center min-h-screen ">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-white px-4">
         <h1> Sign Up here</h1>
         <form
           className="w-full max-w-lg flex flex-col gap-4"
@@ -149,13 +149,6 @@ const Signup = () => {
             label="Phone Number"
             value={phone}
             setValue={setPhone}
-          />
-          <CustomSelect
-            label="Is Vitian?"
-            value={isVitian}
-            setValue={setIsVitian}
-            options={optionsForIsVitian}
-            disabled={true}
           />
           <CustomInput
             type="text"

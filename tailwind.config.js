@@ -5,7 +5,15 @@ module.exports = {
   ],
   important: "#__next",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "gray-dark": "#131313",
+        tech: "#477BFF",
+        management: "#F5A20A",
+        video: "#FF5247",
+        design: "#9747FF",
+      },
+    },
   },
   plugins: [],
 };
