@@ -46,7 +46,7 @@ body {
 }
 
 a {
-  color: #333;
+  @apply text-zinc-400;
   text-decoration: none;
 }
 .content {
