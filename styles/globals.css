@@ -1,13 +1,50 @@
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@tailwind base;
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans/GeneralSans-Regular.woff2") format("woff2"),
+    url("/fonts/GeneralSans/GeneralSans-Regular.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans/GeneralSans-Bold.woff2") format("woff2"),
+    url("/fonts/GeneralSans/GeneralSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans/GeneralSans-Medium.woff2") format("woff2"),
+    url("/fonts/GeneralSans/GeneralSans-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans/GeneralSans-Semibold.woff2") format("woff2"),
+    url("/fonts/GeneralSans/GeneralSans-Semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
-  background: #f2f2f2;
-  color: #333;
-  font-family: "Nunito";
+  background: #131313;
+  color: #ece0d8;
   margin: 0;
+  font-family: "General Sans";
 }
+
 a {
   color: #333;
   text-decoration: none;
@@ -16,20 +53,7 @@ a {
   max-width: 960px;
   margin: 0 auto;
 }
-nav {
-  margin: 10px auto 80px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  border-bottom: 1px solid #ddd;
-}
-nav a {
-  margin-left: 12px;
-}
-nav .logo {
-  margin-right: auto;
-}
+
 footer {
   display: block;
   text-align: center;
@@ -41,7 +65,7 @@ footer {
 .not-found {
   text-align: center;
 }
-.not-found a{
+.not-found a {
   color: #4979ff;
   text-decoration: underline;
 }
