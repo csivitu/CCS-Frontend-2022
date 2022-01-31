@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Navbar from "../components/Navbar.js";
 import Hero from "../components/Hero";
+import Domains from "../components/Domains";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       </Head>
       <Hero />
       <Navbar />
+      <Domains />
 
       {/* <div>
         <h1 className={styles.title}> HomePage</h1>

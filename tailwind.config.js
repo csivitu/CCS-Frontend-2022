@@ -17,6 +17,13 @@ module.exports = {
         video: "#FF5247",
         design: "#9747FF",
       },
+      backgroundImage: {
+        "grid": "url('/assets/grid.png')",
+        "designbg": "url('/assets/grid.png')",
+        "managementbg": "url('/assets/management-bg.svg')",
+        "techbg": "url('/assets/tech-bg.svg')",
+        "videobg": "url('/assets/video-bg.svg')",
+      }
     },
   },
   plugins: [],

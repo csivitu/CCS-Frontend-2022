@@ -6,7 +6,7 @@ const Navbar = () => {
   const [viewMobileMenu, setViewMobileMenu] = useState(false);
   
   return (
-    <nav className="sticky top-0 px-10 sm:px-4 py-2.5 w-full">
+    <nav className="sticky top-0 px-10 sm:px-4 py-2.5 w-full bg-gray-dark z-10">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link href="" passHref>
           <button className="self-center text-4xl whitespace-nowrap font-bold">CCS</button>
