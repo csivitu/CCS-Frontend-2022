@@ -43,6 +43,9 @@
   --management: #F5A20A;
   --design: #9747FF;
   --video: #FF5247;
+  --light-gray: #ECE0D8;
+  --dark-gray: #131313;
+  --peach: #ECE0D8;
 }
 
 body {

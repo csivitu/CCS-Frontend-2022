@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         "peach":"#ECE0D8",
         "gray-dark": "#131313",
+        "gray-light": "#ECE0D8",
         tech: "#477BFF",
         management: "#F5A20A",
         video: "#FF5247",

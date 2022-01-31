@@ -7,6 +7,8 @@ import { signupRequest } from "../api/requests";
 import { CustomInput, CustomSelect } from "../components/CustomForm";
 import { validateData } from "../components/validateData";
 import { ToastContext } from "../components/ToastContext";
+import L_Piece from "../public/assets/auth_l.svg";
+import R_Piece from "../public/assets/auth_r.svg";
 
 const Signup = () => {
   const { handleSnackOpen } = useContext(ToastContext);
@@ -107,37 +109,48 @@ const Signup = () => {
         <title>CCS | Signup</title>
         <meta name="keywords" content="ccs" />
       </Head>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-white p-4">
-        <h1 className="text-3xl pt-4 pb-8">Sign Up here</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
+        <div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10">
+          <L_Piece className="w-32 md:w-44 lg:w-52" />
+        </div>
+        <div className="absolute hidden md:block right-2 md:right-5 top-10">
+          <R_Piece className="w-32 md:w-44 lg:w-52" />
+        </div>
+        <h1 className="text-3xl pt-4 pb-8">Signup Here</h1>
         <form
-          className="w-full max-w-lg flex flex-col gap-4 mb-2"
+          className="w-full md:w-1/2 flex flex-col gap-4 mb-2"
           onSubmit={signupHandler}
           autoComplete="off"
         >
-          <CustomInput
-            type="text"
-            label="Name"
-            value={name}
-            setValue={setName}
-          />
-          <CustomInput
-            type="text"
-            label="Username"
-            value={username}
-            setValue={setUsername}
-          />
-          <CustomInput
-            type="password"
-            label="Password"
-            value={password}
-            setValue={setPassword}
-          />
-          <CustomInput
-            type="password"
-            label="Confirm Password"
-            value={passwordConfirmation}
-            setValue={setPasswordConfirmation}
-          />
+          <div className="flex flex-col md:flex-row gap-4">
+            <CustomInput
+              type="text"
+              label="Name"
+              value={name}
+              setValue={setName}
+            />
+            <CustomInput
+              type="text"
+              label="Username"
+              value={username}
+              setValue={setUsername}
+            />
+          </div>
+          <div className="flex flex-col md:flex-row gap-4">
+            <CustomInput
+              type="password"
+              label="Password"
+              value={password}
+              setValue={setPassword}
+            />
+            <CustomInput
+              type="password"
+              label="Confirm Password"
+              value={passwordConfirmation}
+              setValue={setPasswordConfirmation}
+            />
+          </div>
+
           <CustomInput
             type="email"
             label="Email"
@@ -176,7 +189,7 @@ const Signup = () => {
         <p>
           Already registered?{" "}
           <Link href="/login">
-            <a>Login</a>
+            <a className="underline">Login</a>
           </Link>
         </p>
       </div>
