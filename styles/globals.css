@@ -47,7 +47,6 @@ body {
 
 a {
   @apply text-zinc-400;
-  text-decoration: none;
 }
 .content {
   max-width: 960px;

@@ -107,10 +107,10 @@ const Signup = () => {
         <title>CCS | Signup</title>
         <meta name="keywords" content="ccs" />
       </Head>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-white px-4">
-        <h1> Sign Up here</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-white p-4">
+        <h1 className="text-3xl pt-4 pb-8">Sign Up here</h1>
         <form
-          className="w-full max-w-lg flex flex-col gap-4"
+          className="w-full max-w-lg flex flex-col gap-4 mb-2"
           onSubmit={signupHandler}
           autoComplete="off"
         >
@@ -163,7 +163,13 @@ const Signup = () => {
             setValue={setGender}
             options={optionsForGender}
           />
-          <Button variant="contained" type="submit" className="w-full">
+          <Button
+            variant="contained"
+            type="submit"
+            classes={{
+              contained: "w-full bg-tech bg-opacity-90 hover:bg-opacity-100",
+            }}
+          >
             Signup
           </Button>
         </form>
