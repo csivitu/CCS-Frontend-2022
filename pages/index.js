@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Navbar from "../components/Navbar.js";
+import Hero from "../components/Hero";
 
 
 export default function Home() {
@@ -15,8 +16,10 @@ export default function Home() {
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Semibold.woff2" as="font" type="font/woff2" crossOrigin="true" />
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Bold.woff2" as="font" type="font/woff2" crossOrigin="true" />
       </Head>
+      <Hero />
       <Navbar />
-      <div>
+
+      {/* <div>
         <h1 className={styles.title}> HomePage</h1>
         <p className={styles.text}>
           Hello there, CSI-VIT welcomes you to CCS!{" "}
@@ -27,7 +30,7 @@ export default function Home() {
         <Link href="/signup">
           <a className={styles.btn}>Sign Up</a>
         </Link>
-      </div>
+      </div> */}
     </>
   );
 }
