@@ -1,5 +1,5 @@
 import { axiosInstance } from "./api";
-import { updateToken } from "./updateToken";
+import { updateToken } from "./handleToken";
 
 export const signupRequest = async ({ data }) => {
   return await axiosInstance
