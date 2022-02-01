@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { CustomInput, LoginToggle } from "../components/CustomForm";
 import { Button } from "@mui/material";
-import { loginRequest } from "../api/requests";
+import { loginRequest } from "../lib/axios";
 import { ToastContext } from "../components/ToastContext";
 import { validateData } from "../components/validateData";
 import L_Piece from "../public/assets/auth_l.svg";
@@ -38,8 +38,6 @@ const Login = () => {
     }
 
     const res = await loginRequest({ data: data });
-
-    console.log(res);
 
     if (res.success) {
       handleSnackOpen({
@@ -125,7 +123,7 @@ const Login = () => {
         <div>
           <p>
             {"Don't have an account yet? "}
-            <Link href="/signup">
+            <Link href="/register">
               <a className="underline">Signup</a>
             </Link>
           </p>

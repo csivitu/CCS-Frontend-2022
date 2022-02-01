@@ -5,12 +5,13 @@ import styles from "../styles/Hero.module.css";
 import L_Piece from '../public/assets/piece_l.svg';
 import R_Piece from '../public/assets/piece_r.svg';
 import M_Piece from '../public/assets/piece_m.svg';
-
 import Link from 'next/link';
+import { Link as ScrollLink } from 'react-scroll'
 import Countdown from 'react-countdown';
 
 
-const Hero = () => {
+const Hero = ({ loggedIn }) => {
+    console.log(loggedIn)
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             return <h1>Completed</h1>;
@@ -25,7 +26,6 @@ const Hero = () => {
     };
     return (
         <section id="Hero" className="flex w-full h-screen relative items-center justify-center bg-grid md:bg-none bg-no-repeat bg-cover bg-center">
-            {/* items-center justify-center */}
             <div className="absolute left-2 md:left-5 bottom-14 md:bottom-10">
                 <L_Piece className="w-32 md:w-44 lg:w-52" />
             </div>
@@ -39,7 +39,7 @@ const Hero = () => {
                     </div>
                     <div>
                         <p className="font-bold align-middle text-4xl md:text-6xl lg:text-8xl relative">
-                            CORE<br />COMMITTEE<br />SELECTIONS 
+                            CORE<br />COMMITTEE<br />SELECTIONS
                             <M_Piece className="absolute bottom-5 md:bottom-8 lg:bottom-10 left-12 md:left-20 lg:left-32 w-8 md:w-12 lg:w-20" />
                         </p>
                     </div>
@@ -53,28 +53,27 @@ const Hero = () => {
                                 renderer={renderer}
                             />
                         </div>
-                        <div className=''>
-                            <Link href="/signup" passHref >
+                        <div>
+                            {loggedIn ? <ScrollLink
+                                to='domains'
+                                smooth={true}
+                                duration={500}
+                                spy={true}
+                                exact="true"
+                                offset={-80}>
                                 <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
-                                    REGISTER NOW
+                                    DOMAINS
                                 </button>
-                            </Link>
+                            </ScrollLink>
+                                : <Link href="/register" passHref >
+                                    <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                                        REGISTER NOW
+                                    </button>
+                                </Link>}
                         </div>
                     </div>
                 </div>
             </div>
-            {/* <div className="flex flex-col">
-                <div>
-                    <Image src="/assets/CSI_Logo.png" alt="CSI Logo" height="48" width="246" />
-                </div>
-                <L_Piece className="absolute w-auto h-40 lg:h-2/5 left-1 lg:left-56 top-3/4 lg:top-2/4 md:h-52 md:top-2/4" />
-                <L_Piece className={styles.l_piece} />
-                <R_Piece className={styles.r_piece} />
-                <p className="font-bold align-middle text-6xl md:text-7xl lg:text-9xl">CORE<br />COMMITTEE<br />SELECTIONS</p>
-
-            </div> */}
-
-
         </section>)
 };
 

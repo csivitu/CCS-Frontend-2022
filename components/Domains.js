@@ -6,7 +6,7 @@ function Domains() {
   return (
     <section
       id="domains"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-peach text-gray-dark pt-16 md:pt-20 px-5 text-center"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-peach text-gray-dark py-16 md:py-20 px-5 text-center"
     >
       <div className="absolute left-2 md:left-5 -bottom-16">
         <L_Piece className="w-32 md:w-44 lg:w-44" />

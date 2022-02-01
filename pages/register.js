@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 import Head from "next/head";
-import { signupRequest } from "../api/requests";
 import { CustomInput, CustomSelect } from "../components/CustomForm";
 import { validateData } from "../components/validateData";
 import { ToastContext } from "../components/ToastContext";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
+import { signupRequest } from "../lib/axios";
 
 const Signup = () => {
   const { handleSnackOpen } = useContext(ToastContext);
@@ -35,7 +35,6 @@ const Signup = () => {
   ];
 
   function handleResponse(res) {
-    console.log(res);
     if (res.success) {
       if (res.result.success) {
         return {
@@ -85,8 +84,7 @@ const Signup = () => {
       return;
     }
 
-    const res = await signupRequest({ data: data });
-
+    const res = await signupRequest({ data });
     const responseState = handleResponse(res);
 
     if (responseState.success) {
