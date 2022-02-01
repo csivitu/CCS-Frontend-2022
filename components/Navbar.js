@@ -6,7 +6,7 @@ const Navbar = () => {
   const [viewMobileMenu, setViewMobileMenu] = useState(false);
   
   return (
-    <nav className="sticky top-0 px-10 sm:px-4 py-2.5 w-full">
+    <nav className="sticky top-0 px-10 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link href="" passHref>
           <button className="self-center text-4xl whitespace-nowrap font-bold">CCS</button>
@@ -17,7 +17,7 @@ const Navbar = () => {
               PROJECTS
             </button>
           </Link>
-          <Link href="/signup" passHref>
+          <Link href="/register" passHref>
             <button className="transition ease-linear py-3 px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
               REGISTER NOW
             </button>
@@ -34,7 +34,7 @@ const Navbar = () => {
               <Link href="/projects" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">PROJECTS</Link>
             </li>
             <li>
-              <Link href="/signup" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">REGISTER NOW</Link>
+              <Link href="/register" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">REGISTER NOW</Link>
             </li>
           </ul>
         </div> : null}

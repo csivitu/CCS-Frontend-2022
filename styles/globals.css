@@ -38,6 +38,16 @@
   font-display: swap;
 }
 
+:root {
+  --tech: #477BFF;
+  --management: #F5A20A;
+  --design: #9747FF;
+  --video: #FF5247;
+  --light-gray: #ECE0D8;
+  --dark-gray: #131313;
+  --peach: #ECE0D8;
+}
+
 body {
   background: #131313;
   color: #ece0d8;
@@ -48,6 +58,7 @@ body {
 a {
   @apply text-zinc-400;
 }
+
 .content {
   max-width: 960px;
   margin: 0 auto;
@@ -61,9 +72,11 @@ footer {
   color: #777;
   border-top: 1px solid #eaeaea;
 }
+
 .not-found {
   text-align: center;
 }
+
 .not-found a {
   color: #4979ff;
   text-decoration: underline;
