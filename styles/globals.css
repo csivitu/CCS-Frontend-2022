@@ -46,6 +46,10 @@
   --light-gray: #ECE0D8;
   --dark-gray: #131313;
   --peach: #ECE0D8;
+  --tech-bg: #477BFF20;
+  --management-bg: #F5A20A20;
+  --design-bg: #9747FF20;
+  --video-bg: #FF524720;
 }
 
 body {
