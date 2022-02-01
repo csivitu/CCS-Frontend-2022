@@ -9,7 +9,7 @@ function FAQs() {
       id="faqs"
       className="flex flex-col gap-4 w-full min-h-screen relative items-center bg-peach text-gray-dark py-32 justify-center"
     >
-    <div className="absolute left-2 md:left-5 -bottom-16">
+      <div className="absolute left-2 md:left-5 -bottom-16">
         <L_Piece className="w-32 md:w-44 lg:w-44" />
       </div>
       <h1 className="relative text-4xl md:text-6xl mb-3 font-extrabold">
@@ -36,35 +36,28 @@ function FAQs() {
 
 const faqs = [
   {
-    question: "Loreum",
+    question:
+      "Can we attempt the Tech domain in Round 1 without having any prior experience?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. Quod quidem nobis non saepe contingit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. ",
+      "Yes! Everyone is welcome to attempt tests in any domain. All we need from you is a willingness to learn and develop.",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. Quod quidem nobis non saepe contingit.",
+    question: "How will I be notified if I clear a Round?",
+    answer: "Please keep a close eye on your Mail Inbox!",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur.",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. Quod quidem nobis non saepe contingit.",
-  },
-  {
-    question: "Loreum",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. Quod quidem nobis non saepe contingit.",
+    question: "Can we Google the answers during the test?",
+    answer: "Jesus is watching you.",
   },
   {
     question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. ",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. Quod quidem nobis non saepe contingit.",
+      "Do we have to pay any registration fee after joining the chapter?",
+    answer: "Nada.",
   },
   {
-    question: "Loreum",
+    question: "Can you be a part of multiple domains?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Que Manilium, ab iisque M. Quod quidem nobis non saepe contingit.",
+      "Absolutely! You can attempt tests for multiple domains as well as be a part of multiple domains after recruitments.",
   },
 ];
 

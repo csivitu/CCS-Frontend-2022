@@ -35,7 +35,7 @@ const domainsDetails = [
     imageHover: "/assets/design-hover.png",
     smImage: "/assets/design-sm.png",
     description:
-      "Want to be part of the creative heads who make csi look sexy?",
+      "Want to be part of the creative heads who make csi look dope?",
   },
   {
     name: "management",
@@ -44,7 +44,7 @@ const domainsDetails = [
     imageHover: "/assets/management-hover.png",
     smImage: "/assets/management-sm.png",
     description:
-      "Want to be part of the creative heads who make csi look sexy?",
+      "Want to be part of the creative heads who make csi look dope?",
   },
   {
     name: "tech",
@@ -53,7 +53,7 @@ const domainsDetails = [
     imageHover: "/assets/tech-hover.png",
     smImage: "/assets/tech-sm.png",
     description:
-      "Want to be part of the creative heads who make csi look sexy?",
+      "Want to be part of the creative heads who make csi look dope?",
   },
   {
     name: "video",
@@ -62,7 +62,7 @@ const domainsDetails = [
     imageHover: "/assets/video-hover.png",
     smImage: "/assets/video-sm.png",
     description:
-      "Want to be part of the creative heads who make csi look sexy?",
+      "Want to be part of the creative heads who make csi look dope?",
   },
 ];
 
