@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import TriColor from '../public/assets/csi_logo_tricolor.svg';
 
 const Navbar = () => {
 
   const [viewMobileMenu, setViewMobileMenu] = useState(false);
   
   return (
-    <nav className="sticky top-0 px-10 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
+    <nav className="sticky top-0 px-3 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link href="" passHref>
-          <button className="self-center text-4xl whitespace-nowrap font-bold">CCS</button>
+          <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2"><span><TriColor /></span> CCS</button>
         </Link>
         <div className="hidden md:flex gap-10">
-          <Link href="/projects" passHref>
+          {/* <Link href="/projects" passHref>
             <button className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
               PROJECTS
             </button>
-          </Link>
+          </Link> */}
           <Link href="/signup" passHref>
             <button className="transition ease-linear py-3 px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
               REGISTER NOW
