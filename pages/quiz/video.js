@@ -4,7 +4,7 @@ function video() {
     return (
         <div className="flex flex-nowrap flex-row justify-center relative">
             <Quiz domain="video" questions={questions}/>
-            <div className="w-64 absolute left-0 pt-20 hidden 2xl:block "><img src="https://i.imgur.com/lRnF8fm.png" alt="" /></div>
+            <div className="w-64 absolute left-0 pt-20 hidden 2xl:block "><img src="/assets/quiz_video.png" alt="" /></div>
         </div>
     );
 }
