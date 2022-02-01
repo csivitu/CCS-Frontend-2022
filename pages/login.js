@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { CustomInput, LoginToggle } from "../components/CustomForm";
 import { Button } from "@mui/material";
-import { loginRequest } from "../api/requests";
+import { loginRequest } from "../lib/axios";
 import { ToastContext } from "../components/ToastContext";
 import { validateData } from "../components/validateData";
 
