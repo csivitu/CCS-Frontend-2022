@@ -4,6 +4,9 @@ import Link from "next/link";
 import Navbar from "../components/Navbar.js";
 import Hero from "../components/Hero";
 import Domains from "../components/Domains";
+import FAQs from "../components/FAQs";
+import LandingPortfolio from "../components/LandingPortfolio";
+import Footer from "../components/Footer";
 
 
 export default function Home() {
@@ -20,6 +23,9 @@ export default function Home() {
       <Hero />
       <Navbar />
       <Domains />
+      <LandingPortfolio />
+      <FAQs />
+      <Footer />
 
       {/* <div>
         <h1 className={styles.title}> HomePage</h1>

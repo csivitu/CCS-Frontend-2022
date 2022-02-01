@@ -56,6 +56,31 @@ const theme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          color: "var(--dark-gray)",
+          border: "solid 3px var(--dark-gray) !important",
+          borderRadius: "5px !important",
+          fontWeight: "700",
+          backgroundColor: "transparent",
+        },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        expandIconWrapper: {
+          color: "var(--dark-gray)",
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          fontWeight: "400 !important",
+        },
+      },
+    },
   },
 });
 
