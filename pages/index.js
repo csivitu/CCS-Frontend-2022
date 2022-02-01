@@ -19,7 +19,7 @@ export function Home({ loggedIn }) {
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Semibold.woff2" as="font" type="font/woff2" crossOrigin="true" />
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Bold.woff2" as="font" type="font/woff2" crossOrigin="true" />
       </Head>
-      <Hero />
+      <Hero loggedIn={loggedIn} />
       <Navbar />
       <Domains />
       <LandingPortfolio />
@@ -36,10 +36,10 @@ export async function getServerSideProps(context) {
   const { refreshToken } = nookies.get(context)
   if (!refreshToken) {
     return {
-      props: { "loggedIn": "false" }
+      props: { "loggedIn": false }
     }
   }
   return {
-    props: { "loggedIn": "true" },
+    props: { "loggedIn": true },
   }
 }

@@ -18,7 +18,7 @@ const Navbar = () => {
               PROJECTS
             </button>
           </Link>
-          <Link href="/signup" passHref>
+          <Link href="/register" passHref>
             <button className="transition ease-linear py-3 px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
               REGISTER NOW
             </button>
