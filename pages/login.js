@@ -10,8 +10,9 @@ import { validateData } from "../components/validateData";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
 import { isEmpty } from "lodash";
+import ForgotPass from "../components/ForgotPass";
 
-const Login = ({ query, msg, verified }) => {
+const Login = ({ query, msg, verified, resetSuccess, message }) => {
   const { handleSnackOpen } = useContext(ToastContext);
   useEffect(() => {
     if (query) {
@@ -27,7 +28,18 @@ const Login = ({ query, msg, verified }) => {
         });
       }
     }
-  });
+    if (resetSuccess === 'true') {
+      handleSnackOpen({
+        message: message,
+        variant: "success",
+      });
+    } else if (resetSuccess === 'false') {
+      handleSnackOpen({
+        message: message,
+        variant: "error",
+      });
+    }
+  }, []);
 
   const router = useRouter();
 
@@ -35,6 +47,7 @@ const Login = ({ query, msg, verified }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginOption, setLoginOption] = useState("Username");
+  const [fPassState, setFPassState] = useState(false);
 
   async function loginHandler(e) {
     e.preventDefault();
@@ -94,7 +107,7 @@ const Login = ({ query, msg, verified }) => {
         <div className="absolute hidden md:block right-2 lg:right-16 top-10">
           <R_Piece className="w-32 md:w-44 lg:w-52" />
         </div>
-        <form
+        {fPassState ? <ForgotPass /> : <form
           className="w-full max-w-lg flex flex-col gap-4 mb-2"
           onSubmit={loginHandler}
         >
@@ -126,7 +139,7 @@ const Login = ({ query, msg, verified }) => {
             value={password}
             setValue={setPassword}
           />
-          <a>Forgot password?</a>
+          <a onClick={() => { setFPassState(true) }} className="cursor-pointer">Forgot password?</a>
           <Button
             variant="contained"
             type="submit"
@@ -137,6 +150,8 @@ const Login = ({ query, msg, verified }) => {
             Login
           </Button>
         </form>
+        }
+
         <div>
           <p>
             {"Don't have an account yet? "}
@@ -157,14 +172,19 @@ export async function getServerSideProps({ query }) {
     return {
       props: { query: false }
     }
-  const { verified, msg } = query
-  const msgArr = ['Cannot Verify', 'Wrong Verification Token', 'Already Verified', 'Successfully Verified']
-  if (!msgArr.includes(msg))
+  if (query.verified) {
+    const { verified, msg } = query
+    const msgArr = ['Cannot Verify', 'Wrong Verification Token', 'Already Verified', 'Successfully Verified']
+    if (!msgArr.includes(msg))
+      return {
+        props: { query: false }
+      }
     return {
-      props: { query: false }
+      props: { query: true, verified, msg }
     }
-
+  }
+  const { resetSuccess, message } = query
   return {
-    props: { query: true, verified, msg }
+    props: { resetSuccess, message }
   }
 }
