@@ -1,8 +1,13 @@
 import Clock from "../public/assets/clock.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Countdown from "react-countdown";
+import { autoSaveQuiz, submitQuiz } from "../lib/axios";
+import { useRouter } from "next/router";
+import { ToastContext } from "./ToastContext";
 
-function Quiz({ domain, questions }) {
+function Quiz({ domain, questions, endTime }) {
+  const { handleSnackOpen } = useContext(ToastContext);
+  const router = useRouter();
   const [answers, setAnswers] = useState(
     questions.map((e) => {
       return { quesId: e.quesId, answer: "" };
@@ -10,7 +15,57 @@ function Quiz({ domain, questions }) {
   );
   const [position, setPosition] = useState(0);
 
+  async function autoSave() {
+    const data = {
+      questions: answers,
+      finalSubmit: false,
+      domain: domain.charAt(0).toUpperCase() + domain.slice(1),
+    };
+
+    const res = await autoSaveQuiz(data);
+
+    if (res.success) {
+      handleSnackOpen({
+        message: res.message,
+        variant: "success",
+      });
+    } else {
+      handleSnackOpen({
+        message: res.message,
+        variant: "warning",
+      });
+    }
+  }
+
+  async function finalSubmit() {
+    const data = {
+      questions: answers,
+      finalSubmit: true,
+      domain: domain.charAt(0).toUpperCase() + domain.slice(1),
+    };
+
+    const res = await submitQuiz(data);
+
+    if (res.success) {
+      handleSnackOpen({
+        message: res.message,
+        variant: "success",
+      });
+      router.push("/");
+    } else {
+      handleSnackOpen({
+        message: res.message,
+        variant: "error",
+      });
+    }
+
+    console.log(res);
+  }
+
   const renderer = ({ minutes, seconds, completed }) => {
+    if(minutes % 2 === 0 && seconds === 10) {
+      autoSave();
+    }
     if (completed) {
       return <h1>Completed</h1>;
     } else {
@@ -54,10 +109,7 @@ function Quiz({ domain, questions }) {
           <Clock />
         </div>
         <div className="pl-5">
-          <Countdown
-            date={new Date("Feb 12, 2022 00:00:00")}
-            renderer={renderer}
-          />
+          <Countdown date={new Date(endTime)} renderer={renderer} />
         </div>
       </div>
       {questions.map((q, i) => {
@@ -123,6 +175,7 @@ function Quiz({ domain, questions }) {
         <button
           className={`p-2 px-8 rounded-md`}
           style={{ backgroundColor: `var(--${domain})` }}
+          onClick={finalSubmit}
         >
           SUBMIT
         </button>
