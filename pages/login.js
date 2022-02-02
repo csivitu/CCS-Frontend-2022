@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,9 +9,26 @@ import { ToastContext } from "../components/ToastContext";
 import { validateData } from "../components/validateData";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
+import { isEmpty } from "lodash";
 
-const Login = () => {
+const Login = ({ query, msg, verified }) => {
   const { handleSnackOpen } = useContext(ToastContext);
+  useEffect(() => {
+    if (query) {
+      if (verified === 'true') {
+        handleSnackOpen({
+          message: msg,
+          variant: "success",
+        });
+      } else {
+        handleSnackOpen({
+          message: msg,
+          variant: "error",
+        });
+      }
+    }
+  });
+
   const router = useRouter();
 
   const [username, setUsername] = useState("");
@@ -55,13 +72,13 @@ const Login = () => {
       }
       loginOption === "Username"
         ? handleSnackOpen({
-            message: "Invalid username or password.",
-            variant: "error",
-          })
+          message: "Invalid username or password.",
+          variant: "error",
+        })
         : handleSnackOpen({
-            message: "Invalid email or password.",
-            variant: "error",
-          });
+          message: "Invalid email or password.",
+          variant: "error",
+        });
     }
   }
   return (
@@ -134,3 +151,20 @@ const Login = () => {
 };
 
 export default Login;
+
+export async function getServerSideProps({ query }) {
+  if (isEmpty(query))
+    return {
+      props: { query: false }
+    }
+  const { verified, msg } = query
+  const msgArr = ['Cannot Verify', 'Wrong Verification Token', 'Already Verified', 'Successfully Verified']
+  if (!msgArr.includes(msg))
+    return {
+      props: { query: false }
+    }
+
+  return {
+    props: { query: true, verified, msg }
+  }
+}
