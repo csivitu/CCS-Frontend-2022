@@ -2,6 +2,7 @@ import Link from "next/link";
 
 
 const dashboard = () => {
+
   return (
     <>
       <p>This is a protected</p>
@@ -15,3 +16,7 @@ const dashboard = () => {
 };
 
 export default dashboard;
+
+export async function getServerSideProps({ query }) {
+  return { props: {} }
+}

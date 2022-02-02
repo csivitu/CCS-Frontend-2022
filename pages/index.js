@@ -36,10 +36,10 @@ export async function getServerSideProps(context) {
   const { refreshToken } = nookies.get(context)
   if (!refreshToken) {
     return {
-      props: { "loggedIn": false }
+      props: { loggedIn: false }
     }
   }
   return {
-    props: { "loggedIn": true },
+    props: { loggedIn: true },
   }
 }

@@ -1,20 +1,6 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "@mui/material";
+import { FormControl, InputLabel, MenuItem, OutlinedInput, Select, ToggleButton, ToggleButtonGroup } from "@mui/material";
 
-export const CustomInput = ({
-  value,
-  setValue,
-  label,
-  type,
-  disabled = false,
-}) => {
+export const CustomInput = ({ value, setValue, label, type, disabled = false, }) => {
   return (
     <FormControl className="w-full">
       <InputLabel className="">{label}</InputLabel>
@@ -30,16 +16,11 @@ export const CustomInput = ({
   );
 };
 
-export const CustomSelect = ({
-  value,
-  setValue,
-  label,
-  options,
-  disabled = false,
-}) => {
-  function handleChange(e) {
+export const CustomSelect = ({ value, setValue, label, options, disabled = false }) => {
+  const handleChange = (e) => {
     setValue(e.target.value);
   }
+  
   return (
     <FormControl className="w-full">
       <InputLabel>{label}</InputLabel>
