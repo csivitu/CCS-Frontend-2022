@@ -20,7 +20,7 @@ export function Home({ loggedIn }) {
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Bold.woff2" as="font" type="font/woff2" crossOrigin="true" />
       </Head>
       <Hero loggedIn={loggedIn} />
-      <Navbar />
+      <Navbar loggedIn={loggedIn}/>
       <Domains />
       <LandingPortfolio />
       <FAQs />

@@ -2,6 +2,7 @@ import DownArrow from "../public/assets/down_arrow.svg";
 import M_Piece from "../public/assets/piece_m.svg";
 import L_Piece from "../public/assets/domain_l.svg";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import Image from "next/image";
 
 function FAQs() {
   return (
@@ -30,6 +31,26 @@ function FAQs() {
           </Accordion>
         </div>
       ))}
+      <h1 className="relative text-4xl md:text-6xl mb-3 mt-10 font-extrabold">
+        Still have doubts?
+      </h1>
+      <h1 className="relative text-2xl md:text-4xl mb-5 font-light">
+        Read this blog to find your answers
+      </h1>
+      <div className="max-w-3xl w-10/12">
+        <a
+          href="https://medium.com/csivit/everything-about-csi-recruitments-2022-a405a17fc28b"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image
+            src="/assets/medium_article.png"
+            width={1138}
+            height={839}
+            alt="guide"
+          />
+        </a>
+      </div>
     </section>
   );
 }
