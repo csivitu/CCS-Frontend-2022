@@ -1,96 +1,57 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/rules-of-hooks */
+import Link from "next/link";
+import { useRouter } from "next/router";
 import Quiz from "../../components/Quiz";
+import { getQuestions, startQuiz } from "../../lib/axios";
 
-function design() {
+function design({ success, message, questions, endTime }) {
+  const router = useRouter();
+
+  if (!success) {
     return (
-        <div className="flex flex-nowrap flex-row justify-center relative">
-            <Quiz domain="design" questions={questions}/>
-            <div className="w-64 absolute left-0 pt-20 hidden 2xl:block "><Image src="/assets/quiz_design.png" alt="" /></div>
-        </div>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <p className="text-center">Something went wrong!</p>
+        <p className="text-center font-bold">Error Message: {message}</p>
+        <Link href="/" passHref>
+          <button className="px-4 py-2 bg-peach text-gray-dark m-4">
+            Home
+          </button>
+        </Link>
+      </div>
     );
+  }
+
+  return (
+    <div className="flex flex-nowrap flex-row justify-center relative">
+      <Quiz domain="design" questions={questions} />
+      <div className="w-64 absolute left-0 pt-20 hidden 2xl:block ">
+        <img src="/assets/quiz_design.png" alt="" />
+      </div>
+    </div>
+  );
 }
 
-const questions = [
-    {
-        quesId: 101,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 102,
-        question: {
-            text: "bye",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 103,
-        question: {
-            text: "toxic",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 104,
-        question: {
-            text: "ex",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 105,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 106,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 107,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 108,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 109,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    },
-    {
-        quesId: 110,
-        question: {
-            text: "hi",
-            img: [],
-            links: [],
-        }
-    }
-]
+export async function getServerSideProps(ctx) {
+  const res = await startQuiz({ ctx, domain: "Design" });
+  const { success, message, result } = await getQuestions({
+    ctx,
+    domain: "Design",
+  });
+  console.log(success, message, result);
+  if (success) {
+    return {
+      props: {
+        success: true,
+        questions: result.questions,
+        endTime: result.endTime,
+      }, // will be passed to the page component as props
+    };
+  } else {
+    return {
+      props: { success: false, message: message },
+    };
+  }
+}
 
 export default design;

@@ -13,14 +13,15 @@ function Domain({ key, details }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    maxWidth: 400,
+    maxWidth: 600,
     width: "90%",
     backgroundColor: `var(--${details.name})`,
     color: "white",
     borderRadius: 20,
-    padding: 20,
+    padding: 30,
     display: "flex",
     alignItems: "center",
+    gap: 10,
     outline: "none",
   };
 
@@ -53,8 +54,8 @@ function Domain({ key, details }) {
         <div style={style}>
           <Image
             src={details.smImage}
-            height={200}
-            width={160}
+            height={400}
+            width={320}
             alt={details.name}
           />
           <div
