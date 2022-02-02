@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { authorize } from "../../lib/authorize";
 
 
 const dashboard = () => {
@@ -16,13 +15,3 @@ const dashboard = () => {
 };
 
 export default dashboard;
-
-export const getServerSideProps = authorize(
-  async (_ctx) => {
-    return {
-      props: {},
-    }
-  }
-)
-
-

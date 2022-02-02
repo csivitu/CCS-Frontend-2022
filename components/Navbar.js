@@ -13,7 +13,7 @@ const Navbar = () => {
           <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2"><span><TriColor /></span> CCS</button>
         </Link>
         <div className="hidden md:flex gap-10">
-          <Link href="/projects" passHref>
+          <Link href="/user/projects" passHref>
             <button className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
               PROJECTS
             </button>
@@ -32,7 +32,7 @@ const Navbar = () => {
         {viewMobileMenu ? <div className="w-full md:hidden" id="mobile-menu">
           <ul className="flex flex-col mt-4 list-none">
             <li>
-              <Link href="/projects" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">PROJECTS</Link>
+              <Link href="/user/projects" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">PROJECTS</Link>
             </li>
             <li>
               <Link href="/register" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">REGISTER NOW</Link>
