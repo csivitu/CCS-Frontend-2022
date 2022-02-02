@@ -10,7 +10,8 @@ import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
 import { signupRequest } from "../lib/axios";
 
-const Signup = () => {
+
+const Register = () => {
   const { handleSnackOpen } = useContext(ToastContext);
   const router = useRouter();
 
@@ -40,7 +41,7 @@ const Signup = () => {
         return {
           success: true,
           message:
-            "Signup successful. Please verify your Email Address to login.",
+            "Register successful. Please verify your Email Address to login.",
         };
       } else {
         return {
@@ -104,7 +105,7 @@ const Signup = () => {
   return (
     <>
       <Head>
-        <title>CCS | Signup</title>
+        <title>CCS | Register</title>
         <meta name="keywords" content="ccs" />
       </Head>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
@@ -114,7 +115,7 @@ const Signup = () => {
         <div className="absolute hidden md:block right-2 md:right-5 top-10">
           <R_Piece className="w-32 md:w-44 lg:w-52" />
         </div>
-        <h1 className="text-3xl pt-4 pb-8">Signup Here</h1>
+        <h1 className="text-3xl pt-4 pb-8">Register Here</h1>
         <form
           className="w-full md:w-1/2 flex flex-col gap-4 mb-2"
           onSubmit={signupHandler}
@@ -181,7 +182,7 @@ const Signup = () => {
               contained: "w-full bg-tech bg-opacity-90 hover:bg-opacity-100",
             }}
           >
-            Signup
+            Register
           </Button>
         </form>
         <p>
@@ -195,4 +196,5 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
+

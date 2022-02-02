@@ -12,7 +12,7 @@ export function Home({ loggedIn }) {
   return (
     <>
       <Head>
-        <title>CCS | Home</title>
+        <title>CSI CCS | Home</title>
         <meta name="keywords" content="ccs" />
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Regular.woff2" as="font" type="font/woff2" crossOrigin="true" />
         <link rel="preload" href="fonts/GeneralSans/GeneralSans-Medium.woff2" as="font" type="font/woff2" crossOrigin="true" />

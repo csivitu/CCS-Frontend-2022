@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { textAlign } from '@mui/system';
 import Quiz from '../../components/Quiz';
 
 function tech() {
