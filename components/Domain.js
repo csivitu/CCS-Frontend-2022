@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-function Domain({ key, details }) {
+function Domain({ details }) {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -99,7 +99,6 @@ function Domain({ key, details }) {
         </div>
       </Modal>
       <div
-        key={key}
         className="relative flex flex-col items-center w-60 -ml-20"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}

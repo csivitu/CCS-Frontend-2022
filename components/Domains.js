@@ -20,7 +20,7 @@ function Domains() {
       </p>
       <div className="flex flex-row flex-wrap justify-center pl-20">
         {domainsDetails.map((d, i) => (
-          <Domain key={`domain${i}`} details={d} />
+          <Domain key={i} details={d} />
         ))}
       </div>
     </section>
