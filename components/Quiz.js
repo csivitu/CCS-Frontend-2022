@@ -1,72 +1,69 @@
 import Clock from "../public/assets/clock.svg";
 import { useContext, useState } from "react";
 import Countdown from "react-countdown";
-import { autoSaveQuiz, submitQuiz } from "../lib/axios";
-import { useRouter } from "next/router";
+import { submitQuiz } from "../lib/axios";
+import { Router, useRouter } from "next/router";
 import { ToastContext } from "./ToastContext";
+import { parseCookies } from "nookies";
 
 function Quiz({ domain, questions, endTime }) {
   const { handleSnackOpen } = useContext(ToastContext);
   const router = useRouter();
+  
   const [answers, setAnswers] = useState(
     questions.map((e) => {
-      return { quesId: e.quesId, answer: "" };
+      if (e.answer) {
+        return { quesId: e.quesId, answer: e.answer };
+      }
+      return { quesId: e.quesId, answer: "" }
     })
   );
+
   const [position, setPosition] = useState(0);
 
   async function autoSave() {
+    const cookies = parseCookies()
     const data = {
       questions: answers,
       finalSubmit: false,
-      domain: domain.charAt(0).toUpperCase() + domain.slice(1),
+      domain,
     };
 
-    const res = await autoSaveQuiz(data);
+    const res = await submitQuiz(data, cookies);
 
-    if (res.success) {
-      handleSnackOpen({
-        message: res.message,
-        variant: "success",
-      });
-    } else {
-      handleSnackOpen({
-        message: res.message,
-        variant: "warning",
-      });
-    }
+    console.log(res)
+    
   }
 
   async function finalSubmit() {
     const data = {
       questions: answers,
       finalSubmit: true,
-      domain: domain.charAt(0).toUpperCase() + domain.slice(1),
+      domain,
     };
 
     const res = await submitQuiz(data);
+    if (!res) {
+      console.log(res)
+      // handleSnackOpen({
+      //   message: "blep",
+      //   variant: "success",
+      // });
 
-    if (res.success) {
-      handleSnackOpen({
-        message: res.message,
-        variant: "success",
-      });
-      router.push("/");
-    } else {
-      handleSnackOpen({
-        message: res.message,
-        variant: "error",
-      });
+      router.push("/user/dashboard")
     }
 
-    console.log(res);
   }
 
   const renderer = ({ minutes, seconds, completed }) => {
-    if(minutes % 2 === 0 && seconds === 10) {
+    if (minutes % 2 === 0 && seconds === 30) {
+      console.log(minutes,seconds,"Inside first if")
+      console.log("It is being saved")
       autoSave();
     }
     if (completed) {
+      console.log(minutes,seconds,"Second if")
+      finalSubmit()
       return <h1>Completed</h1>;
     } else {
       return (
@@ -81,7 +78,6 @@ function Quiz({ domain, questions, endTime }) {
 
   function updateAnswer(id, answer) {
     let tempAnswers = [...answers];
-    // console.log(id, answer)
     const index = tempAnswers.findIndex((element) => element.quesId === id);
     tempAnswers[index].answer = answer;
     setAnswers(tempAnswers);
@@ -94,6 +90,7 @@ function Quiz({ domain, questions, endTime }) {
   function decreasePosition() {
     setPosition(position - 1 > -1 ? position - 1 : 0);
   }
+
 
   return (
     <div className="w-4/5 max-w-4xl flex flex-col content-center justify-items-center">
@@ -140,7 +137,7 @@ function Quiz({ domain, questions, endTime }) {
                       alt="Question image"
                       className="aspect-square"
                       style={{ width: "100%", maxWidth: "300px" }}
-                    ></img>
+                    />
                   </div>
                 )}
               </div>
@@ -152,7 +149,7 @@ function Quiz({ domain, questions, endTime }) {
                 onChange={(e) => updateAnswer(q.quesId, e.target.value)}
                 className={`h-96 bg-opacity-20 rounded-md p-10 outline-none`}
                 style={{ backgroundColor: `var(--${domain}-bg)` }}
-              ></textarea>
+              />
             </>
           )
         );

@@ -11,7 +11,6 @@ import Countdown from 'react-countdown';
 
 
 const Hero = ({ loggedIn }) => {
-    console.log(loggedIn)
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             return <h1>Completed</h1>;

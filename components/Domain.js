@@ -9,11 +9,7 @@ function Domain({ key, details }) {
   const [open, setOpen] = useState(false);
 
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: 600,
+    position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", maxWidth: 600,
     width: "90%",
     backgroundColor: `var(--${details.name})`,
     color: "white",

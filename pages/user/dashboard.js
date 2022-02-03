@@ -5,6 +5,7 @@ import Dashboard from "../../components/Dashboard";
 
 
 const dashboard = () => {
+
   return (
     <div>
       <Dashboard />
@@ -13,3 +14,7 @@ const dashboard = () => {
 };
 
 export default dashboard;
+
+export async function getServerSideProps({ query }) {
+  return { props: {} }
+}
