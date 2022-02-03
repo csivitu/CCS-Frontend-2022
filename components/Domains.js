@@ -4,15 +4,20 @@ import Domain from "./Domain";
 import { isEmpty } from "lodash";
 
 function Domains({ domainsAttempted = {} }) {
+  console.log(domainsAttempted)
   const findEndTime = (domain) => {
     if (isEmpty(domainsAttempted))
       return null
     const something = domainsAttempted.find((e) => e.domain === domain)
     if (!something)
       return null
-    const { endTime } = something
+    const { endTime, submitted } = something
+    if (submitted)
+      return { "completed": true }
+
     if (new Date(endTime) < new Date())
       return { "completed": true }
+
     return { "completed": false }
   }
   return (

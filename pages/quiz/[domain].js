@@ -45,19 +45,17 @@ export async function getServerSideProps(ctx) {
 
     const cookies = nookies.get(ctx)
     const { success, message: startMessage } = await startQuiz({ domain }, cookies);
-
     if (!success) {
         return {
             redirect: {
-                destination: `/?success=${success}&msg=${startMessage}`
+                destination: `/user/dashboard?success=${success}&msg=${startMessage}`
             }
         }
     }
 
-    const { success: questionSuccess, result, quizMessage } = await getQuestions({ domain }, cookies);
+    const { success: questionSuccess, result, message: quizMessage } = await getQuestions({ domain }, cookies);
     if (!questionSuccess)
         return { props: { success: false, domain, quizMessage } }
-
     const { questions, endTime } = result
     return {
         props: { success: true, domain, questions, endTime }

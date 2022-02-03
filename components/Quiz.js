@@ -30,8 +30,16 @@ function Quiz({ domain, questions, endTime }) {
       domain,
     };
 
-    const res = await submitQuiz(data, cookies);
-
+    try {
+      const res = await submitQuiz(data, cookies);
+      if (res.code === 200)
+        handleSnackOpen({
+          message: res.message,
+          variant: "success"
+        })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   async function finalSubmit() {
@@ -43,8 +51,11 @@ function Quiz({ domain, questions, endTime }) {
     };
 
     const res = await submitQuiz(data, cookies);
-    console.log(res)
-    if (!res) {
+    if (res.code === 200) {
+      handleSnackOpen({
+        message: res.message,
+        variant: "success"
+      })
       router.push("/user/dashboard")
     }
 
@@ -52,6 +63,7 @@ function Quiz({ domain, questions, endTime }) {
 
   const renderer = ({ minutes, seconds, completed, api: { stop } }) => {
     if (minutes % 2 === 0 && seconds === 30) {
+      console.log("auto saved")
       autoSave();
     }
     if (completed) {
@@ -128,7 +140,7 @@ function Quiz({ domain, questions, endTime }) {
                     <img
                       src={q.question.img[0]}
                       alt="Question image"
-                      className="aspect-square"
+                      className="aspect-square unselectable"
                       style={{ width: "100%", maxWidth: "300px" }}
                     />
                   </div>

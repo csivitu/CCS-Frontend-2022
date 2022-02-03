@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import nookies from 'nookies'
@@ -11,15 +11,32 @@ import { getUserState } from "../../lib/axios";
 import Navbar from "../../components/Navbar";
 import LinkModal from "../../components/LinkModal";
 import Head from "next/head";
+import { ToastContext } from "../../components/ToastContext";
 
-const Dashboard = ({ username, name }) => {
+const Dashboard = ({ username, name, query }) => {
   const [newURL, setNewURL] = useState("");
   const [select, setSelect] = useState("management");
   const [management, setManagement] = useState("");
   const [tech, setTech] = useState("");
   const [design, setDesign] = useState("");
   const [video, setVideo] = useState("");
-  // !TODO!  
+  const { handleSnackOpen } = useContext(ToastContext);
+  useEffect(() => {
+    if (query) {
+      const { success, msg } = query
+      if (success === 'false') {
+        handleSnackOpen({
+          message: msg,
+          variant: "error",
+        });
+      } else {
+        handleSnackOpen({
+          message: msg,
+          variant: "success"
+        })
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -70,6 +87,7 @@ const Dashboard = ({ username, name }) => {
 export default Dashboard;
 
 export async function getServerSideProps(context) {
+  const { query } = context
   const cookies = nookies.get(context)
   const res = await getUserState(cookies)
   if (!res.success) {
@@ -81,7 +99,12 @@ export async function getServerSideProps(context) {
     }
   }
   const { result: { userId: { username, name } } } = res
+  if (query.success && query.msg) {
+    return {
+      props: { username, name, query }
+    }
+  }
   return {
-    props: { username, name },
+    props: { username, name, query: false }
   }
 }

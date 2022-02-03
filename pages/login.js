@@ -12,33 +12,53 @@ import R_Piece from "../public/assets/auth_r.svg";
 import { isEmpty } from "lodash";
 import ForgotPass from "../components/ForgotPass";
 
-const Login = ({ query, msg, verified, resetSuccess, message }) => {
+const Login = ({ query }) => {
   const { handleSnackOpen } = useContext(ToastContext);
   useEffect(() => {
     if (query) {
-      if (verified === 'true') {
-        handleSnackOpen({
-          message: msg,
-          variant: "success",
-        });
-      } else {
-        handleSnackOpen({
-          message: msg,
-          variant: "error",
-        });
+      if (query.verified) {
+        const { verified, msg } = query
+        if (verified === 'true') {
+          handleSnackOpen({
+            message: msg,
+            variant: "success",
+          })
+        }
+        else if (verified === 'false') {
+          handleSnackOpen({
+            message: msg,
+            variant: "error",
+          })
+        }
+      }
+      else {
+        const { resetSuccess, message } = query
+        if (resetSuccess === 'true') {
+          handleSnackOpen({
+            message: message,
+            variant: "success",
+          })
+        }
+        else if (resetSuccess === 'false') {
+          handleSnackOpen({
+            message: message,
+            variant: "error",
+          })
+        }
       }
     }
-    if (resetSuccess === 'true') {
+    if (success === 'false') {
       handleSnackOpen({
-        message: message,
-        variant: "success",
-      });
-    } else if (resetSuccess === 'false') {
-      handleSnackOpen({
-        message: message,
+        message: msg,
         variant: "error",
       });
+    } else {
+      handleSnackOpen({
+        message: msg,
+        variant: "success"
+      })
     }
+
   }, []);
 
   const router = useRouter();
@@ -161,29 +181,25 @@ const Login = ({ query, msg, verified, resetSuccess, message }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Login;
 
 export async function getServerSideProps({ query }) {
-  if (isEmpty(query))
-    return {
-      props: { query: false }
+  if (query.verified && query.msg) {
+    if (!['Cannot Verify', 'Wrong Verification Token', 'Already Verified', 'Successfully Verified'].includes(query.msg)) {
+      return { props: { query: false } }
     }
-  if (query.verified) {
-    const { verified, msg } = query
-    const msgArr = ['Cannot Verify', 'Wrong Verification Token', 'Already Verified', 'Successfully Verified']
-    if (!msgArr.includes(msg))
-      return {
-        props: { query: false }
-      }
     return {
-      props: { query: true, verified, msg }
+      props: { query }
     }
   }
-  const { resetSuccess, message } = query
+  if (query.resetSuccess && query.message)
+    return { props: { query } }
+
   return {
-    props: { resetSuccess, message }
+    props: { query: false }
   }
+
 }

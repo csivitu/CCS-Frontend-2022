@@ -9,6 +9,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
+import Joi from "joi";
 import { useState } from "react";
 
 export const CustomInput = ({ value, setValue, label, type, disabled = false, }) => {
@@ -134,6 +135,10 @@ export const DomainURL = ({ domain, value, setValue }) => {
 
   async function handleSubmit(e) {
     setEditing(false);
+    const { error } = Joi.string().uri().validate(value)
+    if (error)
+      return error
+    
   }
 
   return (

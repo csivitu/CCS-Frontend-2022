@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-function Domain({ details, endTime, domainsAttempted }) {
+function Domain({ details, endTime }) {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const style = {

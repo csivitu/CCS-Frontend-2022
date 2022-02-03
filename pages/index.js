@@ -48,8 +48,8 @@ export async function getServerSideProps(context) {
       }
     }
   }
-  console.log(res)
   const { result: { userId: { username }, domainsAttempted } } = res
+  
   return {
     props: { loggedIn: true, username, domainsAttempted },
   }

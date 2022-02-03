@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import TriColor from '../public/assets/csi_logo_tricolor.svg';
 import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll'
 
@@ -13,14 +12,14 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         {dashBoard ?
           <Link href="/" passHref>
-            <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2 text-peach"><span><TriColor /></span> CCS</button>
+            <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2 text-peach">CCS</button>
           </Link> : <ScrollLink to="Hero"
             smooth={true}
             duration={500}
             spy={true}
             exact="true"
             offset={-80}>
-            <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2 text-peach"><span><TriColor /></span> CCS</button>
+            <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2 text-peach">CCS</button>
           </ScrollLink>}
 
         <div className="hidden md:flex gap-10">

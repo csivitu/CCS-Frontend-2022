@@ -64,7 +64,14 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
-
+.unselectable {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 a {
   @apply text-zinc-400;
 }
