@@ -9,7 +9,7 @@ import { ToastContext } from "../components/ToastContext";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
 import { signupRequest } from "../lib/axios";
-import registerFormSchema from "../lib/validation/register";
+import registerFormSchema from "../lib/validation/registerFormSchema";
 
 
 const Register = () => {
