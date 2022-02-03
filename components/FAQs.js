@@ -48,6 +48,7 @@ function FAQs() {
             width={1138}
             height={839}
             alt="guide"
+            priority={true}
           />
         </a>
       </div>

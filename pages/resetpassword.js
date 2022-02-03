@@ -9,16 +9,12 @@ import { resetPasswordRequest } from "../lib/axios";
 import { ToastContext } from "../components/ToastContext";
 import { useRouter } from "next/router";
 
-const resetpassword = ({ id, token }) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+const Resetpassword = ({ id, token }) => {
     const router = useRouter()
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { handleSnackOpen } = useContext(ToastContext);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [password, setPassword] = useState("");
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const handleSubmit = async () => {
         if (id && token) {
@@ -69,7 +65,7 @@ const resetpassword = ({ id, token }) => {
     )
 };
 
-export default resetpassword;
+export default Resetpassword;
 
 export async function getServerSideProps({ query }) {
     if (isEmpty(query)) {

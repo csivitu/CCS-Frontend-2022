@@ -26,7 +26,6 @@ const ToastProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("data changes for snack to ", snackData);
   }, [snackData]);
 
   return (

@@ -31,7 +31,7 @@ export const CustomSelect = ({ value, setValue, label, options, disabled = false
   const handleChange = (e) => {
     setValue(e.target.value);
   }
-  
+
   return (
     <FormControl className="w-full">
       <InputLabel>{label}</InputLabel>
@@ -132,7 +132,7 @@ export const DomainURL = ({ domain, value, setValue }) => {
     setEditing(true);
   }
 
-  function handleSubmit() {
+  async function handleSubmit(e) {
     setEditing(false);
   }
 
@@ -156,34 +156,24 @@ export const DomainURL = ({ domain, value, setValue }) => {
               type="url"
             />
           </FormControl>
-          <Button
-            variant="contained"
-            type="submit"
-            classes={{
-              contained:
-                "rounded-lg bg-tech bg-opacity-90 hover:bg-opacity-100",
-            }}
-            onClick={handleSubmit}
+
+          <button className="transition ease-linear py-2 px-4 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
+            onClick={(e) => { handleSubmit(e) }}
           >
             SUBMIT
-          </Button>
+          </button>
         </>
       ) : (
         <>
           <h1 className="w-full">{value ? value : <i className="font-light">No URL Provided</i>}</h1>
-          <Button
-            variant="contained"
-            type="submit"
-            classes={{
-              contained:
-                "rounded-lg bg-tech bg-opacity-90 hover:bg-opacity-100",
-            }}
+          <button className="transition ease-linear py-2 px-4 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
             onClick={startEdit}
           >
             EDIT
-          </Button>
+          </button>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };

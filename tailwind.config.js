@@ -10,7 +10,7 @@ module.exports = {
         'sans': ['General Sans']
       },
       colors: {
-        "peach":"#ECE0D8",
+        "peach": "#ECE0D8",
         "gray-dark": "#131313",
         "gray-light": "#ECE0D8",
         "tech": "#477BFF",
@@ -26,6 +26,9 @@ module.exports = {
         "videobg": "url('/assets/video-bg.svg')",
       }
     },
+  },
+  variants: {
+    fill: ['hover', 'focus'],
   },
   plugins: [],
 };

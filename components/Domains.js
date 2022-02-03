@@ -2,7 +2,7 @@ import M_Piece from "../public/assets/piece_m.svg";
 import L_Piece from "../public/assets/domains_prop_l.svg";
 import Domain from "./Domain";
 
-function Domains() {
+function Domains({ domainsAttempted = {} }) {
   return (
     <section
       id="domains"
@@ -19,7 +19,7 @@ function Domains() {
         Choose Where You Would Like To Fit In
       </p>
       <div className="flex flex-row flex-wrap justify-center pl-20">
-        {domainsDetails.map((d, i) => (
+        {domainsDetails().map((d, i) => (
           <Domain key={i} details={d} />
         ))}
       </div>
@@ -27,7 +27,7 @@ function Domains() {
   );
 }
 
-const domainsDetails = [
+export const domainsDetails = (endTime = null) => [
   {
     name: "design",
     route: "/quiz/design",
@@ -36,6 +36,7 @@ const domainsDetails = [
     smImage: "/assets/design-sm.png",
     description:
       "Do you wish to be creative and fill out the canvas that is yours truly?",
+    endTime
   },
   {
     name: "management",
@@ -45,6 +46,7 @@ const domainsDetails = [
     smImage: "/assets/management-sm.png",
     description:
       "Want to hold the fort down and handle global scale events? Let’s see you handle this first :)",
+    endTime
   },
   {
     name: "tech",
@@ -54,6 +56,7 @@ const domainsDetails = [
     smImage: "/assets/tech-sm.png",
     description:
       "Want the tech you make to have an impact and prove useful? Well, what are you waiting for?",
+    endTime
   },
   {
     name: "video",
@@ -63,6 +66,7 @@ const domainsDetails = [
     smImage: "/assets/video-sm.png",
     description:
       "Looking to put your ideas in motion? Pun intended.",
+    endTime
   },
 ];
 

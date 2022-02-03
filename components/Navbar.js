@@ -2,40 +2,50 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import TriColor from '../public/assets/csi_logo_tricolor.svg';
 import Image from 'next/image';
+import { Link as ScrollLink } from 'react-scroll'
 
-const Navbar = ({ loggedIn }) => {
+const Navbar = ({ loggedIn, username, dashBoard }) => {
 
   const [viewMobileMenu, setViewMobileMenu] = useState(false);
-  
+
   return (
     <nav className="sticky top-0 px-3 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link href="" passHref>
-          <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2"><span><TriColor /></span> CCS</button>
-        </Link>
+        {dashBoard ?
+          <Link href="/" passHref>
+            <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2 text-peach"><span><TriColor /></span> CCS</button>
+          </Link> : <ScrollLink to="Hero"
+            smooth={true}
+            duration={500}
+            spy={true}
+            exact="true"
+            offset={-80}>
+            <button className="self-center text-4xl whitespace-nowrap font-bold flex items-center gap-2 text-peach"><span><TriColor /></span> CCS</button>
+          </ScrollLink>}
+
         <div className="hidden md:flex gap-10">
-          <Link href="/user/projects" passHref>
+          <Link href="/user/tasks" passHref>
             <button className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
               TASKS
             </button>
           </Link>
-          { loggedIn  ? 
-          <div className='flex items-center gap-2'>
-            <Link href="/user/dashboard" passHref><a className='uppercase text-peach hover:underline font-thin'>Sourish Gupta</a></Link>
-            <div className="bg-peach rounded-md w-8 h-8">
-              <Image
-                src="https://avatars.dicebear.com/api/croodles-neutral/sourish.svg"
-                alt="avatar"
-                width={40}
-                height={40}
-              />
-            </div>
-          </div> :
-          <Link href="/register" passHref>
-            <button className="transition ease-linear py-3 px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
-              REGISTER NOW
-            </button>
-          </Link>}
+          {loggedIn ?
+            <div className='flex items-center gap-2'>
+              <Link href="/user/dashboard" passHref><a className='uppercase text-peach hover:underline font-thin'>{username}</a></Link>
+              <div className="bg-peach rounded-md w-8 h-8">
+                <Image
+                  src={`https://avatars.dicebear.com/api/croodles-neutral/${username}.svg`}
+                  alt="avatar"
+                  width={40}
+                  height={40}
+                />
+              </div>
+            </div> :
+            <Link href="/register" passHref>
+              <button className="transition ease-linear py-3 px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                REGISTER NOW
+              </button>
+            </Link>}
         </div>
         <button onClick={() => {
           setViewMobileMenu(!viewMobileMenu)
@@ -45,13 +55,13 @@ const Navbar = ({ loggedIn }) => {
         {viewMobileMenu ? <div className="w-full md:hidden" id="mobile-menu">
           <ul className="flex flex-col mt-4 list-none items-center">
             <li>
-              <Link href="/user/projects" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">TASKS</Link>
+              <Link href="/user/tasks" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">TASKS</Link>
             </li>
             <li>
-              {loggedIn ? 
-              <Link href="/user/dashboard" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">DASHBOARD</Link> 
-              :
-              <Link href="/register" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">REGISTER NOW</Link>}
+              {loggedIn ?
+                <Link href="/user/dashboard" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">DASHBOARD</Link>
+                :
+                <Link href="/register" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">REGISTER NOW</Link>}
             </li>
           </ul>
         </div> : null}

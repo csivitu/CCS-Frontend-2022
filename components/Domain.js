@@ -23,7 +23,7 @@ function Domain({ details }) {
 
   function NormalImage() {
     return (
-      <Image src={details.image} height={350} width={500} alt={details.name} />
+      <Image src={details.image} height={350} width={500} alt={details.name} priority={true} />
     );
   }
 
@@ -34,6 +34,7 @@ function Domain({ details }) {
         height={350}
         width={500}
         alt={details.name}
+        priority={true}
       />
     );
   }
@@ -53,6 +54,7 @@ function Domain({ details }) {
             height={400}
             width={320}
             alt={details.name}
+            priority={true}
           />
           <div
             style={{

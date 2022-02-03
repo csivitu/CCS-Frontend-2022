@@ -31,8 +31,6 @@ function Quiz({ domain, questions, endTime }) {
 
     const res = await submitQuiz(data, cookies);
 
-    console.log(res)
-    
   }
 
   async function finalSubmit() {
@@ -44,12 +42,6 @@ function Quiz({ domain, questions, endTime }) {
 
     const res = await submitQuiz(data);
     if (!res) {
-      console.log(res)
-      // handleSnackOpen({
-      //   message: "blep",
-      //   variant: "success",
-      // });
-
       router.push("/user/dashboard")
     }
 
@@ -57,8 +49,6 @@ function Quiz({ domain, questions, endTime }) {
 
   const renderer = ({ minutes, seconds, completed }) => {
     if (minutes % 2 === 0 && seconds === 30) {
-      console.log(minutes,seconds,"Inside first if")
-      console.log("It is being saved")
       autoSave();
     }
     if (completed) {
