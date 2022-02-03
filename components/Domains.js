@@ -1,5 +1,5 @@
 import M_Piece from "../public/assets/piece_m.svg";
-import L_Piece from "../public/assets/domain_l.svg";
+import L_Piece from "../public/assets/domains_prop_l.svg";
 import Domain from "./Domain";
 
 function Domains() {
