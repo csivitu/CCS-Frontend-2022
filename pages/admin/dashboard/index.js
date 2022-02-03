@@ -20,7 +20,10 @@ const Dashboard = ({ result }) => {
   };
 
   useEffect(() => {
-    let filtered = result.filter((user) => user.username.includes(query));
+    let filtered = result.filter(
+      (user) =>
+        user.username.includes(query) || user.userId.regNo.includes(query.toUpperCase())
+    );
     if (domain) {
       filtered = filtered.filter((user) =>
         user.domainsAttempted.map((dom) => dom.domain).includes(domain)
@@ -67,10 +70,14 @@ const Dashboard = ({ result }) => {
           className="text-2xl py-1 font-semi-bold flex flex-row w-2/3"
         >
           <Link href={`/admin/dashboard/${usr.username}`} passHref>
-            <a className="cursor-pointer flex-auto">{usr.username}</a>
+            <a className="cursor-pointer flex-auto">
+              {usr.username} - {usr.userId.regNo}
+            </a>
           </Link>
           {usr.domainsAttempted.map((domain) => (
-            <p className="self-end mx-3" key={domain.domain}>{domain.domain}</p>
+            <p className="self-end mx-3" key={domain.domain}>
+              {domain.domain}
+            </p>
           ))}
         </div>
       ))}
