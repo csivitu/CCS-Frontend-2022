@@ -11,7 +11,6 @@ import Countdown from 'react-countdown';
 
 
 const Hero = ({ loggedIn }) => {
-    console.log(loggedIn)
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             return <h1>Completed</h1>;
@@ -25,7 +24,7 @@ const Hero = ({ loggedIn }) => {
         }
     };
     return (
-        <section id="Hero" className="flex w-full h-screen relative items-center justify-center bg-grid md:bg-none bg-no-repeat bg-cover bg-center">
+        <section id="Hero" className="flex w-full h-screen relative items-center justify-center bg-grid bg-no-repeat bg-cover bg-center">
             <div className="absolute left-2 md:left-5 bottom-14 md:bottom-10">
                 <L_Piece className="w-32 md:w-44 lg:w-52" />
             </div>

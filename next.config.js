@@ -1,5 +1,8 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['avatars.dicebear.com'],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
