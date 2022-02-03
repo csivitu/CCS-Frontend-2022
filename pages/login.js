@@ -46,17 +46,17 @@ const Login = ({ query }) => {
           })
         }
       }
-    }
-    if (success === 'false') {
-      handleSnackOpen({
-        message: msg,
-        variant: "error",
-      });
-    } else {
-      handleSnackOpen({
-        message: msg,
-        variant: "success"
-      })
+      if (success === 'false') {
+        handleSnackOpen({
+          message: msg,
+          variant: "error",
+        });
+      } else {
+        handleSnackOpen({
+          message: msg,
+          variant: "success"
+        })
+      }
     }
 
   }, []);
