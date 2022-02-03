@@ -8,8 +8,9 @@ import { parseCookies } from "nookies";
 
 function Quiz({ domain, questions, endTime }) {
   const { handleSnackOpen } = useContext(ToastContext);
+  console.log("re renders")
   const router = useRouter();
-  
+
   const [answers, setAnswers] = useState(
     questions.map((e) => {
       if (e.answer) {
@@ -34,25 +35,27 @@ function Quiz({ domain, questions, endTime }) {
   }
 
   async function finalSubmit() {
+    const cookies = parseCookies()
     const data = {
       questions: answers,
       finalSubmit: true,
       domain,
     };
 
-    const res = await submitQuiz(data);
+    const res = await submitQuiz(data, cookies);
+    console.log(res)
     if (!res) {
       router.push("/user/dashboard")
     }
 
   }
 
-  const renderer = ({ minutes, seconds, completed }) => {
+  const renderer = ({ minutes, seconds, completed, api: { stop } }) => {
     if (minutes % 2 === 0 && seconds === 30) {
       autoSave();
     }
     if (completed) {
-      console.log(minutes,seconds,"Second if")
+      console.log(minutes, seconds, "Second if")
       finalSubmit()
       return <h1>Completed</h1>;
     } else {
@@ -135,6 +138,7 @@ function Quiz({ domain, questions, endTime }) {
                 YOUR ANSWER
               </div>
               <textarea
+                autoFocus={true}
                 value={answers[i].answer}
                 onChange={(e) => updateAnswer(q.quesId, e.target.value)}
                 className={`h-96 bg-opacity-20 rounded-md p-10 outline-none`}

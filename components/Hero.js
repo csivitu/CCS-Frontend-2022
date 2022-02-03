@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "../styles/Hero.module.css";
 
 import L_Piece from '../public/assets/piece_l.svg';
@@ -10,8 +10,9 @@ import { Link as ScrollLink } from 'react-scroll'
 import Countdown from 'react-countdown';
 
 
-const Hero = ({ loggedIn }) => {
-    const renderer = ({ days, hours, minutes, seconds, completed }) => {
+const Hero = ({ loggedIn, check }) => {
+
+    const renderer = ({ days, hours, minutes, seconds, completed, api: { isPaused, start, isStopped } }) => {
         if (completed) {
             return <h1>Completed</h1>;
         } else {
@@ -50,6 +51,7 @@ const Hero = ({ loggedIn }) => {
                             <Countdown
                                 date={new Date("Feb 12, 2022 00:00:00")}
                                 renderer={renderer}
+                                zeroPadTime={3}
                             />
                         </div>
                         <div>
@@ -59,12 +61,12 @@ const Hero = ({ loggedIn }) => {
                                 duration={500}
                                 spy={true}
                                 exact="true"
-                                >
+                            >
                                 <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                     DOMAINS
                                 </button>
                             </ScrollLink>
-                                : <Link href="/register" passHref >
+                                : <Link href="/register" passHref shallow={true} >
                                     <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                         REGISTER NOW
                                     </button>
@@ -77,3 +79,10 @@ const Hero = ({ loggedIn }) => {
 };
 
 export default Hero;
+
+export const getInitialProps = (ctx) => {
+    console.log(ctx)
+    return {
+        props: { check: true }
+    }
+}

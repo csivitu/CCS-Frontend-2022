@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-function Domain({ details, endTime }) {
+function Domain({ details, endTime, domainsAttempted }) {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const style = {
@@ -85,19 +85,19 @@ function Domain({ details, endTime }) {
                   <a
                     style={{
                       padding: "5px 10px",
-                      color: "black",
+                      color: "gray",
                       fontSize: "0.8rem",
                       backgroundColor: "white",
                       borderRadius: 5,
                     }}
                   >
-                    RESUME
+                    ATTEMPTED
                   </a>
                 </div>
               </>
             ) : (
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <Link href={`/quiz/${details.name}`}>
+                <Link href={`/quiz/${details.name}`} replace={true} shallow={true}>
                   <a
                     style={{
                       padding: "5px 10px",
@@ -114,7 +114,7 @@ function Domain({ details, endTime }) {
               </div>
             )) : (
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <Link href={`/quiz/${details.name}`}>
+                <Link href={`/quiz/${details.name}`} replace={true} shallow={true}>
                   <a
                     style={{
                       padding: "5px 10px",
@@ -127,7 +127,7 @@ function Domain({ details, endTime }) {
                     TAKE TEST
                   </a>
                 </Link>
-                  <p>30:00</p>
+                <p>30:00</p>
                 <ClockIcon />
               </div>
             )}
@@ -135,8 +135,26 @@ function Domain({ details, endTime }) {
           </div>
         </div>
       </Modal>
-      <div
-        className="relative flex flex-col items-center w-60 -ml-20"
+      {endTime ? endTime.completed ? (
+        <div
+          className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer"
+          onClick={() => setOpen(true)}
+        >
+          <HoverImage />
+          <h1 className="font-bold uppercase">{details.name}</h1>
+        </div>
+      ) : (
+        <div
+          className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={() => setOpen(true)}
+        >
+          {hover ? <HoverImage /> : <NormalImage />}
+          <h1 className="font-bold uppercase">{details.name}</h1>
+        </div>
+      ) : (<div
+        className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         onClick={() => setOpen(true)}
@@ -144,6 +162,9 @@ function Domain({ details, endTime }) {
         {hover ? <HoverImage /> : <NormalImage />}
         <h1 className="font-bold uppercase">{details.name}</h1>
       </div>
+      )}
+
+
     </>
   );
 }

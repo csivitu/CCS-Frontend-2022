@@ -3,12 +3,22 @@ import { useState, useContext } from "react";
 import { forgotPassRequest } from "../lib/axios";
 import { CustomInput } from "./CustomForm";
 import { ToastContext } from "./ToastContext";
+import { validateData } from "./validateData";
 
 const ForgotPass = () => {
     const [email, setEmail] = useState("");
     const { handleSnackOpen } = useContext(ToastContext);
 
     const handleSubmit = async () => {
+        const valid = validateData(email);
+        if (!valid.success) {
+            handleSnackOpen({
+                message: valid.message,
+                variant: "warning",
+            });
+            return;
+        }
+
         const { success, message } = await forgotPassRequest({ email })
         if (success) {
             handleSnackOpen({

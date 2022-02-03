@@ -14,7 +14,7 @@ function LandingPortfolio() {
         Show us your work by uploading a link to your portfolio in your profile
         section.
       </p>
-      <Link href="/user/dashboard" passHref>
+      <Link href="/user/dashboard" passHref shallow={true}>
         <button className="transition ease-linear py-3 px-5 rounded text-gray-dark bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
           PROFILE
         </button>

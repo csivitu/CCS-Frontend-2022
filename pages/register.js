@@ -9,6 +9,7 @@ import { ToastContext } from "../components/ToastContext";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
 import { signupRequest } from "../lib/axios";
+import registerFormSchema from "../lib/validation/register";
 
 
 const Register = () => {
@@ -74,7 +75,9 @@ const Register = () => {
       regNo,
       gender,
     };
-
+    // const { error } = eventFormSchema.validate(eventDetails);
+    const { error } = registerFormSchema.validate(data)
+    console.log(error)
     const valid = validateData(data);
 
     if (!valid.success) {
@@ -105,7 +108,7 @@ const Register = () => {
   return (
     <>
       <Head>
-        <title>CSI-CCS | Register</title>
+        <title>CSI - CCS | Register</title>
       </Head>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
         <div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10">

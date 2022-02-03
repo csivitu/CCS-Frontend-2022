@@ -7,9 +7,12 @@ import LandingPortfolio from "../components/LandingPortfolio";
 import Footer from "../components/Footer";
 import nookies from 'nookies'
 import { getUserState } from "../lib/axios.js";
+import { useEffect } from "react";
 
 
-export function Home({ loggedIn, username, domainsAttempted={} }) {
+export function Home({ loggedIn, username, domainsAttempted = {} }) {
+
+
   return (
     <>
       <Head>
@@ -28,6 +31,7 @@ export function Home({ loggedIn, username, domainsAttempted={} }) {
 
 export default Home;
 
+
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context)
   if (!cookies.refreshToken) {
@@ -44,8 +48,8 @@ export async function getServerSideProps(context) {
       }
     }
   }
+  console.log(res)
   const { result: { userId: { username }, domainsAttempted } } = res
-
   return {
     props: { loggedIn: true, username, domainsAttempted },
   }
