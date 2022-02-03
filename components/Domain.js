@@ -10,6 +10,7 @@ function Domain({ details, endTime }) {
   const style = {
     position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", maxWidth: 600,
     width: "90%",
+    height: 300,
     backgroundColor: `var(--${details.name})`,
     color: "white",
     borderRadius: 20,
@@ -48,13 +49,17 @@ function Domain({ details, endTime }) {
         className="flex items-center justify-center"
       >
         <div style={style}>
-          <Image
-            src={details.smImage}
-            height={400}
-            width={320}
-            alt={details.name}
-            priority={true}
-          />
+          <div style={{
+            width: "300px"
+          }}>
+            <Image
+              src={details.smImage}
+              height={400}
+              width={320}
+              alt={details.name}
+              priority={true}
+            />
+          </div>
           <div
             style={{
               display: "flex",
@@ -122,6 +127,7 @@ function Domain({ details, endTime }) {
                       fontSize: "0.8rem",
                       backgroundColor: "white",
                       borderRadius: 5,
+                      whiteSpace: "nowrap"
                     }}
                   >
                     TAKE TEST
