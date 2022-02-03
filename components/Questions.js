@@ -26,7 +26,7 @@ function Questions({ domain, questions }) {
       {questions.map((q, i) => {
         return (
           i === position && (
-            <>
+            <div key={i}>
               <div className="flex flex-col md:flex-row gap-2 pt-10">
                 <div className="font-bold grow">
                   {" "}
@@ -59,7 +59,7 @@ function Questions({ domain, questions }) {
                 YOUR ANSWER
               </div>
               <p>{q.answer}</p>
-            </>
+            </div>
           )
         );
       })}
