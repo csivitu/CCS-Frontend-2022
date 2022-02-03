@@ -105,8 +105,7 @@ const Register = () => {
   return (
     <>
       <Head>
-        <title>CCS | Register</title>
-        <meta name="keywords" content="ccs" />
+        <title>CSI-CCS | Register</title>
       </Head>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
         <div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10">

@@ -1,8 +1,20 @@
 import M_Piece from "../public/assets/piece_m.svg";
 import L_Piece from "../public/assets/domains_prop_l.svg";
 import Domain from "./Domain";
+import { isEmpty } from "lodash";
 
 function Domains({ domainsAttempted = {} }) {
+  const findEndTime = (domain) => {
+    if (isEmpty(domainsAttempted))
+      return null
+    const something = domainsAttempted.find((e) => e.domain === domain)
+    if (!something)
+      return null
+    const { endTime } = something
+    if (new Date(endTime) < new Date())
+      return { "completed": true }
+    return { "completed": false }
+  }
   return (
     <section
       id="domains"
@@ -20,7 +32,7 @@ function Domains({ domainsAttempted = {} }) {
       </p>
       <div className="flex flex-row flex-wrap justify-center pl-20">
         {domainsDetails().map((d, i) => (
-          <Domain key={i} details={d} />
+          <Domain key={i} details={d} endTime={findEndTime(d.name)} />
         ))}
       </div>
     </section>

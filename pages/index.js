@@ -9,11 +9,11 @@ import nookies from 'nookies'
 import { getUserState } from "../lib/axios.js";
 
 
-export function Home({ loggedIn, username, domainsAttempted }) {
+export function Home({ loggedIn, username, domainsAttempted={} }) {
   return (
     <>
       <Head>
-        <title>CSI CCS | Home</title>
+        <title>CSI - Core Committee Selections</title>
       </Head>
       <Hero loggedIn={loggedIn} />
       <Navbar loggedIn={loggedIn} username={username} dashBoard={false} />

@@ -4,10 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-function Domain({ details }) {
+function Domain({ details, endTime }) {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
-
   const style = {
     position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", maxWidth: 600,
     width: "90%",
@@ -80,23 +79,59 @@ function Domain({ details }) {
             >
               {details.description}
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <Link href={`/quiz/${details.name}`}>
-                <a
-                  style={{
-                    padding: "5px 10px",
-                    color: "black",
-                    fontSize: "0.8rem",
-                    backgroundColor: "white",
-                    borderRadius: 5,
-                  }}
-                >
-                  TAKE QUIZ
-                </a>
-              </Link>
-              <ClockIcon />
-              <p>30:00</p>
-            </div>
+            {endTime ? (endTime.completed ? (
+              <>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <a
+                    style={{
+                      padding: "5px 10px",
+                      color: "black",
+                      fontSize: "0.8rem",
+                      backgroundColor: "white",
+                      borderRadius: 5,
+                    }}
+                  >
+                    RESUME
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Link href={`/quiz/${details.name}`}>
+                  <a
+                    style={{
+                      padding: "5px 10px",
+                      color: "black",
+                      fontSize: "0.8rem",
+                      backgroundColor: "white",
+                      borderRadius: 5,
+                    }}
+                  >
+                    RESUME
+                  </a>
+                </Link>
+                <ClockIcon />
+              </div>
+            )) : (
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Link href={`/quiz/${details.name}`}>
+                  <a
+                    style={{
+                      padding: "5px 10px",
+                      color: "black",
+                      fontSize: "0.8rem",
+                      backgroundColor: "white",
+                      borderRadius: 5,
+                    }}
+                  >
+                    TAKE TEST
+                  </a>
+                </Link>
+                  <p>30:00</p>
+                <ClockIcon />
+              </div>
+            )}
+
           </div>
         </div>
       </Modal>

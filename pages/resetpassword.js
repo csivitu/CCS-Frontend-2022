@@ -25,7 +25,7 @@ const Resetpassword = ({ id, token }) => {
     return (
         <>
             <Head>
-                <title>CCS | Reset Password</title>
+                <title>CSI-CCS | Reset Password</title>
                 <meta name="keywords" content="ccs" />
             </Head>
             <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light px-4">

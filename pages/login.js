@@ -97,8 +97,7 @@ const Login = ({ query, msg, verified, resetSuccess, message }) => {
   return (
     <>
       <Head>
-        <title>CCS | Login</title>
-        <meta name="keywords" content="ccs" />
+        <title>CSI-CCS | Login</title>
       </Head>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light px-4">
         <div className="absolute hidden md:block left-2 lg:left-16 bottom-14 md:bottom-10">

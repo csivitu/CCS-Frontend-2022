@@ -10,6 +10,7 @@ import { AddURL, DomainURL } from "../../components/CustomForm";
 import { getUserState } from "../../lib/axios";
 import Navbar from "../../components/Navbar";
 import LinkModal from "../../components/LinkModal";
+import Head from "next/head";
 
 const Dashboard = ({ username, name }) => {
   const [newURL, setNewURL] = useState("");
@@ -18,10 +19,13 @@ const Dashboard = ({ username, name }) => {
   const [tech, setTech] = useState("");
   const [design, setDesign] = useState("");
   const [video, setVideo] = useState("");
-
+  // !TODO!  
 
   return (
     <>
+      <Head>
+        <title>CSI-CCS | Dashboard</title>
+      </Head>
       <Navbar username={username} loggedIn={true} dashBoard={true} />
       <div className="min-h-screen flex flex-col px-5 gap-6 items-center justify-center bg-grid bg-no-repeat bg-cover bg-center">
         <div className="flex flex-col md:flex-row items-center gap-4">
@@ -51,15 +55,6 @@ const Dashboard = ({ username, name }) => {
         <div className="flex flex-col gap-2 w-full max-w-6xl">
           <h1 className="uppercase font-bold text-4xl">PORTFOLIO</h1>
           <p className="text-3xl font-extralight self-start mb-6">Show us your work</p>
-          {/* <div className="">
-          <AddURL
-            select={select}
-            setSelect={setSelect}
-            url={newURL}
-            setURL={setNewURL}
-            submitURL={submitUrl}
-          />
-        </div> */}
           <div className="flex flex-col gap-2">
             <DomainURL domain="management" value={management} setValue={setManagement} />
             <DomainURL domain="design" value={design} setValue={setDesign} />
@@ -67,7 +62,6 @@ const Dashboard = ({ username, name }) => {
             <DomainURL domain="video" value={video} setValue={setVideo} />
           </div>
         </div>
-
       </div >
     </>
   );
