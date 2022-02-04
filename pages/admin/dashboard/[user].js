@@ -76,7 +76,7 @@ const User = ({ result: { user, questions } }) => {
         <p>tech round: {user.techRound}</p>
         <p>management round: {user.techRound}</p>
         <p>design round: {user.techRound}</p>
-        <p>video round: {user.techRound}</p>
+        {user.portfolio.map((port, i) => <p key={i}>{port.category} : <a href={port.link}>{port.link}</a></p>)}
       </div>
       {user.domainsAttempted.map((dom) => {
         let ques;
