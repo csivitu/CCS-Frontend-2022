@@ -33,7 +33,7 @@ function Quiz({ domain, questions, endTime }) {
       const res = await submitQuiz(data, cookies);
       if (res.code === 200)
         handleSnackOpen({
-          message: res.message,
+          message: "Your answers have been successfully autosaved.",
           variant: "success"
         })
     } catch (e) {
