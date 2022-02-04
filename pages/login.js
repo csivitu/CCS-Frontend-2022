@@ -9,7 +9,6 @@ import { ToastContext } from "../components/ToastContext";
 import { validateData } from "../components/validateData";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
-import { isEmpty } from "lodash";
 import ForgotPass from "../components/ForgotPass";
 
 const Login = ({ query }) => {
@@ -45,17 +44,6 @@ const Login = ({ query }) => {
             variant: "error",
           })
         }
-      }
-      if (success === 'false') {
-        handleSnackOpen({
-          message: msg,
-          variant: "error",
-        });
-      } else {
-        handleSnackOpen({
-          message: msg,
-          variant: "success"
-        })
       }
     }
 

@@ -20,7 +20,6 @@ const Dashboard = ({ username, name, query, portfolio }) => {
       return ""
     return oneLink.link
   }
-  populateURL("tech")
   const [newURL, setNewURL] = useState("");
   const [select, setSelect] = useState("");
   const [management, setManagement] = useState(populateURL("management"));

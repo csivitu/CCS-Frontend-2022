@@ -63,7 +63,6 @@ const Register = () => {
 
   async function signupHandler(e) {
     e.preventDefault();
-    
     const data = {
       name,
       username,
