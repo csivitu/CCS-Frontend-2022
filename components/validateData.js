@@ -1,3 +1,5 @@
+import { isValidPhoneNumber } from "libphonenumber-js";
+
 export const constants = {
   vitEmailRegex:
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((vitstudent.ac.in)|(vit.ac.in))$/,
@@ -13,6 +15,7 @@ export const validateData = ({
   passwordConfirmation = false,
   regNo = false,
   gender = false,
+  phone = false,
 }) => {
   let responseMessage = [];
 
@@ -50,6 +53,9 @@ export const validateData = ({
 
   if (gender && gender !== "M" && gender !== "F") {
     responseMessage.push("Invalid Gender.");
+  }
+  if (phone && !isValidPhoneNumber(phone)) {
+    responseMessage.push("Invalid Phone Number: check if you have added country code.")
   }
 
   const responseText = responseMessage.join(" ");
