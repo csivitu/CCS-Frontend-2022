@@ -10,7 +10,7 @@ import { Link as ScrollLink } from 'react-scroll'
 import Countdown from 'react-countdown';
 
 
-const Hero = ({ loggedIn, check }) => {
+const Hero = ({ loggedIn }) => {
 
     const renderer = ({ days, hours, minutes, seconds, completed, api: { isPaused, start, isStopped } }) => {
         if (completed) {
@@ -79,10 +79,3 @@ const Hero = ({ loggedIn, check }) => {
 };
 
 export default Hero;
-
-export const getInitialProps = (ctx) => {
-    console.log(ctx)
-    return {
-        props: { check: true }
-    }
-}

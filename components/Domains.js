@@ -4,7 +4,6 @@ import Domain from "./Domain";
 import { isEmpty } from "lodash";
 
 function Domains({ domainsAttempted = {} }) {
-  console.log(domainsAttempted)
   const findEndTime = (domain) => {
     if (isEmpty(domainsAttempted))
       return null

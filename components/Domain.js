@@ -102,7 +102,7 @@ function Domain({ details, endTime }) {
               </>
             ) : (
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <Link href={`/quiz/${details.name}`} replace={true} shallow={true}>
+                <Link href={`/quiz/${details.name}`} shallow={true}>
                   <a
                     style={{
                       padding: "5px 10px",
@@ -119,7 +119,7 @@ function Domain({ details, endTime }) {
               </div>
             )) : (
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <Link href={`/quiz/${details.name}`} replace={true} shallow={true}>
+                <Link href={`/quiz/${details.name}`} shallow={true}>
                   <a
                     style={{
                       padding: "5px 10px",
@@ -143,7 +143,7 @@ function Domain({ details, endTime }) {
       </Modal>
       {endTime ? endTime.completed ? (
         <div
-          className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer"
+          className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer "
           onClick={() => setOpen(true)}
         >
           <HoverImage />
@@ -151,7 +151,7 @@ function Domain({ details, endTime }) {
         </div>
       ) : (
         <div
-          className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer"
+          className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer animate-wiggle"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onClick={() => setOpen(true)}

@@ -27,7 +27,6 @@ export const validateData = ({
   }
 
   if (email && !constants.vitEmailRegex.test(email)) {
-    console.log("checking")
     responseMessage.push("Invalid VIT Email Address.");
   }
 

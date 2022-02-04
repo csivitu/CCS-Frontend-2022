@@ -81,6 +81,22 @@ const theme = createTheme({
         },
       },
     },
+    MuiInput: {
+      "primary": "white",
+      styleOverrides: {
+        root: {
+          "&.Mui-focused fieldset": {
+            borderColor: "red !important",
+            ":after": {
+              "borderColor": "red !important"
+            },
+            ":before": {
+              "borderColor": "red !important"
+            }
+          }
+        }
+      }
+    },
   },
 });
 

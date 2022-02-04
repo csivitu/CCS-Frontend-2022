@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll'
+import { ToastContext } from './ToastContext';
 
 const Navbar = ({ loggedIn, username, dashBoard }) => {
-
+  const { handleSnackOpen } = useContext(ToastContext);
   const [viewMobileMenu, setViewMobileMenu] = useState(false);
-
+  const handleTasks = () => {
+    handleSnackOpen({
+      message: "Tasks will be available after if you clear round 1",
+      variant: "warning"
+    })
+  }
   return (
     <nav className="sticky top-0 px-3 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -23,11 +29,9 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
           </ScrollLink>}
 
         <div className="hidden md:flex gap-10">
-          <Link href="/user/tasks" passHref>
-            <button className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
-              TASKS
-            </button>
-          </Link>
+          <button className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach" onClick={handleTasks}>
+            TASKS
+          </button>
           {loggedIn ?
             <div className='flex items-center gap-2'>
               <Link href="/user/dashboard" passHref><a className='uppercase text-peach hover:underline font-thin'>{username}</a></Link>
@@ -54,7 +58,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
         {viewMobileMenu ? <div className="w-full md:hidden" id="mobile-menu">
           <ul className="flex flex-col mt-4 list-none items-center">
             <li>
-              <Link href="/user/tasks" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">TASKS</Link>
+              <button className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach" onClick={handleTasks} >TASKS</button>
             </li>
             <li>
               {loggedIn ?

@@ -77,7 +77,6 @@ const Register = () => {
     };
     // const { error } = eventFormSchema.validate(eventDetails);
     const { error } = registerFormSchema.validate(data)
-    console.log(error)
     const valid = validateData(data);
 
     if (!valid.success) {

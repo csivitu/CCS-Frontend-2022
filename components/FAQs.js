@@ -37,19 +37,21 @@ function FAQs() {
       <h1 className="relative text-2xl md:text-4xl mb-5 font-light">
         Read this blog to find your answers
       </h1>
-      <div className="max-w-3xl w-10/12">
+      <div className="max-w-3xl w-10/12 ">
         <a
           href="https://medium.com/csivit/everything-about-csi-recruitments-2022-a405a17fc28b"
           target="_blank"
           rel="noreferrer"
         >
-          <Image
-            src="/assets/medium_article.png"
-            width={1138}
-            height={839}
-            alt="guide"
-            priority={true}
-          />
+          <div className="transition ease-in-out hover:shadow-2xl duration-100">
+            <Image
+              src="/assets/medium_article.png"
+              width={1138}
+              height={839}
+              alt="guide"
+              priority={true}
+            />
+          </div>
         </a>
       </div>
     </section>
