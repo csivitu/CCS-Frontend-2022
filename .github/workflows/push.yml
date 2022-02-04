@@ -2,8 +2,7 @@ name: CI/CD Push
 
 on:
   push:
-    branches: [ master ]
-  workflow_dispatch:
+    branches: [ main ]
   
 jobs:
   Test:
