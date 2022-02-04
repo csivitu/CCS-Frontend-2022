@@ -10,7 +10,7 @@ function FAQs() {
       id="faqs"
       className="flex flex-col gap-4 w-full min-h-screen relative items-center bg-peach text-gray-dark py-32 justify-center"
     >
-      <div className="absolute left-2 md:left-5 -bottom-16">
+      <div className="absolute left-2 md:left-5 -bottom-12 md:-bottom-16 z-10">
         <L_Piece className="w-32 md:w-44 lg:w-44" />
       </div>
       <h1 className="relative text-4xl md:text-6xl mb-3 font-extrabold">
@@ -79,7 +79,7 @@ const faqs = [
     answer: "Nada.",
   },
   {
-    question: "Can you be a part of multiple domains?",
+    question: "Can I be a part of multiple domains?",
     answer:
       "Absolutely! You can attempt tests for multiple domains as well as be a part of multiple domains after recruitments.",
   },
