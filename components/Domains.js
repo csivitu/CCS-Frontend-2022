@@ -4,7 +4,6 @@ import Domain from "./Domain";
 import { isEmpty } from "lodash";
 
 function Domains({ domainsAttempted = {} }) {
-  console.log(domainsAttempted)
   const findEndTime = (domain) => {
     if (isEmpty(domainsAttempted))
       return null
@@ -25,7 +24,7 @@ function Domains({ domainsAttempted = {} }) {
       id="domains"
       className="relative min-h-screen flex flex-col items-center justify-center bg-peach text-gray-dark py-16 md:py-20 px-5 text-center"
     >
-      <div className="absolute left-2 md:left-5 -bottom-16">
+      <div className="absolute left-2 md:left-5 -bottom-16 z-10">
         <L_Piece className="w-32 md:w-44 lg:w-44" />
       </div>
       <h1 className="relative text-4xl md:text-6xl mb-3 font-extrabold">
@@ -62,7 +61,7 @@ export const domainsDetails = (endTime = null) => [
     imageHover: "/assets/management-hover.png",
     smImage: "/assets/management-sm.png",
     description:
-      "Want to hold the fort down and handle global scale events? Let’s see you handle this first :)",
+      "Want to hold the fort down and manage global scale events? Let's see you handle this first :)",
     endTime
   },
   {
@@ -72,7 +71,7 @@ export const domainsDetails = (endTime = null) => [
     imageHover: "/assets/tech-hover.png",
     smImage: "/assets/tech-sm.png",
     description:
-      "Want the tech you make to have an impact and prove useful? Well, what are you waiting for?",
+      "Do you think you can turn your bugs into features? We'd love to see!",
     endTime
   },
   {

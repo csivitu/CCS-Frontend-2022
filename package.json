@@ -16,6 +16,7 @@
     "cookie": "^0.4.1",
     "joi": "^17.6.0",
     "joi-phone-number": "^5.1.0",
+    "libphonenumber-js": "^1.9.47",
     "lodash": "^4.17.21",
     "next": "12.0.7",
     "nookies": "^2.5.2",

@@ -8,7 +8,6 @@ import { parseCookies } from "nookies";
 
 function Quiz({ domain, questions, endTime }) {
   const { handleSnackOpen } = useContext(ToastContext);
-  console.log("re renders")
   const router = useRouter();
 
   const [answers, setAnswers] = useState(
@@ -34,7 +33,7 @@ function Quiz({ domain, questions, endTime }) {
       const res = await submitQuiz(data, cookies);
       if (res.code === 200)
         handleSnackOpen({
-          message: res.message,
+          message: "Your answers have been successfully autosaved.",
           variant: "success"
         })
     } catch (e) {
@@ -63,11 +62,10 @@ function Quiz({ domain, questions, endTime }) {
 
   const renderer = ({ minutes, seconds, completed, api: { stop } }) => {
     if (minutes % 2 === 0 && seconds === 30) {
-      console.log("auto saved")
+      console.log("Hey! Successfully Auto Saved")
       autoSave();
     }
     if (completed) {
-      console.log(minutes, seconds, "Second if")
       finalSubmit()
       return <h1>Completed</h1>;
     } else {
@@ -153,7 +151,7 @@ function Quiz({ domain, questions, endTime }) {
                 autoFocus={true}
                 value={answers[i].answer}
                 onChange={(e) => updateAnswer(q.quesId, e.target.value)}
-                className={`h-96 bg-opacity-20 rounded-md p-10 outline-none`}
+                className={`h-96 bg-opacity-20 rounded-md p-10 outline-none resize-none`}
                 style={{ backgroundColor: `var(--${domain}-bg)` }}
               />
             </>
@@ -164,17 +162,18 @@ function Quiz({ domain, questions, endTime }) {
         <div className="flex flex-row rounded-md gap-4">
           <button
             onClick={decreasePosition}
-            className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
+            className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md  duration-200 hover:bg-transparent border-2 transition ease-in-out hover:text-peach"
           >
             PREVIOUS
           </button>
           <button
             onClick={increasePosition}
-            className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
+            className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md duration-200 hover:bg-transparent border-2 transition ease-in-out hover:text-peach"
           >
             NEXT
           </button>
         </div>
+        {/* !TODO! Make Submit Dynamic */}
         <button
           className={`p-2 px-8 rounded-md`}
           style={{ backgroundColor: `var(--${domain})` }}

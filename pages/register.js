@@ -63,7 +63,6 @@ const Register = () => {
 
   async function signupHandler(e) {
     e.preventDefault();
-
     const data = {
       name,
       username,
@@ -75,9 +74,6 @@ const Register = () => {
       regNo,
       gender,
     };
-    // const { error } = eventFormSchema.validate(eventDetails);
-    const { error } = registerFormSchema.validate(data)
-    console.log(error)
     const valid = validateData(data);
 
     if (!valid.success) {

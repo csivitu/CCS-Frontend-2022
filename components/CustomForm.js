@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import Joi from "joi";
 import { useState } from "react";
+import { submitURL } from "../lib/axios";
+import { parseCookies } from "nookies";
+import Link from "next/link";
 
 export const CustomInput = ({ value, setValue, label, type, disabled = false, }) => {
   return (
@@ -126,7 +129,7 @@ export const AddURL = ({ select, setSelect, url, setURL, submitURL }) => {
   );
 };
 
-export const DomainURL = ({ domain, value, setValue }) => {
+export const DomainURL = ({ domain, value, setValue, handleSnackOpen }) => {
   const [editing, setEditing] = useState(false);
 
   function startEdit() {
@@ -134,17 +137,29 @@ export const DomainURL = ({ domain, value, setValue }) => {
   }
 
   async function handleSubmit(e) {
+    const { error } = Joi.string().uri().validate(value);
+    if (error) {
+      handleSnackOpen({
+        message: "Invalid URL",
+        variant: 'error'
+      })
+      return
+    }
     setEditing(false);
-    const { error } = Joi.string().uri().validate(value)
-    if (error)
-      return error
-    
+    const cookies = parseCookies()
+    const res = await submitURL({ domain, cookies, value })
+    if (res.code === 200) {
+      handleSnackOpen({
+        message: res.message,
+        variant: 'success'
+      })
+    }
   }
 
   return (
-    <div className="flex flex-row gap-2 w-full items-end">
+    <div className="flex flex-row gap-2 w-full items-center">
       <h1
-        className="uppercase text-sm sm:text-lg md:text-xl font-bold w-1/3 sm:w-1/4 md:w-1/5"
+        className="uppercase text-sm sm:text-lg md:text-xl font-bold w-1/3 sm:w-1/4 md:w-1/5 text-right"
         style={{ color: `var(--${domain})` }}
       >
         {domain}
@@ -152,7 +167,7 @@ export const DomainURL = ({ domain, value, setValue }) => {
 
       {editing ? (
         <>
-          <FormControl className="grow">
+          <FormControl className="grow" fullWidth>
             <Input
               value={value}
               onChange={(e) => setValue(e.target.value)}
@@ -170,7 +185,12 @@ export const DomainURL = ({ domain, value, setValue }) => {
         </>
       ) : (
         <>
-          <h1 className="w-full">{value ? value : <i className="font-light">No URL Provided</i>}</h1>
+          {value ?
+            <h1 className="w-full truncate text-center"><a href={value} target="_blank" className="text-peach underline font-semibold" rel="noreferrer" >{value}</a></h1>
+            :
+            <h1 className="w-full font-semibold text-center">Add a Link to your work</h1>
+          }
+
           <button className="transition ease-linear py-2 px-4 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
             onClick={startEdit}
           >
