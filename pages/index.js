@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import nookies from 'nookies'
 import { getUserState } from "../lib/axios.js";
 import { useEffect } from "react";
+import FloatingDiscord from "../components/FloatingDiscord.js";
 
 
 export function Home({ loggedIn, username, domainsAttempted = {} }) {
@@ -24,7 +25,7 @@ export function Home({ loggedIn, username, domainsAttempted = {} }) {
       <LandingPortfolio />
       <FAQs />
       <Footer />
-
+      <FloatingDiscord />
     </>
   );
 }

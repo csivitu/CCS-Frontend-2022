@@ -58,13 +58,13 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
         {viewMobileMenu ? <div className="w-full md:hidden" id="mobile-menu">
           <ul className="flex flex-col mt-4 list-none items-center">
             <li>
-              <button className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach" onClick={handleTasks} >TASKS</button>
+              <button className="block py-2 px-4 text-peach hover:text-white  border-peach" onClick={handleTasks} >TASKS</button>
             </li>
             <li>
               {loggedIn ?
-                <Link href="/user/dashboard" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">DASHBOARD</Link>
+                <Link href="/user/dashboard" ><a className="block py-2 px-4 text-peach hover:text-white  border-peach">PROFILE</a></Link>
                 :
-                <Link href="/register" className="block py-2 pr-4 pl-3 text-peach border-b hover:text-white  border-peach">REGISTER NOW</Link>}
+                <Link href="/register"><a className="block py-2 px-4 text-peach hover:text-white  border-peach">REGISTER NOW</a></Link>}
             </li>
           </ul>
         </div> : null}

@@ -10,9 +10,9 @@ function FAQs() {
       id="faqs"
       className="flex flex-col gap-4 w-full min-h-screen relative items-center bg-peach text-gray-dark py-32 justify-center"
     >
-      <div className="absolute left-2 md:left-5 -bottom-12 md:-bottom-16 z-10">
+      {/* <div className="absolute left-2 md:left-5 -bottom-12 md:-bottom-16 z-10">
         <L_Piece className="w-16 md:w-24" style={{transform: "scale(-2,2)"}} />
-      </div>
+      </div> */}
       <h1 className="relative text-4xl md:text-6xl mb-3 font-extrabold">
         FAQs
         <M_Piece className="absolute w-8 -top-2 -left-4 md:w-10 md:-top-2 md:-left-4" />
@@ -34,7 +34,7 @@ function FAQs() {
       <h1 className="relative text-4xl md:text-6xl mb-3 mt-10 font-extrabold">
         Still have doubts?
       </h1>
-      <h1 className="relative text-2xl md:text-4xl mb-5 font-light">
+      <h1 className="relative text-2xl md:text-4xl mb-5 font-light text-center w-11/12">
         Read this blog to find your answers
       </h1>
       <div className="max-w-3xl w-10/12 ">
@@ -43,7 +43,7 @@ function FAQs() {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="transition ease-in-out hover:shadow-2xl duration-100">
+          <div className="transition duration-200 ease-in-out hover:shadow-2xl leading-3">
             <Image
               src="/assets/medium_article.png"
               width={1138}
