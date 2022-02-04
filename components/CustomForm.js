@@ -20,11 +20,10 @@ export const CustomInput = ({ value, setValue, label, type, disabled = false, })
     <FormControl className="w-full">
       <InputLabel className="">{label}</InputLabel>
       <OutlinedInput
-        type={type}
+        type={type === 'email' ? "text" : type}
         label={label}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        required
         disabled={disabled}
       />
     </FormControl>
@@ -44,7 +43,6 @@ export const CustomSelect = ({ value, setValue, label, options, disabled = false
         onChange={handleChange}
         disabled={disabled}
         label={label}
-        required
       >
         <MenuItem value="">None</MenuItem>
         {options.map((option) => (

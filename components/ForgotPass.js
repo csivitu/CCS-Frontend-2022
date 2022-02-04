@@ -1,22 +1,21 @@
 import { Button } from "@mui/material";
 import { useState, useContext } from "react";
 import { forgotPassRequest } from "../lib/axios";
+import { constants } from "../lib/validation/registerFormSchema";
 import { CustomInput } from "./CustomForm";
 import { ToastContext } from "./ToastContext";
-import { validateData } from "./validateData";
 
 const ForgotPass = () => {
     const [email, setEmail] = useState("");
     const { handleSnackOpen } = useContext(ToastContext);
 
     const handleSubmit = async () => {
-        const valid = validateData(email);
-        if (!valid.success) {
+        if (!constants.vitEmailRegex.test(email)) {
             handleSnackOpen({
-                message: valid.message,
+                message: "Invalid Email",
                 variant: "warning",
             });
-            return;
+            return
         }
 
         const { success, message } = await forgotPassRequest({ email })

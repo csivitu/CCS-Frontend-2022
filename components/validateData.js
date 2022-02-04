@@ -51,7 +51,7 @@ export const validateData = ({
     responseMessage.push("Invalid Registration Number.");
   }
 
-  if (gender && gender !== "M" && gender !== "F") {
+  if (gender==="") {
     responseMessage.push("Invalid Gender.");
   }
   if (phone && !isValidPhoneNumber(phone)) {

@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 import Head from "next/head";
 import { CustomInput, CustomSelect } from "../components/CustomForm";
-import { validateData } from "../components/validateData";
 import { ToastContext } from "../components/ToastContext";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
@@ -34,6 +33,9 @@ const Register = () => {
   const optionsForGender = [
     { name: "Male", value: "M" },
     { name: "Female", value: "F" },
+    { name: "Non Binary", value: "NB" },
+    { name: "Other", value: "O" },
+    { name: "Prefer not to disclose", value: "P" },
   ];
 
   function handleResponse(res) {
@@ -74,11 +76,11 @@ const Register = () => {
       regNo,
       gender,
     };
-    const valid = validateData(data);
 
-    if (!valid.success) {
+    const { error } = registerFormSchema.validate(data);
+    if (error) {
       handleSnackOpen({
-        message: valid.message,
+        message: error.message,
         variant: "warning",
       });
       return;
