@@ -12,7 +12,7 @@ function Domain({ details, endTime }) {
     width: "90%",
     height: 300,
     backgroundColor: `var(--${details.name})`,
-    color: "white",
+    color: "#ECE0D8",
     borderRadius: 20,
     padding: 30,
     display: "flex",
@@ -92,7 +92,7 @@ function Domain({ details, endTime }) {
                       padding: "5px 10px",
                       color: "gray",
                       fontSize: "0.8rem",
-                      backgroundColor: "white",
+                      backgroundColor: "#ECE0D8",
                       borderRadius: 5,
                     }}
                   >
@@ -108,7 +108,7 @@ function Domain({ details, endTime }) {
                       padding: "5px 10px",
                       color: "black",
                       fontSize: "0.8rem",
-                      backgroundColor: "white",
+                      backgroundColor: "#ECE0D8",
                       borderRadius: 5,
                     }}
                   >
@@ -125,7 +125,7 @@ function Domain({ details, endTime }) {
                       padding: "5px 10px",
                       color: "black",
                       fontSize: "0.8rem",
-                      backgroundColor: "white",
+                      backgroundColor: "#ECE0D8",
                       borderRadius: 5,
                       whiteSpace: "nowrap"
                     }}

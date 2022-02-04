@@ -9,7 +9,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
   const [viewMobileMenu, setViewMobileMenu] = useState(false);
   const handleTasks = () => {
     handleSnackOpen({
-      message: "Tasks will be made available to you later, if you clear Round 1.",
+      message: "Tasks will be made available to you upon clearning round 1.",
       variant: "warning"
     })
   }

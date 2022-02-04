@@ -37,7 +37,7 @@ function Quiz({ domain, questions, endTime }) {
           variant: "success"
         })
     } catch (e) {
-      console.log(e)
+      console.log(e.response)
     }
   }
 

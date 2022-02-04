@@ -1,6 +1,6 @@
 import DownArrow from "../public/assets/down_arrow.svg";
 import M_Piece from "../public/assets/piece_m.svg";
-import L_Piece from "../public/assets/domain_l.svg";
+import L_Piece from "../public/assets/piece_l.svg";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import Image from "next/image";
 
@@ -11,7 +11,7 @@ function FAQs() {
       className="flex flex-col gap-4 w-full min-h-screen relative items-center bg-peach text-gray-dark py-32 justify-center"
     >
       <div className="absolute left-2 md:left-5 -bottom-12 md:-bottom-16 z-10">
-        <L_Piece className="w-32 md:w-44 lg:w-44" />
+        <L_Piece className="w-16 md:w-24" style={{transform: "scale(-2,2)"}} />
       </div>
       <h1 className="relative text-4xl md:text-6xl mb-3 font-extrabold">
         FAQs
