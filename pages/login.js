@@ -105,13 +105,13 @@ const Login = ({ query }) => {
           <R_Piece className="w-32 md:w-44 lg:w-52" />
         </div>
         {fPassState ? <ForgotPass /> : <form
-          className="w-full max-w-lg flex flex-col gap-4 mb-2"
+          className="w-full max-w-lg flex flex-col gap-6 mb-2"
           onSubmit={loginHandler}
         >
 
-          <h1 className="text-3xl py-1 font-bold">Login Here</h1>
+          <h1 className="text-4xl py-1 font-bold">Login Here</h1>
           <CustomInput
-            label="Username/Email"
+            label="Email or Username"
             type="text"
             value={usernameOrEmail}
             setValue={setusernameOrEmail}
@@ -124,15 +124,11 @@ const Login = ({ query }) => {
             setValue={setPassword}
           />
           <a onClick={() => { setFPassState(true) }} className="cursor-pointer">Forgot password?</a>
-          <Button
-            variant="contained"
-            type="submit"
-            classes={{
-              contained: "w-full bg-tech bg-opacity-90 hover:bg-opacity-100",
-            }}
+          <button
+            className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-2 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
           >
             Login
-          </Button>
+          </button>
         </form>
         }
 
