@@ -13,13 +13,13 @@ class MyDocument extends Document {
                     <meta property="og:url" content="https://ccs.csivit.com/" />
                     <meta property="og:title" content="CSI - Core Committee Selections" />
                     <meta property="og:description" content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts." />
-                    <meta property="og:image" itemProp='image' content="/ccs_banner.png" />
+                    <meta property="og:image" itemProp='image' content="https://ccs.csivit.com/ccs_banner.png" />
                     
                     <meta property="twitter:card" content="summary_large_image" />
                     <meta property="twitter:url" content="https://ccs.csivit.com/" />
                     <meta property="twitter:title" content="CSI - Core Committee Selections" />
                     <meta property="twitter:description" content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts." />
-                    <meta property="twitter:image" content="/ccs_banner.png" />
+                    <meta property="twitter:image" content="https://ccs.csivit.com/ccs_banner.png" />
 
                     <meta name="keywords" content="ccs" />
                     <link rel="preload" href="/fonts/GeneralSans/GeneralSans-Regular.woff2" as="font" type="font/woff2" crossOrigin="true" />
@@ -32,7 +32,7 @@ class MyDocument extends Document {
                     <link rel="manifest" href="/site.webmanifest" />
                     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
                     <meta name="msapplication-TileColor" content="#da532c" />
-                    <meta name="theme-color" content="#131313 "></meta>
+                    <meta name="theme-color" content="#131313 " />
                 </Head>
                 <body>
                     <Main />
