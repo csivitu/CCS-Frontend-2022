@@ -1,7 +1,5 @@
+import dynamic from 'next/dynamic'
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Domains from '../components/Domains';
 import FAQs from '../components/FAQs';
 import LandingPortfolio from '../components/LandingPortfolio';
 import Footer from '../components/Footer';
@@ -10,6 +8,10 @@ import { getUserState } from '../lib/axios.js';
 import { useContext, useEffect } from 'react';
 import FloatingDiscord from '../components/FloatingDiscord.js';
 import { ToastContext } from '../components/ToastContext.js';
+
+const DynamicHero = dynamic(() => import('../components/Hero'))
+const DynamicNavbar = dynamic(() => import('../components/Navbar'))
+const DynamicDomains = dynamic(() => import('../components/Domains'))
 
 export function Home({ loggedIn, username, domainsAttempted = {}, rateLimited }) {
   const { handleSnackOpen } = useContext(ToastContext);
@@ -28,9 +30,9 @@ export function Home({ loggedIn, username, domainsAttempted = {}, rateLimited })
       <Head>
         <title>CSI - Core Committee Selections</title>
       </Head>
-      <Hero loggedIn={loggedIn} />
-      <Navbar loggedIn={loggedIn} username={username} dashBoard={false} />
-      <Domains domainsAttempted={domainsAttempted} />
+      <DynamicHero loggedIn={loggedIn} />
+      <DynamicNavbar loggedIn={loggedIn} username={username} dashBoard={false} />
+      <DynamicDomains domainsAttempted={domainsAttempted} />
       <LandingPortfolio />
       <FAQs />
       <Footer />
