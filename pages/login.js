@@ -6,10 +6,10 @@ import { CustomInput, LoginToggle } from "../components/CustomForm";
 import { Button } from "@mui/material";
 import { loginRequest } from "../lib/axios";
 import { ToastContext } from "../components/ToastContext";
-import { validateData } from "../components/validateData";
 import L_Piece from "../public/assets/auth_l.svg";
 import R_Piece from "../public/assets/auth_r.svg";
 import ForgotPass from "../components/ForgotPass";
+import LoginFormSchema from "../lib/validation/loginFormSchema";
 
 const Login = ({ query }) => {
   const { handleSnackOpen } = useContext(ToastContext);
@@ -51,31 +51,26 @@ const Login = ({ query }) => {
 
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [usernameOrEmail, setusernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginOption, setLoginOption] = useState("Username");
   const [fPassState, setFPassState] = useState(false);
 
   async function loginHandler(e) {
     e.preventDefault();
 
-    const data =
-      loginOption === "Username"
-        ? { username: username, password: password }
-        : { email: email, password: password };
+    const data = { usernameOrEmail, password }
 
-    const valid = validateData(data);
+    const { error } = LoginFormSchema.validate(data);
 
-    if (!valid.success) {
+    if (error) {
       handleSnackOpen({
-        message: valid.message,
+        message: error.message,
         variant: "warning",
       });
       return;
     }
 
-    const res = await loginRequest({ data: data });
+    const res = await loginRequest({ data });
 
     if (res.success) {
       handleSnackOpen({
@@ -91,15 +86,10 @@ const Login = ({ query }) => {
         });
         return;
       }
-      loginOption === "Username"
-        ? handleSnackOpen({
-          message: "Invalid username or password.",
-          variant: "error",
-        })
-        : handleSnackOpen({
-          message: "Invalid email or password.",
-          variant: "error",
-        });
+      handleSnackOpen({
+        message: "Invalid Login Credentials",
+        variant: "error",
+      })
     }
   }
   return (
@@ -115,31 +105,18 @@ const Login = ({ query }) => {
           <R_Piece className="w-32 md:w-44 lg:w-52" />
         </div>
         {fPassState ? <ForgotPass /> : <form
-          className="w-full max-w-lg flex flex-col gap-4 mb-2"
+          className="w-full max-w-lg flex flex-col gap-6 mb-2"
           onSubmit={loginHandler}
         >
-          <LoginToggle
-            value={loginOption}
-            setValue={setLoginOption}
-            options={["Username", "Email"]}
+
+          <h1 className="text-4xl py-1 font-bold">Login Here</h1>
+          <CustomInput
+            label="Email or Username"
+            type="text"
+            value={usernameOrEmail}
+            setValue={setusernameOrEmail}
           />
-          <h1 className="text-3xl py-1 font-bold">Login Here</h1>
-          {loginOption === "Username" && (
-            <CustomInput
-              label="Username"
-              type="text"
-              value={username}
-              setValue={setUsername}
-            />
-          )}
-          {loginOption === "Email" && (
-            <CustomInput
-              label="Email"
-              type="email"
-              value={email}
-              setValue={setEmail}
-            />
-          )}
+
           <CustomInput
             label="Password"
             type="password"
@@ -147,15 +124,11 @@ const Login = ({ query }) => {
             setValue={setPassword}
           />
           <a onClick={() => { setFPassState(true) }} className="cursor-pointer">Forgot password?</a>
-          <Button
-            variant="contained"
-            type="submit"
-            classes={{
-              contained: "w-full bg-tech bg-opacity-90 hover:bg-opacity-100",
-            }}
+          <button
+            className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-2 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
           >
             Login
-          </Button>
+          </button>
         </form>
         }
 

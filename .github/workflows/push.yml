@@ -40,3 +40,4 @@ jobs:
           git pull
           cd ..
           docker-compose up --build -d
+          docker system prune -a -f

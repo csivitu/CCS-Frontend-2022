@@ -175,7 +175,7 @@ function Quiz({ domain, questions, endTime }) {
         </div>
         {/* !TODO! Make Submit Dynamic */}
         <button
-          className={`p-2 px-8 rounded-md`}
+          className={position===9?`p-2 px-8 rounded-md`:`p-2 px-8 rounded-md hidden`}
           style={{ backgroundColor: `var(--${domain})` }}
           onClick={finalSubmit}
         >
