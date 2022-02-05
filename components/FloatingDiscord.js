@@ -3,7 +3,7 @@ import Discord from "../public/assets/Discord.svg";
 
 function FloatingDiscord() {
   return (
-    <div className="fixed bottom-5 right-5">
+    <div className="fixed bottom-5 right-5 z-50">
       <Tooltip
         title="Reach out to us on our discord server, if you have any doubts."
         placement="left"
