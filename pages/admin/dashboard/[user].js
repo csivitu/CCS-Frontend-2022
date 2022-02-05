@@ -75,7 +75,7 @@ const User = ({ result: { user, questions } }) => {
         <p>tech round: {user.techRound}</p>
         <p>management round: {user.techRound}</p>
         <p>design round: {user.techRound}</p>
-        {user.checkedBy!=="" ? <p>Corrected by: {user.checkedBy}</p> : null}
+        {user.checkedBy!=="" ? <p>Corrected by: {user.checkedBy.toString()}</p> : null}
         {user.portfolio.map((port, i) => <p key={i}>{port.category} : <a href={port.link} target="_blank" rel="noreferrer" className="truncate" >{port.link}</a></p>)}
       </div>
       {user.domainsAttempted.map((dom) => {
