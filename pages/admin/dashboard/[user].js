@@ -75,11 +75,26 @@ const User = ({ result: { user, questions } }) => {
         <p>tech round: {user.techRound}</p>
         <p>management round: {user.techRound}</p>
         <p>design round: {user.techRound}</p>
-        {user.checkedBy!=="" ? <p>Corrected by: {user.checkedBy.toString()}</p> : null}
-        {user.portfolio.map((port, i) => <p key={i}>{port.category} : <a href={port.link} target="_blank" rel="noreferrer" className="truncate" >{port.link}</a></p>)}
+        {user.checkedBy !== "" ? (
+          <p>Corrected by: {user.checkedBy.toString()}</p>
+        ) : null}
+        {user.portfolio.map((port, i) => (
+          <p key={i}>
+            {port.category} :{" "}
+            <a
+              href={port.link}
+              target="_blank"
+              rel="noreferrer"
+              className="truncate"
+            >
+              {port.link}
+            </a>
+          </p>
+        ))}
       </div>
       {user.domainsAttempted.map((dom) => {
         let ques;
+        let isChecking;
         switch (dom.domain) {
           case "tech":
             ques = user.techAttempted.map((que) => ({
@@ -87,6 +102,7 @@ const User = ({ result: { user, questions } }) => {
                 questions[questions.map((q) => q._id).indexOf(que.quesId)],
               answer: que.answer,
             }));
+            isChecking = user.isChecking.tech || user.checked.tech;
             break;
           case "management":
             ques = user.managementAttempted.map((que) => ({
@@ -94,6 +110,7 @@ const User = ({ result: { user, questions } }) => {
                 questions[questions.map((q) => q._id).indexOf(que.quesId)],
               answer: que.answer,
             }));
+            isChecking = user.isChecking.management || user.checked.management;
             break;
           case "design":
             ques = user.designAttempted.map((que) => ({
@@ -101,6 +118,7 @@ const User = ({ result: { user, questions } }) => {
                 questions[questions.map((q) => q._id).indexOf(que.quesId)],
               answer: que.answer,
             }));
+            isChecking = user.isChecking.design || user.checked.design;
             break;
           case "video":
             ques = user.videoAttempted.map((que) => ({
@@ -108,12 +126,19 @@ const User = ({ result: { user, questions } }) => {
                 questions[questions.map((q) => q._id).indexOf(que.quesId)],
               answer: que.answer,
             }));
+            isChecking = user.isChecking.video || user.checked.video;
             break;
           default:
             break;
         }
         return (
-          <Questions username={user.username} domain={dom.domain} questions={ques} key={dom.domain} />
+          <Questions
+            isChecking={isChecking}
+            username={user.username}
+            domain={dom.domain}
+            questions={ques}
+            key={dom.domain}
+          />
         );
       })}
       <p className="text-4xl my-4">TECH</p>

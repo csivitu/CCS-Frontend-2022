@@ -2,7 +2,7 @@ import { parseCookies } from "nookies";
 import { useState } from "react";
 import { adminCorrect } from "../lib/axios";
 
-function Questions({ domain, questions, username }) {
+function Questions({ domain, questions, username, isChecking }) {
   questions = questions.map((ques) => ({
     quesId: ques.quesId.quesId,
     question: ques.quesId.question,
@@ -44,7 +44,7 @@ function Questions({ domain, questions, username }) {
     }
 
     const res = await adminCorrect(data, cookies);
-    console.log(res)
+    console.log(res);
   }
 
   function increasePosition() {
@@ -116,12 +116,14 @@ function Questions({ domain, questions, username }) {
           >
             NEXT
           </button>
-          <button
-            onClick={handleCorrectClick}
-            className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
-          >
-            CORRECT
-          </button>
+          {!isChecking ? (
+            <button
+              onClick={handleCorrectClick}
+              className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
+            >
+              CORRECT
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
