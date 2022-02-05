@@ -14,12 +14,15 @@
     "axios": "^0.25.0",
     "axios-auth-refresh": "^3.2.1",
     "cookie": "^0.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "joi": "^17.6.0",
     "joi-phone-number": "^5.1.0",
     "libphonenumber-js": "^1.9.47",
     "lodash": "^4.17.21",
     "next": "12.0.7",
     "nookies": "^2.5.2",
+    "prettier": "^2.5.1",
     "react": "17.0.2",
     "react-countdown": "^2.3.2",
     "react-dom": "17.0.2",
@@ -32,6 +35,7 @@
     "autoprefixer": "^10.4.2",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7",
+    "eslint-config-prettier": "^8.3.0",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.13"
   }

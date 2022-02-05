@@ -1,0 +1,24 @@
+.l_piece {
+    position: absolute;
+    width: 306.41px;
+    height: 411.96px;
+    left: 102px;
+    top: 442px;
+}
+.r_piece {
+    /* position: absolute;
+  left: 1263px;
+  /* right: 12%; */
+    /* top: 22%; */
+    /* top: 213.49px; */
+    position: absolute;
+    width: 359.13px;
+    height: 360.06px;
+    left: 1263px;
+    top: 213.49px;
+}
+
+.text {
+    left: 487px;
+    top: 226px;
+}
