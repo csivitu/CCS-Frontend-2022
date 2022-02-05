@@ -97,7 +97,7 @@ function Questions({ domain, questions, username, isChecking }) {
               <div className="flex flex-row font-bold pt-10 pb-4">
                 YOUR ANSWER
               </div>
-              <p>{q.answer}</p>
+              <p className="whitespace-pre-wrap">{q.answer}</p>
             </div>
           )
         );
