@@ -22,7 +22,8 @@ const Dashboard = ({ result }) => {
   useEffect(() => {
     let filtered = result.filter(
       (user) =>
-        user.username.includes(query) || user.userId.regNo.includes(query.toUpperCase())
+        user.username.includes(query) ||
+        user.userId.regNo.includes(query.toUpperCase())
     );
     if (domain) {
       filtered = filtered.filter((user) =>
@@ -75,7 +76,14 @@ const Dashboard = ({ result }) => {
             </a>
           </Link>
           {usr.domainsAttempted.map((domain) => (
-            <p className="self-end mx-3" key={domain.domain}>
+            <p
+              className={`self-end mx-3 ${
+                usr.isChecking[domain] && !usr.checked[domain]
+                  ? "text-orange-400"
+                  : ""
+              } ${usr.checked[domain] ? "text-green-500" : ""}`}
+              key={domain.domain}
+            >
               {domain.domain}
             </p>
           ))}
