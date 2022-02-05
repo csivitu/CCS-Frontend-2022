@@ -75,18 +75,62 @@ const Dashboard = ({ result }) => {
               {usr.username} - {usr.userId.regNo}
             </a>
           </Link>
-          {usr.domainsAttempted.map((domain) => (
-            <p
-              className={`self-end mx-3 ${
-                usr.isChecking[domain] && !usr.checked[domain]
-                  ? "text-orange-400"
-                  : ""
-              } ${usr.checked[domain] ? "text-green-500" : ""}`}
-              key={domain.domain}
-            >
-              {domain.domain}
-            </p>
-          ))}
+          {usr.domainsAttempted.map((domain) => {
+            switch (domain.domain) {
+              case "tech":
+                return (
+                  <p
+                    className={`self-end mx-3 ${
+                      usr.isChecking.tech && !usr.checked.tech
+                        ? "text-orange-400"
+                        : ""
+                    } ${usr.checked.tech ? "text-green-500" : ""}`}
+                    key={domain.domain}
+                  >
+                    {domain.domain}
+                  </p>
+                );
+              case "management":
+                return (
+                  <p
+                    className={`self-end mx-3 ${
+                      usr.isChecking.management && !usr.checked.management
+                        ? "text-orange-400"
+                        : ""
+                    } ${usr.checked.management ? "text-green-500" : ""}`}
+                    key={domain.domain}
+                  >
+                    {domain.domain}
+                  </p>
+                );
+              case "design":
+                return (
+                  <p
+                    className={`self-end mx-3 ${
+                      usr.isChecking.design && !usr.checked.design
+                        ? "text-orange-400"
+                        : ""
+                    } ${usr.checked.design ? "text-green-500" : ""}`}
+                    key={domain.domain}
+                  >
+                    {domain.domain}
+                  </p>
+                );
+              case "video":
+                return (
+                  <p
+                    className={`self-end mx-3 ${
+                      usr.isChecking.video && !usr.checked.video
+                        ? "text-orange-400"
+                        : ""
+                    } ${usr.checked.video ? "text-green-500" : ""}`}
+                    key={domain.domain}
+                  >
+                    {domain.domain}
+                  </p>
+                );
+            }
+          })}
         </div>
       ))}
     </div>

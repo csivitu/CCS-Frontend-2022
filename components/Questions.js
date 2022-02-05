@@ -1,12 +1,51 @@
+import { parseCookies } from "nookies";
 import { useState } from "react";
+import { adminCorrect } from "../lib/axios";
 
-function Questions({ domain, questions }) {
+function Questions({ domain, questions, username }) {
   questions = questions.map((ques) => ({
     quesId: ques.quesId.quesId,
     question: ques.quesId.question,
     answer: ques.answer,
   }));
   const [position, setPosition] = useState(0);
+
+  async function handleCorrectClick(e) {
+    e.preventDefault();
+    const cookies = parseCookies();
+    let data;
+    switch (domain) {
+      case "tech":
+        data = {
+          username,
+          domain,
+        };
+        break;
+      case "management":
+        data = {
+          username,
+          domain,
+        };
+        break;
+      case "design":
+        data = {
+          username,
+          domain,
+        };
+        break;
+      case "video":
+        data = {
+          username,
+          domain,
+        };
+        break;
+      default:
+        break;
+    }
+
+    const res = await adminCorrect(data, cookies);
+    console.log(res)
+  }
 
   function increasePosition() {
     setPosition(position + 1 < 10 ? position + 1 : 9);
@@ -76,6 +115,12 @@ function Questions({ domain, questions }) {
             className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
           >
             NEXT
+          </button>
+          <button
+            onClick={handleCorrectClick}
+            className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
+          >
+            CORRECT
           </button>
         </div>
       </div>

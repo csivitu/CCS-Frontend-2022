@@ -75,6 +75,7 @@ const User = ({ result: { user, questions } }) => {
         <p>tech round: {user.techRound}</p>
         <p>management round: {user.techRound}</p>
         <p>design round: {user.techRound}</p>
+        {user.checkedBy!=="" ? <p>Corrected by: {user.checkedBy}</p> : null}
         {user.portfolio.map((port, i) => <p key={i}>{port.category} : <a href={port.link} target="_blank" rel="noreferrer" className="truncate" >{port.link}</a></p>)}
       </div>
       {user.domainsAttempted.map((dom) => {
@@ -112,7 +113,7 @@ const User = ({ result: { user, questions } }) => {
             break;
         }
         return (
-          <Questions domain={dom.domain} questions={ques} key={dom.domain} />
+          <Questions username={user.username} domain={dom.domain} questions={ques} key={dom.domain} />
         );
       })}
       <p className="text-4xl my-4">TECH</p>
