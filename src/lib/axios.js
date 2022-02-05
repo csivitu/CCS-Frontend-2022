@@ -59,7 +59,16 @@ export const adminChange = async (d, cookies) => {
     } catch (err) {
         return null;
     }
-};
+}
+export const adminCorrect = async (d, cookies) => {
+    try {
+        const axiosInstance = getToken(cookies)
+        const { data } = await axiosInstance.post(`/api/admin/correct`, d)
+        return data;
+    } catch (err) {
+        return null
+    }
+}
 
 export const getUserState = async (cookies) => {
     try {
