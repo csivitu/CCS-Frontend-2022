@@ -1,5 +1,4 @@
 import axios from 'axios';
-import nookies, { parseCookies } from 'nookies';
 import { getToken, setToken } from './handleToken';
 
 export const axiosInstance = axios.create({

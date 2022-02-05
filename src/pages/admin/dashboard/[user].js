@@ -56,7 +56,7 @@ const User = ({ result: { user, questions } }) => {
                 break;
         }
 
-        const res = await adminChange(data, cookies);
+        await adminChange(data, cookies);
     };
     return (
         <div className="flex flex-col justify-center items-center m-6">

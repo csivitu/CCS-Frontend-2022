@@ -3,16 +3,13 @@ import L_Piece from '../../public/assets/auth_l.svg';
 import R_Piece from '../../public/assets/auth_r.svg';
 import { Button } from '@mui/material';
 import { CustomInput } from '../components/CustomForm';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { isEmpty } from 'lodash';
 import { resetPasswordRequest } from '../lib/axios';
-import { ToastContext } from '../components/ToastContext';
 import { useRouter } from 'next/router';
 
 const Resetpassword = ({ id, token }) => {
     const router = useRouter();
-
-    const { handleSnackOpen } = useContext(ToastContext);
 
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');

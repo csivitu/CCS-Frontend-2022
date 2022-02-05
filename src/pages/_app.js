@@ -4,7 +4,6 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ToastProvider } from '../components/ToastContext';
 import MUIThemeProvider from '../components/MUIThemeProvider';
-import Head from 'next/head';
 
 const cache = createCache({
     key: 'css',

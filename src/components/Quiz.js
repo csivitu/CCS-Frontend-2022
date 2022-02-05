@@ -2,7 +2,7 @@ import Clock from '../../public/assets/clock.svg';
 import { useContext, useState } from 'react';
 import Countdown from 'react-countdown';
 import { submitQuiz } from '../lib/axios';
-import { Router, useRouter } from 'next/router';
+import {  useRouter } from 'next/router';
 import { ToastContext } from './ToastContext';
 import { parseCookies } from 'nookies';
 
@@ -117,7 +117,7 @@ function Quiz({ domain, questions, endTime }) {
                                     QUESTION {i + 1}
                                     <br />
                                     <p className="font-light"> {q.question.text} </p>
-                                    {q.question.links.map((link, i) => {
+                                    {q.question.links.map((link) => {
                                         return (
                                             <>
                                                 <a href={link} rel="noreferrer" target="_blank">

@@ -11,7 +11,7 @@ const Dashboard = ({ result }) => {
     const [domain, setDomain] = useState(false);
     const [round, setRound] = useState(false);
 
-    const toggleDom = (dom, e) => {
+    const toggleDom = (dom) => {
         if (domain === false || domain !== dom) {
             setDomain(dom);
         } else {

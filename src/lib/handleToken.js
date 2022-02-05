@@ -1,5 +1,5 @@
 import { axiosInstance } from './axios';
-import nookies, { parseCookies } from 'nookies';
+import nookies from 'nookies';
 
 export const setToken = (accessToken, refreshToken) => {
     // axiosInstance.defaults.headers.Authorization = `Bearer ${accessToken}`

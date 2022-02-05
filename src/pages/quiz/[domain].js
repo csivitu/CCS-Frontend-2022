@@ -1,9 +1,7 @@
-import Image from 'next/image';
-import { parseCookies } from 'nookies';
+// import Image from 'next/image';
 import Quiz from '../../components/Quiz';
 import { getQuestions, startQuiz } from '../../lib/axios';
 import nookies from 'nookies';
-import Link from 'next/link';
 import Head from 'next/head';
 
 const domain = ({ domain, questions, endTime }) => {

@@ -33,7 +33,7 @@ function Questions({ domain, questions }) {
                                     QUESTION {i + 1}
                                     <br />
                                     <p className="font-light"> {q.question.text} </p>
-                                    {q.question.links.map((link, i) => {
+                                    {q.question.links.map((link) => {
                                         return (
                                             <>
                                                 <a href={link} rel="noreferrer" target="_blank">

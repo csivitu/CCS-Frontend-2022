@@ -13,7 +13,6 @@ import Joi from 'joi';
 import { useState } from 'react';
 import { submitURL } from '../lib/axios';
 import { parseCookies } from 'nookies';
-import Link from 'next/link';
 
 export const CustomInput = ({ value, setValue, label, type, disabled = false }) => {
     return (
@@ -129,7 +128,7 @@ export const DomainURL = ({ domain, value, setValue, handleSnackOpen }) => {
         setEditing(true);
     }
 
-    async function handleSubmit(e) {
+    async function handleSubmit() {
         const { error } = Joi.string().uri().validate(value);
         if (error) {
             handleSnackOpen({

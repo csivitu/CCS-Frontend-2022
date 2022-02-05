@@ -20,14 +20,10 @@ const Register = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [isVitian, setIsVitian] = useState(true);
     const [regNo, setRegNo] = useState('');
     const [gender, setGender] = useState('');
 
-    const optionsForIsVitian = [
-        { name: 'Yes', value: true },
-        { name: 'No', value: false },
-    ];
+
 
     const optionsForGender = [
         { name: 'Male', value: 'M' },
@@ -68,7 +64,7 @@ const Register = () => {
             passwordConfirmation,
             email,
             phone,
-            isVitian,
+            isVitian: true,
             regNo,
             gender,
         };
@@ -134,7 +130,6 @@ const Register = () => {
                         label="Registration Number"
                         value={regNo}
                         setValue={setRegNo}
-                        disabled={!isVitian}
                     />
                     <CustomSelect label="Gender" value={gender} setValue={setGender} options={optionsForGender} />
                     <Button

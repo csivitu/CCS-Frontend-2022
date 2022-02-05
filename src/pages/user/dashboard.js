@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import nookies from 'nookies';
-import LinkedIn from '../../../public/assets/LinkedIn.svg';
-import GitHub from '../../../public/assets/Github.svg';
-import Instagram from '../../../public/assets/Instagram.svg';
-import Spotify from '../../../public/assets/Spotify.svg';
-import { AddURL, DomainURL } from '../../components/CustomForm';
+// import LinkedIn from '../../../public/assets/LinkedIn.svg';
+// import GitHub from '../../../public/assets/Github.svg';
+// import Instagram from '../../../public/assets/Instagram.svg';
+// import Spotify from '../../../public/assets/Spotify.svg';
+import { DomainURL } from '../../components/CustomForm';
 import { getUserState } from '../../lib/axios';
 import Navbar from '../../components/Navbar';
-import LinkModal from '../../components/LinkModal';
+// import LinkModal from '../../components/LinkModal';
 import Head from 'next/head';
 import { ToastContext } from '../../components/ToastContext';
 
@@ -19,8 +19,8 @@ const Dashboard = ({ username, name, query, portfolio }) => {
         if (!oneLink) return '';
         return oneLink.link;
     };
-    const [newURL, setNewURL] = useState('');
-    const [select, setSelect] = useState('');
+    // const [newURL, setNewURL] = useState('');
+    // const [select, setSelect] = useState('');
     const [management, setManagement] = useState(populateURL('management'));
     const [tech, setTech] = useState(populateURL('tech'));
     const [design, setDesign] = useState(populateURL('design'));

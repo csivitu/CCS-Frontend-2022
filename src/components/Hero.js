@@ -1,7 +1,5 @@
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import styles from '../styles/Hero.module.css';
-
+import React from 'react';
 import L_Piece from '../../public/assets/piece_l.svg';
 import R_Piece from '../../public/assets/piece_r.svg';
 import M_Piece from '../../public/assets/piece_m.svg';
@@ -10,7 +8,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import Countdown from 'react-countdown';
 
 const Hero = ({ loggedIn }) => {
-    const renderer = ({ days, hours, minutes, seconds, completed, api: { isPaused, start, isStopped } }) => {
+    const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
             return <h1>Completed</h1>;
         } else {
