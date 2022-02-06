@@ -1,11 +1,13 @@
 import { Button } from "@mui/material";
 import { parseCookies } from "nookies";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { adminChange, adminCorrect } from "../lib/axios";
 import { CustomInput } from "./CustomForm";
+import { ToastContext } from "./ToastContext";
 
 function Questions({ domain, questions, user, isChecking }) {
-
+    
+    const { handleSnackOpen } = useContext(ToastContext);
   const [techMarks, setTechMarks] = useState(user.marks ? user.marks.tech : 0);
   const [managementMarks, setManagementMarks] = useState(
     user.marks ? user.marks.management : 0
@@ -62,7 +64,18 @@ function Questions({ domain, questions, user, isChecking }) {
         break;
     }
 
-    await adminCorrect(data, cookies);
+    if((await adminCorrect(data, cookies)).success) {
+        handleSnackOpen({
+            message: "started correcting!",
+            variant: "success"
+        })
+    }
+    else {
+        handleSnackOpen({
+            message: "something went wrong try again or call tech team lol",
+            variant: "error"
+        })
+    }
   }
 
   function increasePosition() {
@@ -114,7 +127,18 @@ function Questions({ domain, questions, user, isChecking }) {
         break;
     }
 
-    await adminChange(data, cookies);
+    if((await adminChange(data, cookies)).success) {
+        handleSnackOpen({
+            message: "submitted!",
+            variant: "success"
+        })
+    }
+    else {
+        handleSnackOpen({
+            message: "something went wrong try again or call tech team lol",
+            variant: "error"
+        })
+    }
   };
 
   return (
