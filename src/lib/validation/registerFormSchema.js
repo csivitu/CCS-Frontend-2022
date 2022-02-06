@@ -4,7 +4,7 @@ import { parsePhoneNumber } from 'libphonenumber-js';
 export const constants = {
     vitEmailRegex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((vitstudent.ac.in)|(vit.ac.in))$/,
     passwordRegex: /^[a-zA-Z0-9`!@#$%^&*()-/:'.,{}_"~]{8,50}$/, // 8-50 characters,
-    regNoRegex: /^\d\d[A-Z]{3}[0-9]{4}$/,
+    regNoRegex: /^21[A-Z]{3}\d{4}$/,
     usernameRegex: /^[a-zA-Z0-9`!@#$%^&*()-/:'.,{}_"~]{3,20}$/,
 };
 
@@ -37,7 +37,7 @@ const registerFormSchema = Joi.object({
         })
         .error(new Error('Invalid Phone Number: check if you have added country code.')),
     isVitian: Joi.boolean().required(),
-    regNo: Joi.string().required().regex(new RegExp(constants.regNoRegex)).error(new Error('Invalid VIT Reg No')),
+    regNo: Joi.string().required().regex(new RegExp(constants.regNoRegex)).error(new Error('Invalid VIT Reg No. CSI currently recruits only freshers!')),
     gender: Joi.string()
         .required()
         .valid(...['M', 'F', 'NB', 'O', 'P'])
