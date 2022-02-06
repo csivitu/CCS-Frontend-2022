@@ -1,42 +1,43 @@
 name: CI/CD Push
 
 on:
-  push:
-    branches: [ main ]
-  
-jobs:
-  Test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [lts/*]
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    
-    - name: Install dependencies
-      run: npm install
-      
-    - name: Build to test
-      run: npm run build
+    push:
+        branches: [main]
 
-  Deploy:
-    needs: Test
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploying on Server
-      uses: appleboy/ssh-action@master
-      with: 
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        script: |
-          cd CCS/CCS-Frontend-2022
-          git reset --hard
-          git pull
-          cd ..
-          docker-compose up --build -d
+jobs:
+    Test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [lts/*]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build to test
+              run: npm run build
+
+    Deploy:
+        needs: Test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploying on Server
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.KEY }}
+                  script: |
+                      cd CCS/CCS-Frontend-2022
+                      git reset --hard
+                      git pull
+                      cd ..
+                      docker-compose up --build -d
+                      docker system prune -a -f
