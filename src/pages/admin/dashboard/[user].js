@@ -4,7 +4,7 @@ import { adminGetUserRequest } from "../../../lib/axios";
 
 const User = ({ result: { user, questions } }) => {
   return (
-    <div className="flex flex-col justify-center items-center m-6">
+    <div className="flex flex-col justify-center items-center m-6 select-text">
       <div>
         <p>username: {user.userId.username}</p>
         <p>name: {user.userId.name}</p>

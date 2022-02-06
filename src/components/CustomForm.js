@@ -38,9 +38,8 @@ export const CustomSelect = ({ value, setValue, label, options, disabled = false
         <FormControl className="w-full">
             <InputLabel>{label}</InputLabel>
             <Select value={value} onChange={handleChange} disabled={disabled} label={label}>
-                <MenuItem value="">None</MenuItem>
                 {options.map((option) => (
-                    <MenuItem value={option.value} key={'option' + option.value}>
+                    <MenuItem value={option.value} key={'option' + option.value} >
                         {option.name}
                     </MenuItem>
                 ))}

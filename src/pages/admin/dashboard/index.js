@@ -9,7 +9,7 @@ const Dashboard = ({ result }) => {
   const [users, setUsers] = useState(result);
   const [query, setQuery] = useState("");
   const [domain, setDomain] = useState(false);
-  const [round, setRound] = useState(false);
+  const [round, setRound] = useState(0);
 
   const toggleDom = (dom) => {
     if (domain === false || domain !== dom) {
@@ -49,21 +49,38 @@ const Dashboard = ({ result }) => {
         <Button onClick={(e) => toggleDom("design", e)}>Design</Button>
         <Button onClick={(e) => toggleDom("video", e)}>Video</Button>
       </div>
-      <div className="flex flex-row justify-center items-center my-4">
-        <CustomInput
-          label="round"
-          type="text"
-          value={round}
-          setValue={setRound}
-        />
-      </div>
-      <div className="flex flex-row justify-center items-center my-4">
-        <CustomInput
-          label="search"
-          type="text"
-          value={query}
-          setValue={setQuery}
-        />
+
+      <div className="flex flex-row space-x-5">
+        <div className="flex flex-row justify-center items-center my-4">
+          <CustomInput
+            label="round"
+            type="text"
+            value={round}
+            setValue={setRound}
+          />
+        </div>
+        <div className="flex flex-row justify-center items-center my-4">
+          <CustomInput
+            label="search"
+            type="text"
+            value={query}
+            setValue={setQuery}
+          />
+        </div>
+        <div>
+          <p>
+            <span className="animate-pulse h-2 w-2 bg-green-500 inline-block rounded-full mr-3" />
+            <span className="font-bold">Corrected </span>
+          </p>
+          <p>
+            <span className="animate-pulse h-2 w-2 bg-orange-500 inline-block rounded-full mr-3" />
+            <span className="font-bold">Correcting </span>
+          </p>
+          <p>
+            <span className="animate-pulse h-2 w-2 bg-white inline-block rounded-full mr-3" />
+            <span className="font-bold">Not Corrected</span>
+          </p>
+        </div>
       </div>
       {users.map((usr) => (
         <div
@@ -80,11 +97,10 @@ const Dashboard = ({ result }) => {
               case "tech":
                 return (
                   <p
-                    className={`self-end mx-3 ${
-                      usr.isChecking.tech && !usr.checked.tech
-                        ? "text-orange-400"
-                        : ""
-                    } ${usr.checked.tech ? "text-green-500" : ""}`}
+                    className={`self-end mx-3 ${usr.isChecking.tech && !usr.checked.tech
+                      ? "text-orange-400"
+                      : ""
+                      } ${usr.checked.tech ? "text-green-500" : ""}`}
                     key={domain.domain}
                   >
                     {domain.domain}
@@ -93,11 +109,10 @@ const Dashboard = ({ result }) => {
               case "management":
                 return (
                   <p
-                    className={`self-end mx-3 ${
-                      usr.isChecking.management && !usr.checked.management
-                        ? "text-orange-400"
-                        : ""
-                    } ${usr.checked.management ? "text-green-500" : ""}`}
+                    className={`self-end mx-3 ${usr.isChecking.management && !usr.checked.management
+                      ? "text-orange-400"
+                      : ""
+                      } ${usr.checked.management ? "text-green-500" : ""}`}
                     key={domain.domain}
                   >
                     {domain.domain}
@@ -106,11 +121,10 @@ const Dashboard = ({ result }) => {
               case "design":
                 return (
                   <p
-                    className={`self-end mx-3 ${
-                      usr.isChecking.design && !usr.checked.design
-                        ? "text-orange-400"
-                        : ""
-                    } ${usr.checked.design ? "text-green-500" : ""}`}
+                    className={`self-end mx-3 ${usr.isChecking.design && !usr.checked.design
+                      ? "text-orange-400"
+                      : ""
+                      } ${usr.checked.design ? "text-green-500" : ""}`}
                     key={domain.domain}
                   >
                     {domain.domain}
@@ -119,11 +133,10 @@ const Dashboard = ({ result }) => {
               case "video":
                 return (
                   <p
-                    className={`self-end mx-3 ${
-                      usr.isChecking.video && !usr.checked.video
-                        ? "text-orange-400"
-                        : ""
-                    } ${usr.checked.video ? "text-green-500" : ""}`}
+                    className={`self-end mx-3 ${usr.isChecking.video && !usr.checked.video
+                      ? "text-orange-400"
+                      : ""
+                      } ${usr.checked.video ? "text-green-500" : ""}`}
                     key={domain.domain}
                   >
                     {domain.domain}

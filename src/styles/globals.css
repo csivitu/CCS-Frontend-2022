@@ -52,6 +52,16 @@
     --video-bg: #ff524720;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #131313 inset !important;
+}
+input:-webkit-autofill{
+    -webkit-text-fill-color: #ece0d8 !important;
+}
+
 body {
     background: #131313;
     color: #ece0d8;

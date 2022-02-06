@@ -19,7 +19,8 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phoneState, setPhoneState] = useState('');
+    const [countryCode, setCountryCode] = useState('+91');
     const [regNo, setRegNo] = useState('');
     const [gender, setGender] = useState('');
 
@@ -32,7 +33,7 @@ const Register = () => {
     ];
 
     function handleResponse(res) {
-        try{
+        try {
             if (res === 'Too many requests, please try again later.')
                 return {
                     success: false,
@@ -51,13 +52,14 @@ const Register = () => {
                     };
                 }
             }
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
     }
 
     async function signupHandler(e) {
         e.preventDefault();
+        const phone = countryCode + phoneState
         const data = {
             name,
             username,
@@ -125,7 +127,14 @@ const Register = () => {
                     </div>
 
                     <CustomInput type="email" label="Email" value={email} setValue={setEmail} />
-                    <CustomInput type="tel" label="Phone Number" value={phone} setValue={setPhone} />
+                    <div className="flex md:flex-row gap-4">
+                        <div className="w-1/5">
+                            <CustomInput type="tel" label="Country Code" value={countryCode} setValue={setCountryCode} />
+                        </div>
+                        <div className="w-4/5">
+                            <CustomInput type="tel" label="Phone Number" value={phoneState} setValue={setPhoneState} />
+                        </div>
+                    </div>
                     <CustomInput type="text" label="Registration Number" value={regNo} setValue={setRegNo} />
                     <CustomSelect label="Gender" value={gender} setValue={setGender} options={optionsForGender} />
                     <Button
