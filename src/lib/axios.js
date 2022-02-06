@@ -59,16 +59,16 @@ export const adminChange = async (d, cookies) => {
     } catch (err) {
         return null;
     }
-}
+};
 export const adminCorrect = async (d, cookies) => {
     try {
-        const axiosInstance = getToken(cookies)
-        const { data } = await axiosInstance.post(`/api/admin/correct`, d)
+        const axiosInstance = getToken(cookies);
+        const { data } = await axiosInstance.post(`/api/admin/correct`, d);
         return data;
     } catch (err) {
-        return null
+        return null;
     }
-}
+};
 
 export const getUserState = async (cookies) => {
     try {
@@ -140,7 +140,6 @@ export const getQuestions = async ({ domain }, cookies) => {
 
 export const submitQuiz = async (d, cookies) => {
     try {
-        console.log('Submit quiz called');
         const axiosInstance = getToken(cookies);
         const { data } = await axiosInstance.post(`/api/submit`, d);
         return data;

@@ -7,8 +7,10 @@ const Logout = () => {
     useEffect(() => {
         destroyCookie(null, 'refreshToken');
         destroyCookie(null, 'accessToken');
+        destroyCookie(null, 'domainsAttempted');
+        destroyCookie(null, 'username');
         router.push('/');
-    }, [router]);
+    }, []);
 
     return null;
 };

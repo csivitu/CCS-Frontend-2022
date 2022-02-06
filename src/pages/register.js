@@ -23,8 +23,6 @@ const Register = () => {
     const [regNo, setRegNo] = useState('');
     const [gender, setGender] = useState('');
 
-
-
     const optionsForGender = [
         { name: 'Male', value: 'M' },
         { name: 'Female', value: 'F' },
@@ -34,6 +32,11 @@ const Register = () => {
     ];
 
     function handleResponse(res) {
+        if (res === 'Too many requests, please try again later.')
+            return {
+                success: false,
+                message: "Hey Buddy!, You're sending too many requests :(",
+            };
         if (res.success) {
             if (res.result.success) {
                 return {
@@ -125,12 +128,7 @@ const Register = () => {
 
                     <CustomInput type="email" label="Email" value={email} setValue={setEmail} />
                     <CustomInput type="tel" label="Phone Number" value={phone} setValue={setPhone} />
-                    <CustomInput
-                        type="text"
-                        label="Registration Number"
-                        value={regNo}
-                        setValue={setRegNo}
-                    />
+                    <CustomInput type="text" label="Registration Number" value={regNo} setValue={setRegNo} />
                     <CustomSelect label="Gender" value={gender} setValue={setGender} options={optionsForGender} />
                     <Button
                         variant="contained"

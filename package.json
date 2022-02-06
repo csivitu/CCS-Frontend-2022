@@ -17,7 +17,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "joi": "^17.6.0",
-    "joi-phone-number": "^5.1.0",
     "libphonenumber-js": "^1.9.47",
     "lodash": "^4.17.21",
     "next": "12.0.7",
@@ -27,8 +26,7 @@
     "react-countdown": "^2.3.2",
     "react-dom": "17.0.2",
     "react-scroll": "^1.8.4",
-    "sharp": "^0.30.0",
-    "snake-game-react": "^1.0.6"
+    "sharp": "^0.30.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.2.1",

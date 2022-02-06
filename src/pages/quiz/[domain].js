@@ -38,7 +38,7 @@ export async function getServerSideProps(ctx) {
     if (res.error) return { props: { rateLimited: true } };
 
     const { success, message: startMessage } = res;
-    
+
     if (!success) {
         return {
             redirect: {
@@ -56,6 +56,6 @@ export async function getServerSideProps(ctx) {
         };
     const { questions, endTime } = result;
     return {
-        props: { success: true, domain, questions, endTime },
+        props: { domain, questions, endTime },
     };
 }

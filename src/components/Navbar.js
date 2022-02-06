@@ -3,16 +3,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll';
 import { ToastContext } from './ToastContext';
+// import { useRouter } from 'next/router';
 
 const Navbar = ({ loggedIn, username, dashBoard }) => {
     const { handleSnackOpen } = useContext(ToastContext);
     const [viewMobileMenu, setViewMobileMenu] = useState(false);
+    // const router = useRouter();
     const handleTasks = () => {
         handleSnackOpen({
             message: 'Tasks will be made available to you upon clearning round 1.',
             variant: 'warning',
         });
     };
+    // const handleLogout = () => {
+    //     router.push('/logout');
+    // };
     return (
         <nav className="sticky top-0 px-3 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -50,6 +55,9 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                                     height={40}
                                 />
                             </div>
+                            {/* <div>
+                                <button onClick={handleLogout}>Logout</button>
+                            </div> */}
                         </div>
                     ) : (
                         <Link href="/register" passHref>
@@ -95,7 +103,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                 </button>
                 {viewMobileMenu ? (
                     <div className="w-full md:hidden" id="mobile-menu">
-                        <ul className="flex flex-col mt-4 list-none items-center">
+                        <ul className="flex flex-col mt-4 list-none items-center text-center">
                             <li>
                                 <button
                                     className="block py-2 px-4 text-peach hover:text-white  border-peach"
@@ -106,11 +114,18 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                             </li>
                             <li>
                                 {loggedIn ? (
-                                    <Link href="/user/dashboard">
-                                        <a className="block py-2 px-4 text-peach hover:text-white  border-peach">
-                                            PROFILE
-                                        </a>
-                                    </Link>
+                                    <>
+                                        <Link href="/user/dashboard">
+                                            <a className="block py-2 px-4 text-peach hover:text-white  border-peach">
+                                                PROFILE
+                                            </a>
+                                        </Link>
+                                        {/* <button onClick={handleLogout}>
+                                            <a className="block py-2 px-4 text-peach hover:text-white border-peach">
+                                                LOGOUT
+                                            </a>
+                                        </button> */}
+                                    </>
                                 ) : (
                                     <Link href="/register">
                                         <a className="block py-2 px-4 text-peach hover:text-white  border-peach">

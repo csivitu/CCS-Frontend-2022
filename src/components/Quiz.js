@@ -2,7 +2,7 @@ import Clock from '../../public/assets/clock.svg';
 import { useContext, useState } from 'react';
 import Countdown from 'react-countdown';
 import { submitQuiz } from '../lib/axios';
-import {  useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { ToastContext } from './ToastContext';
 import { parseCookies } from 'nookies';
 
@@ -50,12 +50,16 @@ function Quiz({ domain, questions, endTime }) {
         };
 
         const res = await submitQuiz(data, cookies);
-        if (res.code === 200) {
-            handleSnackOpen({
-                message: res.message,
-                variant: 'success',
-            });
-            router.push('/user/dashboard');
+        try {
+            if (res.code === 200) {
+                handleSnackOpen({
+                    message: res.message,
+                    variant: 'success',
+                });
+                router.push('/user/dashboard');
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
 

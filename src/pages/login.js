@@ -67,24 +67,37 @@ const Login = ({ query }) => {
 
         const res = await loginRequest({ data });
 
-        if (res.success) {
-            handleSnackOpen({
-                message: 'Logged In successfully!',
-                variant: 'success',
-            });
-            router.push('/');
-        } else {
-            if (res.message === 'Email not verified') {
+        try {
+            if (res === 'Too many requests, please try again later.') {
                 handleSnackOpen({
-                    message: 'Email Address not verified.',
+                    message: "Hey Buddy!, You're sending too many requests :(",
                     variant: 'error',
                 });
                 return;
             }
-            handleSnackOpen({
-                message: 'Invalid Login Credentials',
-                variant: 'error',
-            });
+            if (res.success) {
+                handleSnackOpen({
+                    message: 'Logged In successfully!',
+                    variant: 'success',
+                });
+                router.push('/');
+                return;
+            } else {
+                if (res.message === 'Email not verified') {
+                    handleSnackOpen({
+                        message: 'Email Address not verified.',
+                        variant: 'error',
+                    });
+                    return;
+                }
+                handleSnackOpen({
+                    message: 'Invalid Login Credentials',
+                    variant: 'error',
+                });
+            }
+        } catch (e) {
+            console.log(e);
+            return;
         }
     }
     return (
