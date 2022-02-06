@@ -32,29 +32,27 @@ const Register = () => {
     ];
 
     function handleResponse(res) {
-        if (res === 'Too many requests, please try again later.')
-            return {
-                success: false,
-                message: "Hey Buddy!, You're sending too many requests :(",
-            };
-        if (res.success) {
-            if (res.result.success) {
-                return {
-                    success: true,
-                    message: 'Register successful. Please verify your Email Address to login.',
-                };
-            } else {
+        try{
+            if (res === 'Too many requests, please try again later.')
                 return {
                     success: false,
-                    message: 'Duplicate ' + res.result.duplicates.join(', '),
+                    message: "Hey Buddy!, You're sending too many requests :(",
                 };
+            if (res.success) {
+                if (res.result.success) {
+                    return {
+                        success: true,
+                        message: 'Register successful. Please verify your Email Address to login.',
+                    };
+                } else {
+                    return {
+                        success: false,
+                        message: 'Duplicate ' + res.result.duplicates.join(', '),
+                    };
+                }
             }
-        } else {
-            const message = res.map((e) => e.message).join('. ');
-            return {
-                success: false,
-                message: message ? message : 'Something went wrong. Contact our technical team for furthur assistance.',
-            };
+        }catch(e){
+            console.log(e)
         }
     }
 
