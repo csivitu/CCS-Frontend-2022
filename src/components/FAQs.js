@@ -48,6 +48,10 @@ function FAQs() {
 
 const faqs = [
     {
+        question: "Who all can participate in CSI-VIT's recruitments?",
+        answer: 'CSI-VIT only recruits first-year students.',
+    },
+    {
         question: 'Can we attempt the Tech domain in Round 1 without having any prior experience?',
         answer: 'Yes! Everyone is welcome to attempt tests in any domain. All we need from you is a willingness to learn and develop.',
     },
