@@ -10,6 +10,7 @@ const Dashboard = ({ result }) => {
   const [query, setQuery] = useState("");
   const [domain, setDomain] = useState(false);
   const [round, setRound] = useState(0);
+  const [mark, setmark] = useState(0);
 
   const toggleDom = (dom) => {
     if (domain === false || domain !== dom) {
@@ -39,8 +40,15 @@ const Dashboard = ({ result }) => {
           user.videoRound === parseInt(round)
       );
     }
+    console.log(filtered[10])
+    if (mark) {
+        filtered = filtered.filter((user) => user.marks &&
+          (user.marks.tech === parseInt(mark) || user.marks.management === parseInt(mark) || user.marks.design === parseInt(mark) || user.marks.video === parseInt(mark))
+        );
+      }
+  
     setUsers(filtered);
-  }, [query, result, domain, round]);
+  }, [query, result, domain, round, mark]);
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <div className="flex flex-row justify-center items-center">
@@ -67,6 +75,15 @@ const Dashboard = ({ result }) => {
             setValue={setQuery}
           />
         </div>
+        <div className="flex flex-row justify-center items-center my-4">
+            <CustomInput
+                label="marks"
+                type="text"
+                value={mark}
+                setValue={setmark}
+            />
+      </div>
+
         <div>
           <p>
             <span className="animate-pulse h-2 w-2 bg-green-500 inline-block rounded-full mr-3" />
