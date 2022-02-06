@@ -43,7 +43,7 @@ const Dashboard = ({ result }) => {
     console.log(filtered[10])
     if (mark) {
         filtered = filtered.filter((user) => user.marks &&
-          (user.marks.tech === parseInt(mark) || user.marks.management === parseInt(mark) || user.marks.design === parseInt(mark) || user.marks.video === parseInt(mark))
+          (parseFloat(user.marks.tech) === parseFloat(mark) || parseFloat(user.marks.management) === parseFloat(mark) || parseFloat(user.marks.design) === parseFloat(mark) || parseFloat(user.marks.video) === parseFloat(mark))
         );
       }
   
