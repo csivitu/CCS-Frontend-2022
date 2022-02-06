@@ -1,34 +1,128 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![csivit][csivitu-shield]][csivitu-url]
+[![Issues][issues-shield]][issues-url]
 
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/csivitu/CCS-Frontend-2022">
+    <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
+  </a>
+
+  <h3 align="center">CSI - Core Committee Selections 2022</h3>
+
+  <p align="center">
+    Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts.
+    <br />
+    <a href="https://github.com/csivitu/CCS-Frontend-2022"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/csivitu/CCS-Frontend-2022">View Demo</a>
+    ·
+    <a href="https://github.com/csivitu/CCS-Frontend-2022/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/csivitu/CCS-Frontend-2022/issues">Request Feature</a>
+  </p>
+</p>
+
+
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+Here's a blank CCS-Frontend-2022 to get started:
+**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
+`CCS-Frontend-2022`
+
+
+### Built With
+
+* [Nextjs]()
+
+
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
+### Prerequisites
+
+
+* npm
+```sh
+npm install npm@latest -g
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
+ 
+1. Clone the repo
+```sh
+git clone https://github.com/csivitu/CCS-Frontend-2022.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<!-- USAGE EXAMPLES -->
+## Usage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<img src="https://i.imgur.com/zrak7AX.png" />
+<img src="https://i.imgur.com/AKE0uVE.png" />
+<img src="https://i.imgur.com/pwZPTiB.png" />
+<img src="https://i.imgur.com/nqa1Ag9.png" />
+<img src="https://i.imgur.com/SJqkjt7.png" />
 
-## Learn More
+<!-- ROADMAP -->
+## Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+See the [open issues](https://github.com/csivitu/CCS-Frontend-2022/issues) for a list of proposed features (and known issues).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+<!-- CONTRIBUTING -->
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the Branch (`git push -u origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more information.
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[csivitu-shield]: https://img.shields.io/badge/csivitu-csivitu-blue
+[csivitu-url]: https://csivit.com
+[issues-shield]: https://img.shields.io/github/issues/csivitu/CCS-Frontend-2022.svg?style=flat-square
+[issues-url]: https://github.com/csivitu/CCS-Frontend-2022/issues

@@ -1,4 +1,4 @@
-import nookies, { parseCookies } from "nookies";
+import nookies from "nookies";
 import Questions from "../../../components/Questions";
 import { adminGetUserRequest } from "../../../lib/axios";
 

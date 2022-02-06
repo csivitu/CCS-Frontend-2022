@@ -62,7 +62,7 @@ function Questions({ domain, questions, user, isChecking }) {
         break;
     }
 
-    const res = await adminCorrect(data, cookies);
+    await adminCorrect(data, cookies);
   }
 
   function increasePosition() {
@@ -114,7 +114,7 @@ function Questions({ domain, questions, user, isChecking }) {
         break;
     }
 
-    const res = await adminChange(data, cookies);
+    await adminChange(data, cookies);
   };
 
   return (
@@ -134,7 +134,7 @@ function Questions({ domain, questions, user, isChecking }) {
                   QUESTION {i + 1}
                   <br />
                   <p className="font-light"> {q.question.text} </p>
-                  {q.question.links.map((link, i) => {
+                  {q.question.links.map((link) => {
                     return (
                       <>
                         <a href={link} rel="noreferrer" target="_blank">
