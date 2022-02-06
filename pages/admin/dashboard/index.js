@@ -22,7 +22,7 @@ const Dashboard = ({ result }) => {
   useEffect(() => {
     let filtered = result.filter(
       (user) =>
-        user.username.includes(query) ||
+        user.username.toLowerCase().includes(query.toLowerCase()) ||
         user.userId.regNo.includes(query.toUpperCase())
     );
     if (domain) {

@@ -1,8 +1,27 @@
+import { Button } from "@mui/material";
 import { parseCookies } from "nookies";
 import { useState } from "react";
-import { adminCorrect } from "../lib/axios";
+import { adminChange, adminCorrect } from "../lib/axios";
+import { CustomInput } from "./CustomForm";
 
-function Questions({ domain, questions, username, isChecking }) {
+function Questions({ domain, questions, user, isChecking }) {
+
+  const [techMarks, setTechMarks] = useState(user.marks ? user.marks.tech : 0);
+  const [managementMarks, setManagementMarks] = useState(
+    user.marks ? user.marks.management : 0
+  );
+  const [designMarks, setDesignMarks] = useState(
+    user.marks ? user.marks.design : 0
+  );
+  const [videoMarks, setVideoMarks] = useState(
+    user.marks ? user.marks.video : 0
+  );
+  const [techComment, setTechComment] = useState("");
+  const [managementComment, setManagementComment] = useState("");
+  const [designComment, setDesignComment] = useState("");
+  const [videoComment, setVideoComment] = useState("");
+
+
   questions = questions.map((ques) => ({
     quesId: ques.quesId.quesId,
     question: ques.quesId.question,
@@ -17,25 +36,25 @@ function Questions({ domain, questions, username, isChecking }) {
     switch (domain) {
       case "tech":
         data = {
-          username,
+          username: user.username,
           domain,
         };
         break;
       case "management":
         data = {
-          username,
+          username: user.username,
           domain,
         };
         break;
       case "design":
         data = {
-          username,
+          username: user.username,
           domain,
         };
         break;
       case "video":
         data = {
-          username,
+          username: user.username,
           domain,
         };
         break;
@@ -44,7 +63,6 @@ function Questions({ domain, questions, username, isChecking }) {
     }
 
     const res = await adminCorrect(data, cookies);
-    console.log(res);
   }
 
   function increasePosition() {
@@ -54,6 +72,50 @@ function Questions({ domain, questions, username, isChecking }) {
   function decreasePosition() {
     setPosition(position - 1 > -1 ? position - 1 : 0);
   }
+
+  const submitHandler = async (domain, e) => {
+    e.preventDefault();
+    const cookies = parseCookies();
+    let data;
+    switch (domain) {
+      case "tech":
+        data = {
+          username: user.username,
+          domain,
+          comment: techComment,
+          mark: parseInt(techMarks),
+        };
+        break;
+      case "management":
+        data = {
+          username: user.username,
+          domain,
+          comment: managementComment,
+          mark: parseInt(managementMarks),
+        };
+        break;
+      case "design":
+        data = {
+          username: user.username,
+          domain,
+          comment: designComment,
+          mark: parseInt(designMarks),
+        };
+        break;
+      case "video":
+        data = {
+          username: user.username,
+          domain,
+          comment: videoComment,
+          mark: parseInt(videoMarks),
+        };
+        break;
+      default:
+        break;
+    }
+
+    const res = await adminChange(data, cookies);
+  };
 
   return (
     <div className="w-4/5 max-w-4xl flex flex-col content-center justify-items-center">
@@ -116,16 +178,120 @@ function Questions({ domain, questions, username, isChecking }) {
           >
             NEXT
           </button>
-          {!isChecking ? (
+          {!isChecking && (
             <button
               onClick={handleCorrectClick}
               className="text-gray-dark bg-stone-300 p-2 px-8 rounded-md"
             >
               CORRECT
             </button>
-          ) : null}
+          )}
         </div>
       </div>
+      {domain === "video" && (
+        <div>
+          <p className="my-4">Comments: </p>
+          {user.comments.video.map((comment, i) => (
+            <p className="my-4" key={i}>{comment.comment} ~ {comment.author}</p>
+          ))}
+          <form
+            onSubmit={(e) => submitHandler("video", e)}
+            className="flex flex-col gap-2"
+          >
+            <CustomInput
+              type="number"
+              value={videoMarks}
+              setValue={setVideoMarks}
+              label="Marks"
+            />
+            <CustomInput
+              type="text"
+              value={videoComment}
+              setValue={setVideoComment}
+              label="Comments"
+            />
+            <Button type="submit">submit</Button>
+          </form>
+        </div>
+      )}
+      {domain === "tech" && (
+        <div>
+          <p className="my-4">Comments: </p>
+          {user.comments.tech.map((comment, i) => (
+            <p className="my-4" key={i}>{comment.comment} ~ {comment.author}</p>
+          ))}
+          <form
+            onSubmit={(e) => submitHandler("tech", e)}
+            className="flex flex-col gap-2"
+          >
+            <CustomInput
+              type="number"
+              value={techMarks}
+              setValue={setTechMarks}
+              label="Marks"
+            />
+            <CustomInput
+              type="text"
+              value={techComment}
+              setValue={setTechComment}
+              label="Comments"
+            />
+            <Button type="submit">submit</Button>
+          </form>
+        </div>
+      )}
+      {domain === "management" && (
+        <div>
+          <p className="my-4">Comments: </p>
+          {user.comments.management.map((comment, i) => (
+            <p className="my-4" key={i}>{comment.comment} ~ {comment.author}</p>
+          ))}
+          <form
+            onSubmit={(e) => submitHandler("management", e)}
+            className="flex flex-col gap-2"
+          >
+            <CustomInput
+              type="number"
+              value={managementMarks}
+              setValue={setManagementMarks}
+              label="Marks"
+            />
+            <CustomInput
+              type="text"
+              value={managementComment}
+              setValue={setManagementComment}
+              label="Comments"
+            />
+            <Button type="submit">submit</Button>
+          </form>
+        </div>
+      )}
+      {domain === "design" && (
+        <div>
+          <p className="my-4">Comments: </p>
+          {user.comments.design.map((comment, i) => (
+            <p className="my-4" key={i}>{comment.comment} ~ {comment.author}</p>
+          ))}
+          <form
+            onSubmit={(e) => submitHandler("design", e)}
+            className="flex flex-col gap-2"
+          >
+            <CustomInput
+              type="number"
+              value={designMarks}
+              setValue={setDesignMarks}
+              label="Marks"
+            />
+            <CustomInput
+              type="text"
+              value={designComment}
+              setValue={setDesignComment}
+              label="Comments"
+            />
+            <Button type="submit">submit</Button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
