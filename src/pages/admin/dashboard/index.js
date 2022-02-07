@@ -103,7 +103,7 @@ const Dashboard = ({ result }) => {
           key={usr._id}
           className="text-2xl py-1 font-semi-bold flex flex-row w-2/3"
         >
-          <Link href={`/admin/dashboard/${usr.username}`} passHref>
+          <Link href={`/admin/dashboard/${usr.userId.regNo}`} passHref>
             <a className="cursor-pointer flex-auto">
               {usr.username} - {usr.userId.regNo}
             </a>
