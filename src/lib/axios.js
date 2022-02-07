@@ -40,6 +40,17 @@ export const adminGetUsersRequest = async ({ accessToken, refreshToken }) => {
     }
 };
 
+export const adminDeleteUsersRequest = async (username, cookies) => {
+    try {
+        const axiosInstance = getToken(cookies);
+        const { data } = await axiosInstance.delete(`/api/admin/deleteUser`, {data: {username}});
+        return data;
+    } catch (e) {
+        console.log(e.response);
+        return { error: true };
+    }
+};
+
 export const adminGetUserRequest = async (cookies, user) => {
     try {
         const axiosInstance = getToken(cookies);

@@ -40,7 +40,6 @@ const Dashboard = ({ result }) => {
           user.videoRound === parseInt(round)
       );
     }
-    console.log(filtered[10])
     if (mark) {
         filtered = filtered.filter((user) => user.marks &&
           (parseFloat(user.marks.tech) === parseFloat(mark) || parseFloat(user.marks.management) === parseFloat(mark) || parseFloat(user.marks.design) === parseFloat(mark) || parseFloat(user.marks.video) === parseFloat(mark))
