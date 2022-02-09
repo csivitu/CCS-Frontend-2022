@@ -11,7 +11,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
     // const router = useRouter();
     const handleTasks = () => {
         handleSnackOpen({
-            message: 'Tasks will be made available to you upon clearning round 1.',
+            message: 'Tasks will be made available to you on clearing round 1.',
             variant: 'warning',
         });
     };
