@@ -65,7 +65,7 @@ const Register = () => {
             username,
             password,
             passwordConfirmation,
-            email,
+            email: email.trim(),
             phone,
             isVitian: true,
             regNo,

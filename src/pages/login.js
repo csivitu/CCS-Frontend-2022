@@ -53,7 +53,7 @@ const Login = ({ query }) => {
     async function loginHandler(e) {
         e.preventDefault();
 
-        const data = { usernameOrEmail, password };
+        const data = { usernameOrEmail: usernameOrEmail.trim(), password, };
 
         const { error } = LoginFormSchema.validate(data);
 
