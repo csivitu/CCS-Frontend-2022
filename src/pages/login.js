@@ -9,9 +9,24 @@ import L_Piece from '../../public/assets/auth_l.svg';
 import R_Piece from '../../public/assets/auth_r.svg';
 import ForgotPass from '../components/ForgotPass';
 import LoginFormSchema from '../lib/validation/loginFormSchema';
+import { useDrag, } from '@use-gesture/react';
+import { useSpring, animated } from '@react-spring/web';
 
 const Login = ({ query }) => {
     const { handleSnackOpen } = useContext(ToastContext);
+    const leftPos = useSpring({ x: 0, y: 0 });
+    const RightPos = useSpring({ x: 0, y: 0 });
+
+    const bindLeftPos = useDrag((params) => {
+        leftPos.x.set(params.offset[0]);
+        leftPos.y.set(params.offset[1]);
+    })
+
+    const bindRightPos = useDrag((params) => {
+        RightPos.x.set(params.offset[0]);
+        RightPos.y.set(params.offset[1]);
+    })
+
     useEffect(() => {
         if (query) {
             if (query.verified) {
@@ -106,12 +121,24 @@ const Login = ({ query }) => {
                 <title>CSI - CCS | Login</title>
             </Head>
             <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light px-4">
-                <div className="absolute hidden md:block left-2 lg:left-16 bottom-14 md:bottom-10">
+                <animated.div
+                    {...bindLeftPos()}
+                    style={{
+                        x: leftPos.x,
+                        y: leftPos.y,
+                    }}
+                    className="absolute hidden md:block left-2 lg:left-16 bottom-14 md:bottom-10 cursor-pointer z-50"
+                >
+
                     <L_Piece className="w-32 md:w-44 lg:w-52" />
-                </div>
-                <div className="absolute hidden md:block right-2 lg:right-16 top-10">
+                </animated.div>
+                <animated.div className="absolute hidden md:block right-2 lg:right-16 top-10 cursor-pointer z-50" {...bindRightPos()}
+                    style={{
+                        x: RightPos.x,
+                        y: RightPos.y,
+                    }}>
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
-                </div>
+                </animated.div>
                 {fPassState ? (
                     <ForgotPass />
                 ) : (

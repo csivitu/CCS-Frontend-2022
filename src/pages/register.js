@@ -9,10 +9,25 @@ import L_Piece from '../../public/assets/auth_l.svg';
 import R_Piece from '../../public/assets/auth_r.svg';
 import { signupRequest } from '../lib/axios';
 import registerFormSchema from '../lib/validation/registerFormSchema';
+import { useDrag } from '@use-gesture/react';
+import { useSpring, animated } from '@react-spring/web';
 
 const Register = () => {
     const { handleSnackOpen } = useContext(ToastContext);
     const router = useRouter();
+
+    const leftPos = useSpring({ x: 0, y: 0 });
+    const RightPos = useSpring({ x: 0, y: 0 });
+
+    const bindLeftPos = useDrag((params) => {
+        leftPos.x.set(params.offset[0]);
+        leftPos.y.set(params.offset[1]);
+    })
+
+    const bindRightPos = useDrag((params) => {
+        RightPos.x.set(params.offset[0]);
+        RightPos.y.set(params.offset[1]);
+    })
 
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
@@ -104,12 +119,21 @@ const Register = () => {
                 <title>CSI - CCS | Register</title>
             </Head>
             <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
-                <div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10">
+                <animated.div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
+                    {...bindLeftPos()}
+                    style={{
+                        x: leftPos.x,
+                        y: leftPos.y,
+                    }}
+                >
                     <L_Piece className="w-32 md:w-44 lg:w-52" />
-                </div>
-                <div className="absolute hidden md:block right-2 md:right-5 top-10">
+                </animated.div>
+                <animated.div className="absolute hidden md:block right-2 md:right-5 top-10 z-50 cursor-pointer" {...bindRightPos()} style={{
+                    x: RightPos.x,
+                    y: RightPos.y,
+                }}>
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
-                </div>
+                </animated.div>
                 <h1 className="text-3xl pt-4 pb-8">Register Here</h1>
                 <form className="w-full md:w-1/2 flex flex-col gap-4 mb-2" onSubmit={signupHandler} autoComplete="off">
                     <div className="flex flex-col md:flex-row gap-4">
