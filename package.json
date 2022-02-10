@@ -11,6 +11,8 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.3.1",
+    "@react-spring/web": "^9.4.2",
+    "@use-gesture/react": "^10.2.5",
     "axios": "^0.25.0",
     "axios-auth-refresh": "^3.2.1",
     "cookie": "^0.4.1",
