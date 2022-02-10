@@ -61,14 +61,14 @@ const Register = () => {
         e.preventDefault();
         const phone = countryCode + phoneState
         const data = {
-            name,
-            username,
+            name: name.trim(),
+            username: username.trim(),
             password,
             passwordConfirmation,
             email: email.trim(),
-            phone,
+            phone: phone.trim(),
             isVitian: true,
-            regNo,
+            regNo: regNo.trim(),
             gender,
         };
 
