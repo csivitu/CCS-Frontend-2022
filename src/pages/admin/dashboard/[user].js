@@ -102,7 +102,7 @@ const User = ({ result: { user, questions } }) => {
                     if (window.confirm('Are you sure you wish to delete this item?')) deleteUser();
                 }}
             >
-                <Button>Delete User</Button>
+                <Button>Yeet User</Button>
             </div>
         </div>
     );
