@@ -6,35 +6,93 @@ import M_Piece from '../../public/assets/piece_m.svg';
 import Link from 'next/link';
 import { Link as ScrollLink } from 'react-scroll';
 import Countdown from 'react-countdown';
+import { useSpring, animated } from "@react-spring/web";
+import { useDrag } from '@use-gesture/react'
 
 const Hero = ({ loggedIn }) => {
+    const endDate = process.env.NEXT_PUBLIC_END_DATE;
+
+    const leftPos = useSpring({ x: 0, y: 0 });
+    const RightPos = useSpring({ x: 0, y: 0 });
+
+    const bindLeftPos = useDrag((params) => {
+        leftPos.x.set(params.offset[0]);
+        leftPos.y.set(params.offset[1]);
+    })
+
+    const bindRightPos = useDrag((params) => {
+        RightPos.x.set(params.offset[0]);
+        RightPos.y.set(params.offset[1]);
+    })
+
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
         if (completed) {
-            return <h1>Completed</h1>;
+            return (
+                <>
+                    <p className="font-extralight">
+                        <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-video inline-block rounded-full mr-2" />
+                        <span className='font-bold'>Submit</span> your tasks
+                    </p>
+                    <div className="ml-4 md:ml-6">
+                        <p className="font-extralight whitespace-nowrap">
+                            <span className="font-bold text-gray-500">Round 1 completed!</span>
+                        </p>
+                    </div>
+                </>
+            )
         } else {
             return (
-                <div className="ml-4 md:ml-6">
-                    <p className="font-extralight whitespace-nowrap">
-                        Ends in <span className="text-tech font-bold">{days} days</span>
+                <>
+                    <p className="font-extralight">
+                        <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-video inline-block rounded-full mr-2" />
+                        <span className="font-bold">Round 1</span> is LIVE
                     </p>
-                    <p className="font-extralight whitespace-nowrap">
-                        {hours} hours, {minutes} mins, {seconds} secs
-                    </p>
-                </div>
+                    <div className="ml-4 md:ml-6">
+                        {days === 0 ? <>
+                            <p className="font-extralight whitespace-nowrap">
+                                Ends in <span className="text-tech font-bold">{hours} {hours === 1 ? "hour" : "hours"}</span>
+                            </p>
+                            <p className="font-extralight whitespace-nowrap">
+                                {minutes} mins, {seconds} secs
+                            </p>
+                        </> :
+                            <><p className="font-extralight whitespace-nowrap">
+                                Ends in <span className="text-tech font-bold">{days} {days === 1 ? "day" : "days"}</span>
+                            </p>
+                                <p className="font-extralight whitespace-nowrap">
+                                    {hours} hours, {minutes} mins, {seconds} secs
+                                </p>
+                            </>}
+
+                    </div>
+                </>
+
             );
         }
     };
     return (
         <section
             id="Hero"
-            className="flex w-full h-screen relative items-center justify-center bg-grid bg-no-repeat bg-cover bg-center"
+            className="flex w-full h-screen relative items-center justify-center bg-grid bg-no-repeat bg-cover bg-center overflow-hidden"
         >
-            <div className="absolute left-2 md:left-5 bottom-14 md:bottom-10">
+            <animated.div
+                {...bindLeftPos()}
+                style={{
+                    x: leftPos.x,
+                    y: leftPos.y,
+                }}
+                className="absolute left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
+            >
                 <L_Piece className="w-32 md:w-44 lg:w-52" />
-            </div>
-            <div className="absolute right-2 md:right-5 top-10">
+            </animated.div>
+            <animated.div className="absolute right-2 md:right-5 top-10 cursor-pointer z-50"
+                {...bindRightPos()}
+                style={{
+                    x: RightPos.x,
+                    y: RightPos.y,
+                }}>
                 <R_Piece className="w-32 md:w-44 lg:w-52" />
-            </div>
+            </animated.div>
             <div className="flex flex-col items-center justify-center">
                 <div>
                     <div className="w-1/3 ml-1 md:ml-2">
@@ -52,19 +110,25 @@ const Hero = ({ loggedIn }) => {
                     </div>
                     <div className="mt-7 md:mt-10 lg:mt-20 w-full flex flex-col md:flex-row items-center gap-4 md:gap-2">
                         <div className="flex flex-col grow gap-2 text-md md:text-xl lg:text-2xl">
-                            <p className="font-extralight">
-                                <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-video inline-block rounded-full mr-2" />
-                                <span className="font-bold">Round 1</span> is LIVE
-                            </p>
-                            <Countdown date={new Date('Feb 12, 2022 00:00:00')} renderer={renderer} zeroPadTime={3} />
+                            <Countdown date={new Date(endDate)} renderer={renderer} zeroPadTime={3} />
                         </div>
                         <div>
                             {loggedIn ? (
-                                <ScrollLink to="domains" smooth={true} duration={500} spy={true} exact="true">
-                                    <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
-                                        DOMAINS
-                                    </button>
-                                </ScrollLink>
+                                <>
+                                    {(new Date()) > (new Date(endDate)) ?
+                                        <Link href="/user/tasks" passHref>
+                                            <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                                                TASKS
+                                            </button>
+                                        </Link>
+                                        :
+                                        <ScrollLink to="domains" smooth={true} duration={500} spy={true} exact="true">
+                                            <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                                                DOMAINS
+                                            </button>
+                                        </ScrollLink>
+                                    }
+                                </>
                             ) : (
                                 <Link href="/register" passHref shallow={true}>
                                     <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
