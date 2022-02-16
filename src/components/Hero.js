@@ -130,9 +130,9 @@ const Hero = ({ loggedIn }) => {
                                     }
                                 </>
                             ) : (
-                                <Link href="/register" passHref shallow={true}>
+                                <Link href="/login" passHref shallow={true}>
                                     <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
-                                        REGISTER NOW
+                                        LOGIN
                                     </button>
                                 </Link>
                             )}

@@ -13,6 +13,7 @@ import { useDrag, } from '@use-gesture/react';
 import { useSpring, animated } from '@react-spring/web';
 
 const Login = ({ query }) => {
+    const endDate = process.env.NEXT_PUBLIC_END_DATE;
     const { handleSnackOpen } = useContext(ToastContext);
     const leftPos = useSpring({ x: 0, y: 0 });
     const RightPos = useSpring({ x: 0, y: 0 });
@@ -165,15 +166,15 @@ const Login = ({ query }) => {
                         </button>
                     </form>
                 )}
-
-                <div>
-                    <p>
-                        {"Don't have an account yet? "}
-                        <Link href="/register">
-                            <a className="underline">Signup</a>
-                        </Link>
-                    </p>
-                </div>
+                {(new Date()) < (new Date(endDate)) ?
+                    <div>
+                        <p>
+                            Don't have an account yet?
+                            <Link href="/register">
+                                <a className="underline">Signup</a>
+                            </Link>
+                        </p>
+                    </div> : null}
             </div>
         </>
     );

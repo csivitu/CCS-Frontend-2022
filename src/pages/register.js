@@ -14,6 +14,7 @@ import { useSpring, animated } from '@react-spring/web';
 
 const Register = () => {
     const { handleSnackOpen } = useContext(ToastContext);
+    const endDate = process.env.NEXT_PUBLIC_END_DATE;
     const router = useRouter();
 
     const leftPos = useSpring({ x: 0, y: 0 });
@@ -73,6 +74,8 @@ const Register = () => {
     }
 
     async function signupHandler(e) {
+
+
         e.preventDefault();
         const phone = countryCode + phoneState
         const data = {
@@ -112,74 +115,112 @@ const Register = () => {
             });
         }
     }
+    if ((new Date()) < (new Date(endDate)))
+        return (
+            <>
+                <Head>
+                    <title>CSI - CCS | Register</title>
+                </Head>
+                <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
+                    <animated.div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
+                        {...bindLeftPos()}
+                        style={{
+                            x: leftPos.x,
+                            y: leftPos.y,
+                        }}
+                    >
+                        <L_Piece className="w-32 md:w-44 lg:w-52" />
+                    </animated.div>
+                    <animated.div className="absolute hidden md:block right-2 md:right-5 top-10 z-50 cursor-pointer" {...bindRightPos()} style={{
+                        x: RightPos.x,
+                        y: RightPos.y,
+                    }}>
+                        <R_Piece className="w-32 md:w-44 lg:w-52" />
+                    </animated.div>
+                    <h1 className="text-3xl pt-4 pb-8">Register Here</h1>
+                    <form className="w-full md:w-1/2 flex flex-col gap-4 mb-2" onSubmit={signupHandler} autoComplete="off">
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <CustomInput type="text" label="Name" value={name} setValue={setName} />
+                            <CustomInput type="text" label="Username" value={username} setValue={setUsername} />
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <CustomInput type="password" label="Password" value={password} setValue={setPassword} />
+                            <CustomInput
+                                type="password"
+                                label="Confirm Password"
+                                value={passwordConfirmation}
+                                setValue={setPasswordConfirmation}
+                            />
+                        </div>
 
+                        <CustomInput type="email" label="Email" value={email} setValue={setEmail} />
+                        <div className="flex md:flex-row gap-4">
+                            <div className="w-1/5">
+                                <CustomInput type="tel" label="Country Code" value={countryCode} setValue={setCountryCode} />
+                            </div>
+                            <div className="w-4/5">
+                                <CustomInput type="tel" label="Phone Number" value={phoneState} setValue={setPhoneState} />
+                            </div>
+                        </div>
+                        <CustomInput type="text" label="Registration Number" value={regNo} setValue={setRegNo} />
+                        <CustomSelect label="Gender" value={gender} setValue={setGender} options={optionsForGender} />
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            classes={{
+                                contained: 'w-full bg-tech bg-opacity-90 hover:bg-opacity-100',
+                            }}
+                        >
+                            Register
+                        </Button>
+                    </form>
+                    <p>
+                        Already registered?{' '}
+                        <Link href="/login">
+                            <a className="underline">Login</a>
+                        </Link>
+                    </p>
+                </div>
+            </>
+        );
     return (
         <>
             <Head>
-                <title>CSI - CCS | Register</title>
+                <title>CSI-CCS | Register</title>
             </Head>
-            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
-                <animated.div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
+            <div className="flex flex-col items-center justify-center h-screen gap-2">
+                <animated.div
                     {...bindLeftPos()}
                     style={{
                         x: leftPos.x,
                         y: leftPos.y,
                     }}
+                    className="absolute left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
                 >
                     <L_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
-                <animated.div className="absolute hidden md:block right-2 md:right-5 top-10 z-50 cursor-pointer" {...bindRightPos()} style={{
-                    x: RightPos.x,
-                    y: RightPos.y,
-                }}>
+                <animated.div className="absolute right-2 md:right-5 top-10 cursor-pointer z-50"
+                    {...bindRightPos()}
+                    style={{
+                        x: RightPos.x,
+                        y: RightPos.y,
+                    }}>
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
-                <h1 className="text-3xl pt-4 pb-8">Register Here</h1>
-                <form className="w-full md:w-1/2 flex flex-col gap-4 mb-2" onSubmit={signupHandler} autoComplete="off">
-                    <div className="flex flex-col md:flex-row gap-4">
-                        <CustomInput type="text" label="Name" value={name} setValue={setName} />
-                        <CustomInput type="text" label="Username" value={username} setValue={setUsername} />
-                    </div>
-                    <div className="flex flex-col md:flex-row gap-4">
-                        <CustomInput type="password" label="Password" value={password} setValue={setPassword} />
-                        <CustomInput
-                            type="password"
-                            label="Confirm Password"
-                            value={passwordConfirmation}
-                            setValue={setPasswordConfirmation}
-                        />
-                    </div>
-
-                    <CustomInput type="email" label="Email" value={email} setValue={setEmail} />
-                    <div className="flex md:flex-row gap-4">
-                        <div className="w-1/5">
-                            <CustomInput type="tel" label="Country Code" value={countryCode} setValue={setCountryCode} />
-                        </div>
-                        <div className="w-4/5">
-                            <CustomInput type="tel" label="Phone Number" value={phoneState} setValue={setPhoneState} />
-                        </div>
-                    </div>
-                    <CustomInput type="text" label="Registration Number" value={regNo} setValue={setRegNo} />
-                    <CustomSelect label="Gender" value={gender} setValue={setGender} options={optionsForGender} />
-                    <Button
-                        variant="contained"
-                        type="submit"
-                        classes={{
-                            contained: 'w-full bg-tech bg-opacity-90 hover:bg-opacity-100',
-                        }}
-                    >
-                        Register
-                    </Button>
-                </form>
-                <p>
-                    Already registered?{' '}
-                    <Link href="/login">
-                        <a className="underline">Login</a>
-                    </Link>
-                </p>
+                <p className="text-center text-xl">Registration for CSI CCS-2022 is closed.</p>
+                <p className="text-center text-xl">The tasks will be made available to you shortly.</p>
+                <p className="text-center text-xl"> In the meantime, please keep an eye out on your email for results regarding Round 1.</p>
+                <p className="text-center text-xl"> You can also follow us on <a href="https://www.instagram.com/csivitu/" target="_blank"
+                    className="text-peach underline font-semibold"
+                    rel="noreferrer" >Instagram</a> to stay updated.</p>
+                <Link href="/" passHref>
+                    <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                        Home
+                    </button>
+                </Link>
             </div>
         </>
-    );
+    )
 };
 
 export default Register;

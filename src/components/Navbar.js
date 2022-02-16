@@ -60,9 +60,9 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                             </div> */}
                         </div>
                     ) : (
-                        <Link href="/register" passHref>
+                        <Link href="/login" passHref>
                             <button className="transition ease-linear py-3 px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
-                                REGISTER NOW
+                                LOGIN
                             </button>
                         </Link>
                     )}
@@ -127,9 +127,9 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                                         </button> */}
                                     </>
                                 ) : (
-                                    <Link href="/register">
+                                    <Link href="/login">
                                         <a className="block py-2 px-4 text-peach hover:text-white  border-peach">
-                                            REGISTER NOW
+                                            LOGIN NOW
                                         </a>
                                     </Link>
                                 )}
