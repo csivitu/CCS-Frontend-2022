@@ -52,7 +52,6 @@ const Tasks = () => {
                         Home
                     </button>
                 </Link>
-                {/* <Footer /> */}
             </div>
         </>
     );

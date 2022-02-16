@@ -36,12 +36,11 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                 )}
 
                 <div className="hidden md:flex gap-10">
-                    <button
-                        className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach"
-                        onClick={handleTasks}
-                    >
-                        TASKS
-                    </button>
+                    <Link href="/user/tasks" passHref>
+                        <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
+                            TASKS
+                        </a>
+                    </Link>
                     {loggedIn ? (
                         <div className="flex items-center gap-2">
                             <Link href="/user/dashboard" passHref>
@@ -105,12 +104,15 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                     <div className="w-full md:hidden" id="mobile-menu">
                         <ul className="flex flex-col mt-4 list-none items-center text-center">
                             <li>
-                                <button
-                                    className="block py-2 px-4 text-peach hover:text-white  border-peach"
+                                <Link
+                                    href="/user/tasks"
                                     onClick={handleTasks}
+                                    passHref
                                 >
-                                    TASKS
-                                </button>
+                                    <a className="block py-2 px-4 text-peach hover:text-white  border-peach">
+                                        TASKS
+                                    </a>
+                                </Link>
                             </li>
                             <li>
                                 {loggedIn ? (
