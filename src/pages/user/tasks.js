@@ -5,7 +5,7 @@ import R_Piece from '../../../public/assets/piece_r.svg';
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from '@use-gesture/react'
 
-const projects = () => {
+const Tasks = () => {
     const leftPos = useSpring({ x: 0, y: 0 });
     const RightPos = useSpring({ x: 0, y: 0 });
 
@@ -58,4 +58,4 @@ const projects = () => {
     );
 };
 
-export default projects;
+export default Tasks;

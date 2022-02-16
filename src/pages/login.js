@@ -169,7 +169,7 @@ const Login = ({ query }) => {
                 {(new Date()) < (new Date(endDate)) ?
                     <div>
                         <p>
-                            Don't have an account yet?
+                            {"Don't have an account yet? "}
                             <Link href="/register">
                                 <a className="underline">Signup</a>
                             </Link>
