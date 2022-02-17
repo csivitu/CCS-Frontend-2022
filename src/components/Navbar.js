@@ -5,7 +5,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { ToastContext } from './ToastContext';
 // import { useRouter } from 'next/router';
 
-const Navbar = ({ loggedIn, username, dashBoard }) => {
+const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
     const { handleSnackOpen } = useContext(ToastContext);
     const [viewMobileMenu, setViewMobileMenu] = useState(false);
     // const router = useRouter();
@@ -34,13 +34,13 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                         </button>
                     </ScrollLink>
                 )}
-
                 <div className="hidden md:flex gap-10">
-                    <Link href="/user/tasks" passHref>
-                        <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
-                            TASKS
-                        </a>
-                    </Link>
+                    {tasksPage ? null :
+                        <Link href="/user/tasks" passHref>
+                            <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
+                                TASKS
+                            </a>
+                        </Link>}
                     {loggedIn ? (
                         <div className="flex items-center gap-2">
                             <Link href="/user/dashboard" passHref>
@@ -66,6 +66,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                         </Link>
                     )}
                 </div>
+
                 <button
                     onClick={() => {
                         setViewMobileMenu(!viewMobileMenu);
@@ -103,7 +104,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                 {viewMobileMenu ? (
                     <div className="w-full md:hidden" id="mobile-menu">
                         <ul className="flex flex-col mt-4 list-none items-center text-center">
-                            <li>
+                            {tasksPage ? null : <li>
                                 <Link
                                     href="/user/tasks"
                                     onClick={handleTasks}
@@ -113,7 +114,7 @@ const Navbar = ({ loggedIn, username, dashBoard }) => {
                                         TASKS
                                     </a>
                                 </Link>
-                            </li>
+                            </li>}
                             <li>
                                 {loggedIn ? (
                                     <>

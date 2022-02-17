@@ -43,7 +43,7 @@ export const adminGetUsersRequest = async ({ accessToken, refreshToken }) => {
 export const adminDeleteUsersRequest = async (username, cookies) => {
     try {
         const axiosInstance = getToken(cookies);
-        const { data } = await axiosInstance.delete(`/api/admin/deleteUser`, {data: {username}});
+        const { data } = await axiosInstance.delete(`/api/admin/deleteUser`, { data: { username } });
         return data;
     } catch (e) {
         console.log(e.response);
@@ -164,6 +164,28 @@ export const submitURL = async ({ domain, cookies, value }) => {
     try {
         const axiosInstance = getToken(cookies);
         const { data } = await axiosInstance.put(`/api/users/info`, { portfolio: { category: domain, link: value } });
+        return data;
+    } catch (e) {
+        console.log(e.response);
+        return { error: true };
+    }
+};
+
+export const getTasks = async ({ cookies }) => {
+    try {
+        const axiosInstance = getToken(cookies);
+        const { data: { result } } = await axiosInstance.get("/api/users/task");
+        return result;
+    } catch (e) {
+        console.log(e.response);
+        return { error: true };
+    }
+};
+
+export const submitTasks = async (cookies, subdomain, task) => {
+    try {
+        const axiosInstance = getToken(cookies);
+        const { data } = await axiosInstance.put("/api/users/task", { subdomain, task });
         return data;
     } catch (e) {
         console.log(e.response);
