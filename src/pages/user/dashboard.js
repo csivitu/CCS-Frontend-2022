@@ -118,6 +118,7 @@ export async function getServerSideProps(context) {
             portfolio,
         },
     } = res;
+    console.log(JSON.stringify(res))
     if (query.success && query.msg) {
         return {
             props: { username, name, query, portfolio },

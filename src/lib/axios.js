@@ -174,7 +174,9 @@ export const submitURL = async ({ domain, cookies, value }) => {
 export const getTasks = async ({ cookies }) => {
     try {
         const axiosInstance = getToken(cookies);
-        const { data: { result } } = await axiosInstance.get("/api/users/task");
+        const res = await axiosInstance.get("/api/users/task");
+        console.log(res);
+        const { data: { result } } = res;
         return result;
     } catch (e) {
         console.log(e.response);
