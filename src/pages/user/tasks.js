@@ -12,7 +12,7 @@ const Tasks = ({ techTasks, designTasks, username }) => {
                 <title>CSI-CCS | Tasks</title>
             </Head>
             <Navbar tasksPage={true} loggedIn={true} username={username} dashBoard={true} />
-            <div className="flex flex-col items-center justify-center gap-4 pt-10">
+            <div className="flex flex-col items-center justify-center gap-4 pt-10 select-text">
                 {techTasks.length > 0 && <DomainTask domain={'tech'} tasks={techTasks} />}
                 {designTasks.length > 0 && <DomainTask domain={'design'} tasks={designTasks} />}
                 {!techTasks.length && !designTasks.length && (

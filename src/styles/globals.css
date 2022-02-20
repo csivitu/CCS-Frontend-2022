@@ -53,12 +53,13 @@
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #131313 inset !important;
 }
-input:-webkit-autofill{
+
+input:-webkit-autofill {
     -webkit-text-fill-color: #ece0d8 !important;
 }
 
@@ -74,6 +75,7 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
 .unselectable {
     user-drag: none;
     -webkit-user-drag: none;
@@ -82,6 +84,7 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
 a {
     @apply text-zinc-400;
 }
@@ -129,4 +132,86 @@ footer {
 
 ::-webkit-scrollbar-track-piece:start {
     background: white;
+}
+
+/* CSS for react-markdown component with an outer <div> with id="markdown" */
+
+#markdown h1 {
+    @apply text-3xl font-bold mb-3 pb-2 border-b-2 border-gray-500;
+}
+
+#markdown h2 {
+    @apply text-2xl font-bold mb-3;
+}
+
+#markdown h3 {
+    @apply text-xl font-bold mb-2;
+}
+
+#markdown h4 {
+    @apply text-lg font-bold mb-2;
+}
+
+#markdown h5 {
+    @apply text-base font-bold mb-1;
+}
+
+#markdown h6 {
+    @apply text-sm font-bold mb-1;
+}
+
+#markdown p {
+    @apply text-base mb-3;
+}
+
+#markdown a {
+    @apply text-blue-300 break-words;
+}
+
+#markdown code {
+    @apply bg-gray-500 bg-opacity-50 px-1 rounded-md;
+    padding-top: 2px;
+}
+
+#markdown pre code {
+    @apply bg-transparent px-0 rounded-none;
+    padding-top: 0px;
+}
+
+#markdown pre {
+    @apply bg-gray-900 bg-opacity-50 p-2 whitespace-pre-wrap;
+}
+
+#markdown blockquote {
+    @apply text-lg mb-2 border-l-4 border-gray-500 pl-3;
+}
+
+#markdown ul {
+    @apply text-base mb-2 list-disc;
+}
+
+#markdown ol {
+    @apply text-base mb-2 list-decimal;
+}
+
+#markdown li {
+    @apply ml-6;
+}
+
+#markdown .task-list-item {
+    @apply list-none ml-2;
+}
+
+#markdown table {
+    @apply border-collapse mb-2;
+}
+
+#markdown th,
+#markdown td {
+    @apply border-gray-500 py-1 px-2;
+    border-width: 2px;
+}
+
+#markdown img {
+    width: fit-content;
 }

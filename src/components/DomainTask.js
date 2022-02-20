@@ -15,7 +15,14 @@ const DomainTask = ({ domain, tasks }) => {
 
                 <Image src={`/assets/${domain}check.png`} alt="domain" height={170} width={200} priority={true} />
             </div>
-
+            <div className="h-fit w-11/12 md:w-2/3 mb-6">
+                <i className="font-thin">
+                    <b className="font-bold">Note:</b> The completion of these tasks is optional. Our objective is to
+                    see your initiative and effort put in to learn something when you have been provided with
+                    appropriate resources. Please do not be intimidated and/or demotivated if you find the tasks
+                    challenging. Also do note that, you will be asked about your submitted task during the interview.
+                </i>
+            </div>
             {tasks.map((e, index) => (
                 <Task
                     key={index}

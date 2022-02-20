@@ -3,11 +3,14 @@ import { parseCookies } from 'nookies';
 import { useContext, useRef, useState } from 'react';
 import { submitTasks } from '../lib/axios';
 import { ToastContext } from './ToastContext';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { useRouter } from 'next/router';
 
 const Task = ({ taskno, domain, subdomain, question, link }) => {
     let taskValue = link;
-    console.log(link);
     const [editing, setEditing] = useState(false);
+    const router = useRouter()
 
     function startEdit() {
         setEditing(true);
@@ -30,13 +33,13 @@ const Task = ({ taskno, domain, subdomain, question, link }) => {
         const cookies = parseCookies();
 
         const res = await submitTasks(cookies, subdomain, inputRef.value);
-        console.log(res)
         if (res.success) {
             handleSnackOpen({
                 message: `URL for ${subdomain} has been submitted!`,
                 variant: 'success',
             });
             setEditing(false);
+            router.reload();
             return;
         }
 
@@ -48,9 +51,14 @@ const Task = ({ taskno, domain, subdomain, question, link }) => {
     return (
         <div className="flex flex-col font-bold gap-4 h-fit w-11/12 md:w-2/3 mb-6">
             <p className="color-white uppercase tracking-wider">
-                TASK {taskno} <span style={{ color: `var(--${domain})` }}>{subdomain}</span>
+                TASK {taskno}{' '}
+                <span style={{ color: `var(--${domain})` }}>{subdomain === 'UI/UX' ? 'DESIGN' : subdomain}</span>
             </p>
-            <p className="font-normal text-gray-light">{question}</p>
+
+            <div id="markdown" className="font-normal text-gray-light w-full p-2 border-2 border-peach">
+                <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>{question}</ReactMarkdown>
+            </div>
+            <p>Submission</p>
             {editing ? (
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-2">
