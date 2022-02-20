@@ -38,8 +38,9 @@ const User = ({ result: { user, questions } }) => {
                 <p>email: {user.userId.email}</p>
                 <p>gender: {user.userId.gender}</p>
                 <p>tech round: {user.techRound}</p>
-                <p>management round: {user.techRound}</p>
-                <p>design round: {user.techRound}</p>
+                <p>management round: {user.managementRound}</p>
+                <p>design round: {user.designRound}</p>
+                <p>video round: {user.videoRound}</p>
                 {user.checkedBy !== '' ? <p>Corrected by: {user.checkedBy.toString()}</p> : null}
                 {user.portfolio.map((port, i) => (
                     <p key={i}>
