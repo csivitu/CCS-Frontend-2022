@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
 import { getTasks } from '../../lib/axios';
 import nookies from 'nookies';
@@ -17,7 +18,10 @@ const Tasks = ({ techTasks, designTasks, username }) => {
                 {designTasks.length > 0 && <DomainTask domain={'design'} tasks={designTasks} />}
                 {!techTasks.length && !designTasks.length && (
                     <div className="flex flex-col gap-2 items-center justify-center">
-                        <p>Did not qualify for Round 2 for Tech or Design!</p>
+                        <p>
+                            Round 2 Tasks Submissions are over. Don't worry if you haven't completed your tasks. You can
+                            show your task progress in round 2 interview itself.
+                        </p>
                         <Link href="/" passHref>
                             <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                 Home
