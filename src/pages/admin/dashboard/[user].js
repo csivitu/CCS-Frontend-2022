@@ -97,6 +97,10 @@ const User = ({ result: { user, questions } }) => {
                     />
                 );
             })}
+            <div>
+                <h1>Tasks:</h1>
+                user.taskSubmitted.length>0
+            </div>
             <div
                 className="mt-44"
                 onClick={() => {
