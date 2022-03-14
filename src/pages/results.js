@@ -50,7 +50,7 @@ export default function results() {
         <div className="flex flex-col w-full py-10 px-4 sm:px-14 md:px-28 lg:px-44 gap-8">
             <h1 className="text-5xl md:text-7xl font-bold">Results</h1>
 
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-4 sticky top-0 bg-gray-dark pt-4 pb-2 z-50">
                 <FormControl className="grow self-stretch">
                     <InputLabel className="">Name or Username or RegNo</InputLabel>
                     <OutlinedInput
