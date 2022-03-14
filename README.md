@@ -11,12 +11,10 @@
   <h3 align="center">CSI - Core Committee Selections 2022</h3>
 
   <p align="center">
-    Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts.
-    <br />
-    <a href="https://github.com/csivitu/CCS-Frontend-2022"><strong>Explore the docs »</strong></a>
+    Recruitment Portal for Core Committee Selections 2022
     <br />
     <br />
-    <a href="https://github.com/csivitu/CCS-Frontend-2022">View Demo</a>
+    <a href="https://github.com/csivitu/CCS-Frontend-2022#Usage">View Demo</a>
     ·
     <a href="https://github.com/csivitu/CCS-Frontend-2022/issues">Report Bug</a>
     ·
@@ -44,17 +42,20 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<p align="center">
+  <img src="./public/CCS.png" height="100">
+</p>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank CCS-Frontend-2022 to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`CCS-Frontend-2022`
+[Computer Society of India-VIT](https://csivit.com) brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts.
+
+
 
 
 ### Built With
 
-* [Nextjs]()
+* [Nextjs](https://nextjs.org/)
+* [Tailwind](https://tailwindcss.com/)
 
 
 

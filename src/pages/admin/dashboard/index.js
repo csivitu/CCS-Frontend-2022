@@ -24,7 +24,8 @@ const Dashboard = ({ result }) => {
     let filtered = result.filter(
       (user) =>
         user.username.toLowerCase().includes(query.toLowerCase()) ||
-        user.userId.regNo.includes(query.toUpperCase())
+        user.userId.regNo.includes(query.toUpperCase()) ||
+        user.userId.name.toUpperCase().includes(query.toUpperCase())
     );
     if (domain) {
       filtered = filtered.filter((user) =>
@@ -105,7 +106,7 @@ const Dashboard = ({ result }) => {
         >
           <Link href={`/admin/dashboard/${usr.userId.regNo}`} passHref>
             <a className="cursor-pointer flex-auto">
-              {usr.username} - {usr.userId.regNo}
+              {usr.username} - {usr.userId.name} -{usr.userId.regNo}
             </a>
           </Link>
           {usr.domainsAttempted.map((domain) => {

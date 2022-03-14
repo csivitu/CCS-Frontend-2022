@@ -2,10 +2,11 @@ import { Button } from '@mui/material';
 import nookies, { parseCookies } from 'nookies';
 import { useContext } from 'react';
 import Questions from '../../../components/Questions';
+import Task from '../../../components/Task';
 import { ToastContext } from '../../../components/ToastContext';
 import { adminDeleteUsersRequest, adminGetUserRequest } from '../../../lib/axios';
 
-const User = ({ result: { user, questions } }) => {
+const User = ({ result: { user, questions, tasks } }) => {
     const { handleSnackOpen } = useContext(ToastContext);
     const deleteUser = async () => {
         const cookies = parseCookies();
@@ -97,6 +98,21 @@ const User = ({ result: { user, questions } }) => {
                     />
                 );
             })}
+            {user.taskSubmitted.length > 0 && (
+                <div>
+                    {tasks.map((task, i) => (
+                        <Task
+                            key={i}
+                            taskno={i + 1}
+                            domain={task.domain}
+                            subdomain={task.subDomain}
+                            question={task.question.text}
+                            link={task.link}
+                            admin={true}
+                        />
+                    ))}
+                </div>
+            )}
             <div
                 className="mt-44"
                 onClick={() => {

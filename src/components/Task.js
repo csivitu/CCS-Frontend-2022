@@ -7,10 +7,10 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useRouter } from 'next/router';
 
-const Task = ({ taskno, domain, subdomain, question, link }) => {
+const Task = ({ taskno, domain, subdomain, question, link, admin = false }) => {
     let taskValue = link;
     const [editing, setEditing] = useState(false);
-    const router = useRouter()
+    const router = useRouter();
 
     function startEdit() {
         setEditing(true);
@@ -103,12 +103,14 @@ const Task = ({ taskno, domain, subdomain, question, link }) => {
                         ) : (
                             <i className="grow font-thin">Task not submitted yet!</i>
                         )}
-                        <button
-                            className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-2 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
-                            onClick={startEdit}
-                        >
-                            EDIT
-                        </button>
+                        {!admin && (
+                            <button
+                                className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-2 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach"
+                                onClick={startEdit}
+                            >
+                                EDIT
+                            </button>
+                        )}
                     </div>
                 </>
             )}
