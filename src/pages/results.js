@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { FormControl, InputLabel, OutlinedInput, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Image from 'next/image';
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { allSelected } from '../components/resultsData';
 import Exclaimation from '../../public/assets/exclaimation.svg';
@@ -47,69 +48,74 @@ export default function results() {
     }, []);
 
     return (
-        <div className="flex flex-col w-full py-10 px-4 sm:px-14 md:px-28 lg:px-44 gap-8">
-            <h1 className="text-5xl md:text-7xl font-bold">Results</h1>
+        <>
+            <Head>
+                <title>CSI - CCS | Results</title>
+            </Head>
+            <div className="flex flex-col w-full py-10 px-4 sm:px-14 md:px-28 lg:px-44 gap-8">
+                <h1 className="text-5xl md:text-7xl font-bold">Results</h1>
 
-            <div className="flex flex-col items-center gap-4 sticky top-0 bg-gray-dark pt-4 pb-2 z-50">
-                <FormControl className="grow self-stretch">
-                    <InputLabel className="">Name or Username or RegNo</InputLabel>
-                    <OutlinedInput
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        required
-                        className="rounded-lg"
-                        placeholder="Type here..."
-                        label="Name or Username or RegNo"
-                    />
-                </FormControl>
-                <ToggleButtonGroup value={domainSelected} onChange={handleDomainSelection} aria-label="device">
-                    <ToggleButton value="design" aria-label="design" size="small">
-                        Design
-                    </ToggleButton>
-                    <ToggleButton value="management" aria-label="management" size="small">
-                        Management
-                    </ToggleButton>
-                    <ToggleButton value="tech" aria-label="tech" size="small">
-                        Tech
-                    </ToggleButton>
-                    <ToggleButton value="video" aria-label="video" size="small">
-                        Video
-                    </ToggleButton>
-                </ToggleButtonGroup>
-            </div>
-            <h2 className="text-2xl font-bold">CORE</h2>
-            {!customFilter(allSelected).length && (
-                <div className="flex flex-col items-center gap-2">
-                    <div className="text-7xl">
-                        <Exclaimation />
-                    </div>
-                    <p className="text-center">
-                        Not available. Check if you have entered the correct spelling or Registration Number.
-                    </p>
+                <div className="flex flex-col items-center gap-4 sticky top-0 bg-gray-dark pt-4 pb-2 z-50">
+                    <FormControl className="grow self-stretch">
+                        <InputLabel className="">Name or Username or RegNo</InputLabel>
+                        <OutlinedInput
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            required
+                            className="rounded-lg"
+                            placeholder="Type here..."
+                            label="Name or Username or RegNo"
+                        />
+                    </FormControl>
+                    <ToggleButtonGroup value={domainSelected} onChange={handleDomainSelection} aria-label="device">
+                        <ToggleButton value="design" aria-label="design" size="small">
+                            Design
+                        </ToggleButton>
+                        <ToggleButton value="management" aria-label="management" size="small">
+                            Management
+                        </ToggleButton>
+                        <ToggleButton value="tech" aria-label="tech" size="small">
+                            Tech
+                        </ToggleButton>
+                        <ToggleButton value="video" aria-label="video" size="small">
+                            Video
+                        </ToggleButton>
+                    </ToggleButtonGroup>
                 </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2">
-                {sortByName(customFilter(allSelected.filter((e) => e.status === 'core'))).map(UserCard)}
-            </div>
-            <h2 className="text-2xl font-bold">COMMITTEE</h2>
-            <p className="-mt-7">
-                We see potential in you and so we want to give you chance to be part of the CSI community so that you
-                could learn and grow with us.
-            </p>
-            {!customFilter(allSelected).length && (
-                <div className="flex flex-col items-center gap-2">
-                    <div className="text-7xl">
-                        <Exclaimation />
+                <h2 className="text-2xl font-bold">CORE</h2>
+                {!customFilter(allSelected).length && (
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="text-7xl">
+                            <Exclaimation />
+                        </div>
+                        <p className="text-center">
+                            Not available. Check if you have entered the correct spelling or Registration Number.
+                        </p>
                     </div>
-                    <p className="text-center">
-                        Not available. Check if you have entered the correct spelling or Registration Number.
-                    </p>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2">
+                    {sortByName(customFilter(allSelected.filter((e) => e.status === 'core'))).map(UserCard)}
                 </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2">
-                {sortByName(customFilter(allSelected.filter((e) => e.status === 'committee'))).map(UserCard)}
+                <h2 className="text-2xl font-bold">COMMITTEE</h2>
+                <p className="-mt-7">
+                    We see potential in you and so we want to give you chance to be part of the CSI community so that you
+                    could learn and grow with us.
+                </p>
+                {!customFilter(allSelected).length && (
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="text-7xl">
+                            <Exclaimation />
+                        </div>
+                        <p className="text-center">
+                            Not available. Check if you have entered the correct spelling or Registration Number.
+                        </p>
+                    </div>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2">
+                    {sortByName(customFilter(allSelected.filter((e) => e.status === 'committee'))).map(UserCard)}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
