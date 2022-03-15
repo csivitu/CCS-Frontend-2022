@@ -182,13 +182,6 @@ export const allSelected = [
         status: 'committee',
     },
     {
-        name: 'BHAVYA AMBARDAR',
-        username: 'BHAVYA14JAN',
-        regNo: '21BCE0499',
-        domains: ['tech'],
-        status: 'committee',
-    },
-    {
         name: 'D.S.Naveen',
         username: 'DiazOnFire',
         regNo: '21BCE0336',
@@ -539,13 +532,6 @@ export const allSelected = [
         status: 'committee',
     },
     {
-        name: 'Vaishnavi Rathod',
-        username: 'Vaishnavi',
-        regNo: '21BCB0191',
-        domains: ['management'],
-        status: 'committee',
-    },
-    {
         name: 'Aayush Chhikara',
         username: 'Aayushx393',
         regNo: '21BCE0346',
@@ -833,13 +819,6 @@ export const allSelected = [
         status: 'committee',
     },
     {
-        name: 'Khushi Kauntia',
-        username: 'khushi_28',
-        regNo: '21BCT0096',
-        domains: ['design'],
-        status: 'committee',
-    },
-    {
         name: 'Rashmi M T',
         username: 'rashmi',
         regNo: '21BCE0174',
@@ -892,13 +871,6 @@ export const allSelected = [
         name: 'Jeenia Gogoi',
         username: 'JehG',
         regNo: '21BEC0302',
-        domains: ['design'],
-        status: 'committee',
-    },
-    {
-        name: 'Khushi Kauntia',
-        username: 'khushi_28',
-        regNo: '21BCT0096',
         domains: ['design'],
         status: 'committee',
     },
@@ -976,14 +948,14 @@ export const allSelected = [
         name: 'Sahil ',
         username: 'Chugh',
         regNo: '21BCE3585',
-        domains: ['design'],
+        domains: ['video'],
         status: 'core',
     },
     {
         name: 'Pratham Mishra',
         username: 'Pratham',
         regNo: '21BDS0133',
-        domains: ['design'],
+        domains: ['video'],
         status: 'core',
     },
     {
