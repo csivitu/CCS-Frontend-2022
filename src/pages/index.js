@@ -30,7 +30,7 @@ export function Home({ loggedIn, username, domainsAttempted = {}, rateLimited })
     return (
         <>
             <Head>
-                <title>CSI - Core Committee Selections</title>
+                <title>CSI - Core Committee enrollments</title>
             </Head>
             <DynamicHero loggedIn={loggedIn} />
             <DynamicNavbar loggedIn={loggedIn} username={username} dashBoard={false} />

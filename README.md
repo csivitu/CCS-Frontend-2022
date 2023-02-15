@@ -8,10 +8,10 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">CSI - Core Committee Selections 2022</h3>
+  <h3 align="center">CSI - Core Committee enrollments 2022</h3>
 
   <p align="center">
-    Recruitment Portal for Core Committee Selections 2022
+    Recruitment Portal for Core Committee enrollments 2022
     <br />
     <br />
     <a href="https://github.com/csivitu/CCS-Frontend-2022#Usage">View Demo</a>

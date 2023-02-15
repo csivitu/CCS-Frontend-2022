@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Countdown from 'react-countdown';
 import { useSpring, animated } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
+import { ScrollLink } from 'react-scroll';
 
 const Hero = ({ loggedIn }) => {
     const endDate = process.env.NEXT_PUBLIC_END_DATE;
@@ -114,7 +115,7 @@ const Hero = ({ loggedIn }) => {
                             <br />
                             COMMITTEE
                             <br />
-                            SELECTIONS
+                            ENROLLMENTS
                             <M_Piece className="absolute bottom-5 md:bottom-8 lg:bottom-10 left-12 md:left-20 lg:left-32 w-8 md:w-12 lg:w-20" />
                         </p>
                     </div>
@@ -123,12 +124,12 @@ const Hero = ({ loggedIn }) => {
                             <Countdown date={new Date(endDate)} renderer={renderer} zeroPadTime={3} />
                         </div>
                         <div>
-                            <Link href="/results" passHref shallow={true}>
+                            {/* <Link href="/results" passHref shallow={true}>
                                 <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                     RESULTS
                                 </button>
-                            </Link>
-                            {/* {loggedIn ? (
+                            </Link> */}
+                            {loggedIn ? (
                                 <>
                                     {new Date() > new Date(endDate) ? (
                                         <Link href="/user/tasks" passHref>
@@ -150,7 +151,7 @@ const Hero = ({ loggedIn }) => {
                                         LOGIN
                                     </button>
                                 </Link>
-                            )} */}
+                            )}
                         </div>
                     </div>
                 </div>

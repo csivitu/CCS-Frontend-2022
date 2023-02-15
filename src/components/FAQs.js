@@ -1,7 +1,7 @@
 import DownArrow from '../../public/assets/down_arrow.svg';
 import M_Piece from '../../public/assets/piece_m.svg';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 function FAQs() {
     return (
@@ -27,7 +27,7 @@ function FAQs() {
                     </Accordion>
                 </div>
             ))}
-            <h1 className="relative text-4xl md:text-6xl mb-3 mt-10 font-extrabold">Still have doubts?</h1>
+            {/* <h1 className="relative text-4xl md:text-6xl mb-3 mt-10 font-extrabold">Still have doubts?</h1>
             <h1 className="relative text-2xl md:text-4xl mb-5 font-light text-center w-11/12">
                 Read this blog to find your answers
             </h1>
@@ -41,16 +41,16 @@ function FAQs() {
                         <Image src="/assets/medium_article.png" width={1138} height={839} alt="guide" priority={true} />
                     </div>
                 </a>
-            </div>
+            </div> */}
         </section>
     );
 }
 
 const faqs = [
-    {
-        question: "Who all can participate in CSI-VIT's recruitments?",
-        answer: 'CSI-VIT only recruits first-year students.',
-    },
+    // {
+    //     question: "Who all can participate in CSI-VIT's recruitments?",
+    //     answer: 'CSI-VIT only recruits first-year students.',
+    // },
     {
         question: 'Can we attempt the Tech domain in Round 1 without having any prior experience?',
         answer: 'Yes! Everyone is welcome to attempt tests in any domain. All we need from you is a willingness to learn and develop.',
@@ -60,7 +60,7 @@ const faqs = [
         answer: 'Please keep a close eye on your Mail Inbox!',
     },
     {
-        question: 'Can we Google the answers during the test?',
+        question: 'Can we ChatGPT the answers during the test?',
         answer: 'Jesus is watching you.',
     },
     {

@@ -5,7 +5,7 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <meta name="title" content="CSI - Core Committee Selections" />
+                    <meta name="title" content="CSI - Core Committee enrollments" />
                     <meta
                         name="description"
                         content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts."
@@ -14,7 +14,7 @@ class MyDocument extends Document {
                     <meta property="og:site_name" content="ccs" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content="https://ccs.csivit.com/" />
-                    <meta property="og:title" content="CSI - Core Committee Selections" />
+                    <meta property="og:title" content="CSI - Core Committee enrollments" />
                     <meta
                         property="og:description"
                         content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts."
@@ -23,7 +23,7 @@ class MyDocument extends Document {
 
                     <meta property="twitter:card" content="summary_large_image" />
                     <meta property="twitter:url" content="https://ccs.csivit.com/" />
-                    <meta property="twitter:title" content="CSI - Core Committee Selections" />
+                    <meta property="twitter:title" content="CSI - Core Committee enrollments" />
                     <meta
                         property="twitter:description"
                         content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts."
