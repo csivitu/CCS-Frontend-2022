@@ -33,7 +33,7 @@ function FAQs() {
             </h1>
             <div className="max-w-3xl w-10/12 ">
                 <a
-                    href="https://medium.com/csivit/everything-about-csi-recruitments-2022-a405a17fc28b"
+                    href="https://medium.com/csivit/everything-about-csi-recruitments-2023-a405a17fc28b"
                     target="_blank"
                     rel="noreferrer"
                 >

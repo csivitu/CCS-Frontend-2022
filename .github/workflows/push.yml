@@ -35,7 +35,7 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.KEY }}
                   script: |
-                      cd CCS/CCS-Frontend-2022
+                      cd CCS/CCS-Frontend-2023
                       git reset --hard
                       git pull
                       cd ..

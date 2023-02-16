@@ -207,7 +207,7 @@ const Register = () => {
                     }}>
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
-                <p className="text-center text-xl">Registration for CSI CCS-2022 is closed.</p>
+                <p className="text-center text-xl">Registration for CSI Enrollments-2023 is closed.</p>
                 <p className="text-center text-xl">The tasks will be made available to you shortly.</p>
                 <p className="text-center text-xl"> In the meantime, please keep an eye out on your email for results regarding Round 1.</p>
                 <p className="text-center text-xl"> You can also follow us on <a href="https://www.instagram.com/csivitu/" target="_blank"

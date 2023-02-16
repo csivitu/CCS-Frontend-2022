@@ -4,21 +4,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/csivitu/CCS-Frontend-2022">
+  <a href="https://github.com/csivitu/CCS-Frontend-2023">
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">CSI - Core Committee enrollments 2022</h3>
+  <h3 align="center">CSI - Core Committee enrollments 2023</h3>
 
   <p align="center">
-    Recruitment Portal for Core Committee enrollments 2022
+    Recruitment Portal for Core Committee enrollments 2023
     <br />
     <br />
-    <a href="https://github.com/csivitu/CCS-Frontend-2022#Usage">View Demo</a>
+    <a href="https://github.com/csivitu/CCS-Frontend-2023#Usage">View Demo</a>
     ·
-    <a href="https://github.com/csivitu/CCS-Frontend-2022/issues">Report Bug</a>
+    <a href="https://github.com/csivitu/CCS-Frontend-2023/issues">Report Bug</a>
     ·
-    <a href="https://github.com/csivitu/CCS-Frontend-2022/issues">Request Feature</a>
+    <a href="https://github.com/csivitu/CCS-Frontend-2023/issues">Request Feature</a>
   </p>
 </p>
 
@@ -76,7 +76,7 @@ npm install npm@latest -g
  
 1. Clone the repo
 ```sh
-git clone https://github.com/csivitu/CCS-Frontend-2022.git
+git clone https://github.com/csivitu/CCS-Frontend-2023.git
 ```
 2. Install NPM packages
 ```sh
@@ -96,7 +96,7 @@ npm install
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/csivitu/CCS-Frontend-2022/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/csivitu/CCS-Frontend-2023/issues) for a list of proposed features (and known issues).
 
 
 
@@ -125,5 +125,5 @@ Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more informati
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [csivitu-shield]: https://img.shields.io/badge/csivitu-csivitu-blue
 [csivitu-url]: https://csivit.com
-[issues-shield]: https://img.shields.io/github/issues/csivitu/CCS-Frontend-2022.svg?style=flat-square
-[issues-url]: https://github.com/csivitu/CCS-Frontend-2022/issues
+[issues-shield]: https://img.shields.io/github/issues/csivitu/CCS-Frontend-2023.svg?style=flat-square
+[issues-url]: https://github.com/csivitu/CCS-Frontend-2023/issues
