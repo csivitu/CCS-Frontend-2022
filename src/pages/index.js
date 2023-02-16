@@ -38,7 +38,7 @@ export function Home({ loggedIn, username, domainsAttempted = {}, rateLimited })
             <LandingPortfolio />
             <FAQs />
             <Footer />
-            <FloatingDiscord />
+            {/* <FloatingDiscord /> */}
         </>
     );
 }

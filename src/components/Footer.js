@@ -91,7 +91,7 @@ function Footer() {
                     </svg>
                 </a>
             </div>
-            <a target="_blank" rel="noreferrer" href="https://discord.gg/nWW7Zegqxd" className="text-5xl">
+            {/* <a target="_blank" rel="noreferrer" href="https://discord.gg/nWW7Zegqxd" className="text-5xl">
                 <svg width="1em" height="1em" viewBox="0 0 103 103" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_1177_3342)">
                         <path
@@ -105,8 +105,8 @@ function Footer() {
                         </clipPath>
                     </defs>
                 </svg>
-            </a>
-            <p>Reach out to us on our discord server, if you have any doubts.</p>
+            </a> */}
+            {/* <p>Reach out to us on our discord server, if you have any doubts.</p> */}
         </footer>
     );
 }
