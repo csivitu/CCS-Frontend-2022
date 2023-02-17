@@ -35,12 +35,12 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                     </ScrollLink>
                 )}
                 <div className="hidden md:flex gap-10">
-                    {tasksPage ? null :
+                    {/* {tasksPage ? null :
                         <Link href="/user/tasks" passHref>
                             <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
                                 TASKS
                             </a>
-                        </Link>}
+                        </Link>} */}
                     {loggedIn ? (
                         <div className="flex items-center gap-2">
                             <Link href="/user/dashboard" passHref>
