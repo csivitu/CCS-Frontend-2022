@@ -19,7 +19,11 @@ class MyDocument extends Document {
                         property="og:description"
                         content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts."
                     />
-                    <meta property="og:image" itemProp="image" content="https://enrollments.csivit.com/ccs_banner.png" />
+                    <meta
+                        property="og:image"
+                        itemProp="image"
+                        content="https://enrollments.csivit.com/thumbnail_2023.jpeg"
+                    />
 
                     <meta property="twitter:card" content="summary_large_image" />
                     <meta property="twitter:url" content="https://enrollments.csivit.com/" />
@@ -28,7 +32,7 @@ class MyDocument extends Document {
                         property="twitter:description"
                         content="Computer Society of India-VIT brings together some of the best designers, developers, and tech enthusiasts who collaborate and organize various events, workshops and hackathons every year with the motivation of pushing technology forward and fostering a community of tech enthusiasts."
                     />
-                    <meta property="twitter:image" content="https://enrollments.csivit.com/ccs_banner.png" />
+                    <meta property="twitter:image" content="https://enrollments.csivit.com/thumbnail_2023.jpeg" />
 
                     <meta name="keywords" content="ccs" />
                     <link
