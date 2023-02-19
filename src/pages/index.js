@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import nookies from 'nookies';
 import { getUserState } from '../lib/axios.js';
 import { useContext, useEffect } from 'react';
-import FloatingDiscord from '../components/FloatingDiscord.js';
 import { ToastContext } from '../components/ToastContext.js';
 
 const DynamicHero = dynamic(() => import('../components/Hero'));
