@@ -4,7 +4,7 @@ import { parsePhoneNumber } from 'libphonenumber-js';
 export const constants = {
     vitEmailRegex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((vitstudent.ac.in)|(vit.ac.in))$/,
     passwordRegex: /^[a-zA-Z0-9`!@#$%^&*()-/:'.,{}_"~]{8,50}$/, // 8-50 characters,
-    regNoRegex: /^21[A-Z]{3}\d{4}$/,
+    regNoRegex: /^22[A-Z]{3}\d{4}$/,
     usernameRegex: /^[a-zA-Z0-9`!@#$%^&*()-/:'.,{}_"~]{3,20}$/,
 };
 

@@ -1,5 +1,5 @@
 {
-    "extends": ["next", "prettier"],
+    "extends": ["next", "prettier", "next/babel"],
     "plugins": ["unused-imports"],
     "rules": {
         "react-hooks/exhaustive-deps": "off",

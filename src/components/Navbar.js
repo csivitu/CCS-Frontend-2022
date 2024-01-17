@@ -3,21 +3,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll';
 import { ToastContext } from './ToastContext';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
     const { handleSnackOpen } = useContext(ToastContext);
     const [viewMobileMenu, setViewMobileMenu] = useState(false);
-    // const router = useRouter();
+    const router = useRouter();
     const handleTasks = () => {
         handleSnackOpen({
             message: 'Tasks will be made available to you on clearing round 1.',
             variant: 'warning',
         });
     };
-    // const handleLogout = () => {
-    //     router.push('/logout');
-    // };
+    const handleLogout = () => {
+        router.push('/logout');
+    };
     return (
         <nav className="sticky top-0 px-3 sm:px-4 py-2.5 w-full bg-gray-dark z-30">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -35,6 +35,7 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                     </ScrollLink>
                 )}
                 <div className="hidden md:flex gap-10">
+                   
                     {tasksPage ? null :
                         <Link href="/user/tasks" passHref>
                             <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
@@ -54,9 +55,9 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                                     height={40}
                                 />
                             </div>
-                            {/* <div>
-                                <button onClick={handleLogout}>Logout</button>
-                            </div> */}
+                            <div className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
+                                <button onClick={handleLogout}>LOGOUT</button>
+                            </div>
                         </div>
                     ) : (
                         <Link href="/login" passHref>

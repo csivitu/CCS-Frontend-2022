@@ -40,6 +40,7 @@ export async function getServerSideProps(context) {
     const cookies = nookies.get(context);
     const res = await getTasks({ cookies });
     const { username } = cookies;
+    
     const techTasks = res ? res.filter((e) => e.domain === 'tech') : [];
     const designTasks = res ? res.filter((e) => e.domain === 'design') : [];
 

@@ -27,21 +27,7 @@ function FAQs() {
                     </Accordion>
                 </div>
             ))}
-            <h1 className="relative text-4xl md:text-6xl mb-3 mt-10 font-extrabold">Still have doubts?</h1>
-            <h1 className="relative text-2xl md:text-4xl mb-5 font-light text-center w-11/12">
-                Read this blog to find your answers
-            </h1>
-            <div className="max-w-3xl w-10/12 ">
-                <a
-                    href="https://medium.com/csivit/everything-about-csi-recruitments-2022-a405a17fc28b"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <div className="transition duration-200 ease-in-out hover:shadow-2xl leading-3">
-                        <Image src="/assets/medium_article.png" width={1138} height={839} alt="guide" priority={true} />
-                    </div>
-                </a>
-            </div>
+            
         </section>
     );
 }

@@ -131,7 +131,7 @@ export const DomainURL = ({ domain, value, setValue, handleSnackOpen }) => {
         const { error } = Joi.string().uri().validate(value);
         if (error) {
             handleSnackOpen({
-                message: 'Invalid URL',
+                message: 'Invalid URL, kindly include the link with http/https',
                 variant: 'error',
             });
             return;
