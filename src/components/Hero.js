@@ -83,33 +83,37 @@ const Hero = ({ loggedIn }) => {
             id="Hero"
             className="flex w-full h-screen relative items-center justify-center bg-grid bg-no-repeat bg-cover bg-center overflow-hidden"
         >
-            <animated.div
-                {...bindLeftPos()}
-                style={{
-                    x: leftPos.x,
-                    y: leftPos.y,
-                }}
-                className="absolute left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
-            >
-                <L_Piece className="w-32 md:w-44 lg:w-52" />
-            </animated.div>
-            <animated.div
-                className="absolute right-2 md:right-5 top-10 cursor-pointer z-50"
-                {...bindRightPos()}
-                style={{
-                    x: RightPos.x,
-                    y: RightPos.y,
-                }}
-            >
-                <R_Piece className="w-32 md:w-44 lg:w-52" />
-            </animated.div>
+            <div className="floater animate-float_delay absolute left-2 md:left-5 bottom-14 md:bottom-10">
+                <animated.div
+                    {...bindLeftPos()}
+                    style={{
+                        x: leftPos.x,
+                        y: leftPos.y,
+                    }}
+                    className="z-50 cursor-pointer"
+                >
+                    <L_Piece className="w-32 md:w-44 lg:w-52" />
+                </animated.div>
+            </div>
+            <div className="floater  animate-float absolute right-2 md:right-5 top-10">
+                <animated.div
+                    className="cursor-pointer z-50"
+                    {...bindRightPos()}
+                    style={{
+                        x: RightPos.x,
+                        y: RightPos.y,
+                    }}
+                >
+                    <R_Piece className="w-32 md:w-44 lg:w-52" />
+                </animated.div>
+            </div>
             <div className="flex flex-col items-center justify-center">
                 <div>
                     <div className="w-1/3 ml-1 md:ml-2">
                         <Image src="/assets/CSI_Logo.png" alt="CSI Logo" height="48" width="248" />
                     </div>
                     <div>
-                        <p className="font-bold align-middle text-4xl md:text-6xl lg:text-8xl relative">
+                        <p className="font-bold align-middle text-4xl md:text-6xl lg:text-8xl relative pointer-events-none">
                             CORE
                             <br />
                             COMMITTEE
