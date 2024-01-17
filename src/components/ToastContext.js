@@ -32,7 +32,7 @@ const ToastProvider = ({ children }) => {
             <Snackbar
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 open={snackOpen}
-                autoHideDuration={2000}
+                autoHideDuration={7000}
                 onClose={handleSnackClose}
             >
                 <Alert variant="filled" onClose={handleSnackClose} severity={snackData.variant}>

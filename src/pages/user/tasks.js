@@ -17,11 +17,8 @@ const Tasks = ({ techTasks, designTasks, username }) => {
                 {techTasks.length > 0 && <DomainTask domain={'tech'} tasks={techTasks} />}
                 {designTasks.length > 0 && <DomainTask domain={'design'} tasks={designTasks} />}
                 {!techTasks.length && !designTasks.length && (
-                    <div className="flex flex-col gap-2 items-center justify-center">
-                        <p>
-                            Round 2 Tasks Submissions are over. Don't worry if you haven't completed your tasks. You can
-                            show your task progress in round 2 interview itself.
-                        </p>
+                    <div className="flex flex-col gap-4 items-center justify-center">
+                        <p className="text-xl font-medium">The tasks are not available yet!</p>
                         <Link href="/" passHref>
                             <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                 Home
@@ -40,7 +37,7 @@ export async function getServerSideProps(context) {
     const cookies = nookies.get(context);
     const res = await getTasks({ cookies });
     const { username } = cookies;
-    
+
     const techTasks = res ? res.filter((e) => e.domain === 'tech') : [];
     const designTasks = res ? res.filter((e) => e.domain === 'design') : [];
 

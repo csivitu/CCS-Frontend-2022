@@ -6,7 +6,7 @@ function Footer() {
             <p>When we build, it matters!</p>
             <a target="_blank" rel="noreferrer" href="https://csivit.com">
                 <div className="w-44">
-                    <Image src="/assets/CSI_logo_Light.png" alt="CSI Logo" height="48" width="248" />
+                    <Image src="/assets/csiBanner.webp" alt="CSI Logo" height="48" width="248" />
                 </div>
             </a>
             <div className="flex flex-row gap-4 text-2xl">

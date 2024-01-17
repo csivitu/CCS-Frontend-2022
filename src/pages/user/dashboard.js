@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
-// import Link from 'next/link';
+import Link from 'next/link';
 import nookies from 'nookies';
 // import LinkedIn from '../../../public/assets/LinkedIn.svg';
 // import GitHub from '../../../public/assets/Github.svg';
@@ -12,6 +12,8 @@ import Navbar from '../../components/Navbar';
 // import LinkModal from '../../components/LinkModal';
 import Head from 'next/head';
 import { ToastContext } from '../../components/ToastContext';
+import { createAvatar } from '@dicebear/core';
+import { adventurerNeutral } from '@dicebear/collection';
 
 const Dashboard = ({ username, name, query, portfolio }) => {
     const populateURL = (domain) => {
@@ -19,6 +21,12 @@ const Dashboard = ({ username, name, query, portfolio }) => {
         if (!oneLink) return '';
         return oneLink.link;
     };
+
+    const avatar = createAvatar(adventurerNeutral, {
+        seed: username,
+    });
+
+    const svgString = avatar.toString();
     // const [newURL, setNewURL] = useState('');
     // const [select, setSelect] = useState('');
     const [management, setManagement] = useState(populateURL('management'));
@@ -49,11 +57,17 @@ const Dashboard = ({ username, name, query, portfolio }) => {
                 <title>CSI-CCS | Dashboard</title>
             </Head>
             <Navbar username={username} loggedIn={true} dashBoard={true} />
-            <div className="min-h-screen flex flex-col lg:flex-row px-5 gap-10 items-center justify-center bg-grid bg-no-repeat bg-cover bg-center">
-                <div className="flex flex-col sm:flex-row lg:flex-col items-center gap-4 lg:w-1/5">
-                    <div className="bg-peach rounded-xl">
-                        <Image
-                            src={`https://avatars.dicebear.com/api/croodles-neutral/${username}.svg`}
+
+            <div className="min-h-screen flex flex-col lg:flex-row px-5 gap-10 items-center justify-center bg-grid bg-no-repeat bg-cover bg-center relative">
+                <Link href="/" passHref shallow={true}>
+                    <button className="transition ease-linear py-3 px-5 rounded text-gray-dark bg-peach hover:bg-transparent hover:text-peach border-2 border-peach absolute top-4 left-4 md:top-10 md:left-10 scale-75 md:scale-100">
+                        &larr; BACK
+                    </button>
+                </Link>
+                <div className="flex flex-col sm:flex-row lg:flex-col items-center gap-4 mt-24 lg:w-1/5">
+                    <div className="bg-peach rounded-xl overflow-hidden">
+                        <img
+                            src={`data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`}
                             alt="avatar"
                             width={200}
                             height={200}
@@ -118,7 +132,7 @@ export async function getServerSideProps(context) {
             portfolio,
         },
     } = res;
-    console.log(JSON.stringify(res))
+    console.log(JSON.stringify(res));
     if (query.success && query.msg) {
         return {
             props: { username, name, query, portfolio },

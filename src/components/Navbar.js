@@ -4,11 +4,18 @@ import Image from 'next/image';
 import { Link as ScrollLink } from 'react-scroll';
 import { ToastContext } from './ToastContext';
 import { useRouter } from 'next/router';
+import { createAvatar } from '@dicebear/core';
+import { adventurerNeutral } from '@dicebear/collection';
 
 const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
     const { handleSnackOpen } = useContext(ToastContext);
     const [viewMobileMenu, setViewMobileMenu] = useState(false);
     const router = useRouter();
+    const avatar = createAvatar(adventurerNeutral, {
+        seed: username,
+    });
+
+    const svgString = avatar.toString();
     const handleTasks = () => {
         handleSnackOpen({
             message: 'Tasks will be made available to you on clearing round 1.',
@@ -35,13 +42,13 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                     </ScrollLink>
                 )}
                 <div className="hidden md:flex gap-10">
-                   
-                    {tasksPage ? null :
+                    {tasksPage ? null : (
                         <Link href="/user/tasks" passHref>
                             <a className="font-light transition ease-linear bg-transparent py-3 px-5  hover:underline rounded text-peach">
                                 TASKS
                             </a>
-                        </Link>}
+                        </Link>
+                    )}
                     {loggedIn ? (
                         <div className="flex items-center gap-2">
                             <Link href="/user/dashboard" passHref>
@@ -49,7 +56,7 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                             </Link>
                             <div className="bg-peach rounded-md w-8 h-8">
                                 <Image
-                                    src={`https://avatars.dicebear.com/api/croodles-neutral/${username}.svg`}
+                                    src={`data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`}
                                     alt="avatar"
                                     width={40}
                                     height={40}
@@ -105,17 +112,15 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                 {viewMobileMenu ? (
                     <div className="w-full md:hidden" id="mobile-menu">
                         <ul className="flex flex-col mt-4 list-none items-center text-center">
-                            {tasksPage ? null : <li>
-                                <Link
-                                    href="/user/tasks"
-                                    onClick={handleTasks}
-                                    passHref
-                                >
-                                    <a className="block py-2 px-4 text-peach hover:text-white  border-peach">
-                                        TASKS
-                                    </a>
-                                </Link>
-                            </li>}
+                            {tasksPage ? null : (
+                                <li>
+                                    <Link href="/user/tasks" onClick={handleTasks} passHref>
+                                        <a className="block py-2 px-4 text-peach hover:text-white  border-peach">
+                                            TASKS
+                                        </a>
+                                    </Link>
+                                </li>
+                            )}
                             <li>
                                 {loggedIn ? (
                                     <>

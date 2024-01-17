@@ -110,7 +110,7 @@ const Hero = ({ loggedIn }) => {
             <div className="flex flex-col items-center justify-center">
                 <div>
                     <div className="w-1/3 ml-1 md:ml-2">
-                        <Image src="/assets/CSI_Logo.png" alt="CSI Logo" height="48" width="248" />
+                        <Image src="/assets/csiBanner.webp" alt="CSI Logo" height="48" width="248" />
                     </div>
                     <div>
                         <p className="font-bold align-middle text-4xl md:text-6xl lg:text-8xl relative pointer-events-none">

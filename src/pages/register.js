@@ -23,12 +23,12 @@ const Register = () => {
     const bindLeftPos = useDrag((params) => {
         leftPos.x.set(params.offset[0]);
         leftPos.y.set(params.offset[1]);
-    })
+    });
 
     const bindRightPos = useDrag((params) => {
         RightPos.x.set(params.offset[0]);
         RightPos.y.set(params.offset[1]);
-    })
+    });
 
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
@@ -69,15 +69,13 @@ const Register = () => {
                 }
             }
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     }
 
     async function signupHandler(e) {
-
-
         e.preventDefault();
-        const phone = countryCode + phoneState
+        const phone = countryCode + phoneState;
         const data = {
             name: name.trim(),
             username: username.trim(),
@@ -115,30 +113,43 @@ const Register = () => {
             });
         }
     }
-    if ((new Date()) < (new Date(endDate)))
+    if (new Date() < new Date(endDate))
         return (
             <>
                 <Head>
                     <title>CSI - CCS | Register</title>
                 </Head>
                 <div className="flex flex-col items-center justify-center min-h-screen bg-gray-dark text-gray-light p-4">
-                    <animated.div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10 z-50 cursor-pointer"
-                        {...bindLeftPos()}
-                        style={{
-                            x: leftPos.x,
-                            y: leftPos.y,
-                        }}
-                    >
-                        <L_Piece className="w-32 md:w-44 lg:w-52" />
-                    </animated.div>
-                    <animated.div className="absolute hidden md:block right-2 md:right-5 top-10 z-50 cursor-pointer" {...bindRightPos()} style={{
-                        x: RightPos.x,
-                        y: RightPos.y,
-                    }}>
-                        <R_Piece className="w-32 md:w-44 lg:w-52" />
-                    </animated.div>
+                    <div className="absolute hidden md:block left-2 md:left-5 bottom-14 md:bottom-10 animate-float_delay">
+                        <animated.div
+                            className=" z-50 cursor-pointer"
+                            {...bindLeftPos()}
+                            style={{
+                                x: leftPos.x,
+                                y: leftPos.y,
+                            }}
+                        >
+                            <L_Piece className="w-32 md:w-44 lg:w-52" />
+                        </animated.div>
+                    </div>
+                    <div className="absolute hidden md:block right-2 md:right-5 top-10 animate-float_delay">
+                        <animated.div
+                            className=" z-50 cursor-pointer"
+                            {...bindRightPos()}
+                            style={{
+                                x: RightPos.x,
+                                y: RightPos.y,
+                            }}
+                        >
+                            <R_Piece className="w-32 md:w-44 lg:w-52" />
+                        </animated.div>
+                    </div>
                     <h1 className="text-3xl pt-4 pb-8">Register Here</h1>
-                    <form className="w-full md:w-1/2 flex flex-col gap-4 mb-2" onSubmit={signupHandler} autoComplete="off">
+                    <form
+                        className="w-full md:w-1/2 flex flex-col gap-4 mb-2"
+                        onSubmit={signupHandler}
+                        autoComplete="off"
+                    >
                         <div className="flex flex-col md:flex-row gap-4">
                             <CustomInput type="text" label="Name" value={name} setValue={setName} />
                             <CustomInput type="text" label="Username" value={username} setValue={setUsername} />
@@ -156,10 +167,20 @@ const Register = () => {
                         <CustomInput type="email" label="Email" value={email} setValue={setEmail} />
                         <div className="flex md:flex-row gap-4">
                             <div className="w-1/5">
-                                <CustomInput type="tel" label="Country Code" value={countryCode} setValue={setCountryCode} />
+                                <CustomInput
+                                    type="tel"
+                                    label="Country Code"
+                                    value={countryCode}
+                                    setValue={setCountryCode}
+                                />
                             </div>
                             <div className="w-4/5">
-                                <CustomInput type="tel" label="Phone Number" value={phoneState} setValue={setPhoneState} />
+                                <CustomInput
+                                    type="tel"
+                                    label="Phone Number"
+                                    value={phoneState}
+                                    setValue={setPhoneState}
+                                />
                             </div>
                         </div>
                         <CustomInput type="text" label="Registration Number" value={regNo} setValue={setRegNo} />
@@ -199,20 +220,35 @@ const Register = () => {
                 >
                     <L_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
-                <animated.div className="absolute right-2 md:right-5 top-10 cursor-pointer z-50"
+                <animated.div
+                    className="absolute right-2 md:right-5 top-10 cursor-pointer z-50"
                     {...bindRightPos()}
                     style={{
                         x: RightPos.x,
                         y: RightPos.y,
-                    }}>
+                    }}
+                >
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
                 <p className="text-center text-xl">Registration for CSI CCS-2022 is closed.</p>
                 <p className="text-center text-xl">The tasks will be made available to you shortly.</p>
-                <p className="text-center text-xl"> In the meantime, please keep an eye out on your email for results regarding Round 1.</p>
-                <p className="text-center text-xl"> You can also follow us on <a href="https://www.instagram.com/csivitu/" target="_blank"
-                    className="text-peach underline font-semibold"
-                    rel="noreferrer" >Instagram</a> to stay updated.</p>
+                <p className="text-center text-xl">
+                    {' '}
+                    In the meantime, please keep an eye out on your email for results regarding Round 1.
+                </p>
+                <p className="text-center text-xl">
+                    {' '}
+                    You can also follow us on{' '}
+                    <a
+                        href="https://www.instagram.com/csivitu/"
+                        target="_blank"
+                        className="text-peach underline font-semibold"
+                        rel="noreferrer"
+                    >
+                        Instagram
+                    </a>{' '}
+                    to stay updated.
+                </p>
                 <Link href="/" passHref>
                     <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                         Home
@@ -220,7 +256,7 @@ const Register = () => {
                 </Link>
             </div>
         </>
-    )
+    );
 };
 
 export default Register;
