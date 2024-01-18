@@ -37,7 +37,7 @@ const registerFormSchema = Joi.object({
         })
         .error(new Error('Invalid Phone Number: check if you have added country code.')),
     isVitian: Joi.boolean().required(),
-    regNo: Joi.string().required().regex(new RegExp(constants.regNoRegex)).error(new Error('Invalid VIT Reg No. CSI currently recruits only freshers!')),
+    regNo: Joi.string().required().regex(new RegExp(constants.regNoRegex)).error(new Error('Invalid VIT Reg No. Ensure that it\'s in capitals')),
     gender: Joi.string()
         .required()
         .valid(...['M', 'F', 'NB', 'O', 'P'])

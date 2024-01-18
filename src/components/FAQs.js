@@ -55,7 +55,7 @@ const faqs = [
     },
     {
         question: 'Can I be a part of multiple domains?',
-        answer: 'Absolutely! You can attempt tests for multiple domains as well as be a part of multiple domains after recruitments.',
+        answer: 'Yes sure but you\'ll be limited to attempting quizzes for 2 domains, after you\'re in CSI, you can do whatever :)',
     },
 ];
 
