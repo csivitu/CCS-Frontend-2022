@@ -1,5 +1,4 @@
 import { Modal } from '@mui/material';
-import ClockIcon from '../../public/assets/clock.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -124,7 +123,6 @@ function Domain({ details, endTime }) {
                                                 RESUME
                                             </a>
                                         </Link>
-                                        <ClockIcon />
                                     </div>
                                 )
                             ) : (
