@@ -64,7 +64,7 @@ function Quiz({ domain, questions, endTime }) {
     }
 
     const renderer = ({ minutes, seconds, completed }) => {
-        if (minutes % 2 === 0 && seconds === 30) {
+        if (seconds === 30) {
             console.log('Hey! Successfully Auto Saved');
             autoSave();
         }
@@ -73,11 +73,12 @@ function Quiz({ domain, questions, endTime }) {
             return <h1>Completed!</h1>;
         } else {
             return (
-                <p className="font-extralight whitespace-nowrap">
-                    {minutes < 10 ? '0' : ''}
-                    {minutes}:{seconds < 10 ? '0' : ''}
-                    {seconds}
-                </p>
+                <>
+                {/* // < className="font-extralight whitespace-nowrap">
+                //     {minutes < 10 ? '0' : ''}
+                //     {minutes}:{seconds < 10 ? '0' : ''}
+                //     {seconds} */}
+                </>
             );
         }
     };
@@ -105,7 +106,7 @@ function Quiz({ domain, questions, endTime }) {
                 </div>
                 <div className={`ml-auto text-xl`} style={{ color: `var(--${domain})` }}>
                     {' '}
-                    <Clock />
+                    {/* <Clock /> */}
                 </div>
                 <div className="pl-5">
                     <Countdown date={new Date(endTime)} renderer={renderer} />

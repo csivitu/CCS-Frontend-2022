@@ -143,8 +143,8 @@ function Domain({ details, endTime }) {
                                             TAKE TEST
                                         </a>
                                     </Link>
-                                    <p>30:00</p>
-                                    <ClockIcon />
+                                    {/* <p>30:00</p>
+                                    <ClockIcon /> */}
                                 </div>
                             )
 

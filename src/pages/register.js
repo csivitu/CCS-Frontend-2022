@@ -55,6 +55,12 @@ const Register = () => {
                     success: false,
                     message: "Hey Buddy!, You're sending too many requests :(",
                 };
+            if(res.code === 403){
+                return{
+                    success:false,
+                    message:res.message
+                }
+            }
             if (res.success) {
                 if (res.result.success) {
                     return {
@@ -98,8 +104,8 @@ const Register = () => {
         }
 
         const res = await signupRequest({ data });
+        console.log(res)
         const responseState = handleResponse(res);
-
         if (responseState.success) {
             handleSnackOpen({
                 variant: 'success',
