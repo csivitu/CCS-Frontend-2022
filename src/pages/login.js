@@ -159,14 +159,14 @@ const Login = ({ query }) => {
                         />
 
                         <CustomInput label="Password" type="password" value={password} setValue={setPassword} />
-                        <a
+                        {/* <a
                             onClick={() => {
                                 setFPassState(true);
                             }}
                             className="cursor-pointer"
                         >
                             Forgot password?
-                        </a>
+                        </a> */}
                         <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-2 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                             Login
                         </button>
