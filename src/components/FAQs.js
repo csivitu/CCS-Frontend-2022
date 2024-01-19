@@ -46,6 +46,10 @@ const faqs = [
         answer: 'Jesus is watching you.',
     },
     {
+        question: 'Do we have to pay any registration fee after joining the chapter?',
+        answer: 'Nada.',
+    },
+    {
         question: 'Can I be a part of multiple domains?',
         answer: 'Absolutely. You\'re allowed to give the domain tests for a maximum of 2 domains during Interactions. After you\'re in, feel free to explore as you wish!',
     },
