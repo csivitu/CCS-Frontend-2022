@@ -34,28 +34,20 @@ function FAQs() {
 
 const faqs = [
     {
-        question: "Who all can participate in CSI-VIT's recruitments?",
-        answer: 'CSI-VIT only recruits first-year students.',
-    },
-    {
         question: 'Can we attempt the Tech domain in Round 1 without having any prior experience?',
-        answer: 'Yes! Everyone is welcome to attempt tests in any domain. All we need from you is a willingness to learn and develop.',
+        answer: 'Yes! We do not require or expect extensive domain experience from first-years. All we need is your enthusiasm to learn and grow.',
     },
     {
-        question: 'How will I be notified if I clear a Round?',
-        answer: 'Please keep a close eye on your Mail Inbox!',
+        question: 'How will I be updated on the Interactions?',
+        answer: 'Keep an eye out on our socials and your inbox for future updates. Follow us on our socials and make sure you’re a part of the CSI Community on WhatsApp to be involved in all our events.',
     },
     {
         question: 'Can we Google the answers during the test?',
         answer: 'Jesus is watching you.',
     },
     {
-        question: 'Do we have to pay any registration fee after joining the chapter?',
-        answer: 'Nada.',
-    },
-    {
         question: 'Can I be a part of multiple domains?',
-        answer: 'Yes sure but you\'ll be limited to attempting quizzes for 2 domains, after you\'re in CSI, you can do whatever :)',
+        answer: 'Absolutely. You\'re allowed to give the domain tests for a maximum of 2 domains during Interactions. After you\'re in, feel free to explore as you wish!',
     },
 ];
 
