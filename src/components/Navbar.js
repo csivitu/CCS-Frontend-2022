@@ -129,11 +129,11 @@ const Navbar = ({ loggedIn, username, dashBoard, tasksPage = false }) => {
                                                 PROFILE
                                             </a>
                                         </Link>
-                                        {/* <button onClick={handleLogout}>
+                                        <button onClick={handleLogout}>
                                             <a className="block py-2 px-4 text-peach hover:text-white border-peach">
                                                 LOGOUT
                                             </a>
-                                        </button> */}
+                                        </button>
                                     </>
                                 ) : (
                                     <Link href="/login">
