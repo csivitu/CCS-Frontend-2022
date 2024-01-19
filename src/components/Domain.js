@@ -7,6 +7,7 @@ function Domain({ details, endTime }) {
     const endDate = process.env.NEXT_PUBLIC_END_DATE;
     const [hover, setHover] = useState(false);
     const [open, setOpen] = useState(false);
+    const [hoverImg, setHoverImg] = useState(details.image);
     const style = {
         position: 'absolute',
         top: '50%',
@@ -74,7 +75,7 @@ function Domain({ details, endTime }) {
                         >
                             {details.description}
                         </p>
-                        {new Date() > new Date(endDate) ?
+                        {new Date() > new Date(endDate) ? (
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                 <Link href={`/user/tasks`} shallow={true}>
                                     <a
@@ -90,44 +91,26 @@ function Domain({ details, endTime }) {
                                     </a>
                                 </Link>
                             </div>
-                            :
-                            endTime ? (
-                                endTime.completed ? (
-                                    <>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                            <a
-                                                style={{
-                                                    padding: '5px 10px',
-                                                    color: 'gray',
-                                                    fontSize: '0.8rem',
-                                                    backgroundColor: '#ECE0D8',
-                                                    borderRadius: 5,
-                                                }}
-                                            >
-                                                ATTEMPTED
-                                            </a>
-                                        </div>
-                                    </>
-                                ) : (
+                        ) : endTime ? (
+                            endTime.completed ? (
+                                <>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                        <Link href={`/quiz/${details.name}`} shallow={true}>
-                                            <a
-                                                style={{
-                                                    padding: '5px 10px',
-                                                    color: 'black',
-                                                    fontSize: '0.8rem',
-                                                    backgroundColor: '#ECE0D8',
-                                                    borderRadius: 5,
-                                                }}
-                                            >
-                                                RESUME
-                                            </a>
-                                        </Link>
+                                        <a
+                                            style={{
+                                                padding: '5px 10px',
+                                                color: 'gray',
+                                                fontSize: '0.8rem',
+                                                backgroundColor: '#ECE0D8',
+                                                borderRadius: 5,
+                                            }}
+                                        >
+                                            ATTEMPTED
+                                        </a>
                                     </div>
-                                )
+                                </>
                             ) : (
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                    <Link href={`/quiz/${details.name}`} shallow={true} passHref>
+                                    <Link href={`/quiz/${details.name}`} shallow={true}>
                                         <a
                                             style={{
                                                 padding: '5px 10px',
@@ -135,19 +118,33 @@ function Domain({ details, endTime }) {
                                                 fontSize: '0.8rem',
                                                 backgroundColor: '#ECE0D8',
                                                 borderRadius: 5,
-                                                whiteSpace: 'nowrap',
                                             }}
                                         >
-                                            TAKE TEST
+                                            RESUME
                                         </a>
                                     </Link>
-                                    {/* <p>30:00</p>
-                                    <ClockIcon /> */}
                                 </div>
                             )
-
-                        }
-
+                        ) : (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                <Link href={`/quiz/${details.name}`} shallow={true} passHref>
+                                    <a
+                                        style={{
+                                            padding: '5px 10px',
+                                            color: 'black',
+                                            fontSize: '0.8rem',
+                                            backgroundColor: '#ECE0D8',
+                                            borderRadius: 5,
+                                            whiteSpace: 'nowrap',
+                                        }}
+                                    >
+                                        TAKE TEST
+                                    </a>
+                                </Link>
+                                {/* <p>30:00</p>
+                                    <ClockIcon /> */}
+                            </div>
+                        )}
                     </div>
                 </div>
             </Modal>
@@ -163,22 +160,36 @@ function Domain({ details, endTime }) {
                 ) : (
                     <div
                         className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer animate-wiggle"
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
+                        onMouseEnter={() => {
+                            setHover(true);
+                            setHoverImg(details.imageHover);
+                        }}
+                        onMouseLeave={() => {
+                            setHover(false);
+                            setHoverImg(details.image);
+                        }}
                         onClick={() => setOpen(true)}
                     >
-                        {hover ? <HoverImage /> : <NormalImage />}
+                        <Image src={hoverImg} height={350} width={500} alt={details.name} priority={true} />
+                        {/* {hover ? <HoverImage /> : <NormalImage />} */}
                         <h1 className="font-bold uppercase">{details.name}</h1>
                     </div>
                 )
             ) : (
                 <div
                     className="relative flex flex-col items-center w-60 -ml-20 cursor-pointer"
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
+                    onMouseEnter={() => {
+                        setHover(true);
+                        setHoverImg(details.imageHover);
+                    }}
+                    onMouseLeave={() => {
+                        setHover(false);
+                        setHoverImg(details.image);
+                    }}
                     onClick={() => setOpen(true)}
                 >
-                    {hover ? <HoverImage /> : <NormalImage />}
+                    <Image src={hoverImg} height={350} width={500} alt={details.name} priority={true} />
+                    {/* {hover ? <HoverImage /> : <NormalImage />} */}
                     <h1 className="font-bold uppercase">{details.name}</h1>
                 </div>
             )}
