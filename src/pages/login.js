@@ -101,7 +101,7 @@ const Login = ({ query }) => {
             } else {
                 if (res.message === 'Email not verified') {
                     handleSnackOpen({
-                        message: 'Email Address not verified.',
+                        message: 'Email Address not verified. Kindly check your email',
                         variant: 'error',
                     });
                     return;
