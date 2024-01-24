@@ -30,8 +30,8 @@ const Hero = ({ loggedIn }) => {
             return (
                 <>
                     <p className="font-extralight">
-                        <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-green-500 inline-block rounded-full mr-2" />
-                        <span className="font-bold">Results</span> are live
+                        <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-yellow-500 inline-block rounded-full mr-2" />
+                        We are evaluating <span className="font-bold">Round 1</span>
                     </p>
                     {/* <div className="ml-4 md:ml-6">
                         <p className="font-extralight whitespace-nowrap">
