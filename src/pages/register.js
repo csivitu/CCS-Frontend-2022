@@ -236,7 +236,7 @@ const Register = () => {
                 >
                     <R_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
-                <p className="text-center text-xl">Registration for CSI CCS-2022 is closed.</p>
+                <p className="text-center text-xl">Registration for CSI CCS-2024 is closed.</p>
                 <p className="text-center text-xl">The tasks will be made available to you shortly.</p>
                 <p className="text-center text-xl">
                     {' '}
