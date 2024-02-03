@@ -6,9 +6,9 @@ import nookies from 'nookies';
 import DomainTask from '../../components/DomainTask';
 import Navbar from '../../components/Navbar';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }) => {
-    const [selectedDomain, setSelectedDomain] = useState('Tech');
     const domains = [];
     if (techTasks && techTasks.length > 0) {
         domains.push('Tech');
@@ -22,6 +22,7 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
     if (managementTasks && managementTasks.length > 0) {
         domains.push('Management');
     }
+    const [selectedDomain, setSelectedDomain] = useState(domains[0]);
     return (
         <>
             <Head>
@@ -71,6 +72,16 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
                         </Link>
                     </div>
                 )}
+                <div className="discord bg-[#5d6af2] w-32 rounded-full p-2">
+                    <Image
+                        src={`/assets/discord-logo.png`}
+                        alt="domain"
+                        height={50}
+                        width={60}
+                        priority={true}
+                        className="w-6"
+                    />
+                </div>
             </div>
         </>
     );
@@ -86,5 +97,5 @@ export async function getServerSideProps(context) {
     const designTasks = res ? res.filter((e) => e.domain === 'design') : [];
     const videoTasks = res ? res.filter((e) => e.domain === 'video') : [];
     const managementTasks = res ? res.filter((e) => e.domain === 'management') : [];
-    return { props: { techTasks, designTasks, username } };
+    return { props: { techTasks, designTasks, username, videoTasks, managementTasks } };
 }
