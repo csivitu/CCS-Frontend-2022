@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import L_Piece from '../../public/assets/piece_l.svg';
 import R_Piece from '../../public/assets/piece_r.svg';
 import M_Piece from '../../public/assets/piece_m.svg';
@@ -78,11 +78,59 @@ const Hero = ({ loggedIn }) => {
             );
         }
     };
+    const [openUploadModal, setOpenUploadModal] = useState(false);
+    const [proofSubmit, setProofSubmit] = useState(false);
     return (
         <section
             id="Hero"
             className="flex w-full h-screen relative items-center justify-center bg-grid bg-no-repeat bg-cover bg-center overflow-hidden"
         >
+            {!proofSubmit && (
+                <div className="banner w-[90%] md:w-fit px-2 py-2 bg-red-500 rounded-xl text-sm absolute top-4 md:right-4 font-medium">
+                    Due to Re-enrollments, we would appreciate if you can share your proof or registration
+                    <button
+                        type="button"
+                        className=" text-red-500 bg-white p-1 rounded-lg ml-4 px-2"
+                        onClick={() => setOpenUploadModal(true)}
+                    >
+                        Upload
+                    </button>
+                </div>
+            )}
+            {openUploadModal && (
+                <>
+                    <div className="upload-modal w-[80%] md:w-[35%] h-fit fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#131313] z-[150] rounded-3xl shadow-xl p-4 border-2 border-white">
+                        <p className="text-white text-3xl">
+                            Upload a screenshot of your VTOP page, showing you have enrolled in CSI{' '}
+                        </p>
+                        <div className="w-full mt-6">
+                            <input
+                                type="file"
+                                name=""
+                                id="upload-proof"
+                                hidden
+                                onChange={() => {
+                                    setOpenUploadModal(false);
+                                    setProofSubmit(true);
+                                }}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    document.getElementById('upload-proof').click();
+                                }}
+                                className="bg-white py-2 px-12 rounded-lg text-black text-xl"
+                            >
+                                Upload
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        className="upload-modal-overlay bg-[rgba(0,0,0,0.3)] z-[140] w-full h-full fixed top-0 left-0"
+                        onClick={() => setOpenUploadModal(false)}
+                    ></div>
+                </>
+            )}
             <div className="floater animate-float_delay absolute left-2 md:left-5 bottom-14 md:bottom-10">
                 <animated.div
                     {...bindLeftPos()}
@@ -95,7 +143,7 @@ const Hero = ({ loggedIn }) => {
                     <L_Piece className="w-32 md:w-44 lg:w-52" />
                 </animated.div>
             </div>
-            <div className="floater  animate-float absolute right-2 md:right-5 top-10">
+            <div className="floater  animate-float absolute right-2 md:right-5 top-16">
                 <animated.div
                     className="cursor-pointer z-50"
                     {...bindRightPos()}
