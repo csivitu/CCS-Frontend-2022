@@ -7,7 +7,10 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useRouter } from 'next/router';
 
-const Task = ({ taskno, domain, subdomain, question, link, admin = false }) => {
+const Task = ({ taskno, domain, subdomain, question, link, admin = false, currentActiveTask }) => {
+    if (currentActiveTask !== taskno - 1) {
+        return null;
+    }
     let taskValue = link;
     const [editing, setEditing] = useState(false);
     const router = useRouter();

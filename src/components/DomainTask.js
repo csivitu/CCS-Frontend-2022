@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Task from './Task';
 
 const DomainTask = ({ domain, tasks }) => {
+    const [taskIndex, setTaskIndex] = useState(0);
     return (
         <>
             <div className="flex flex-row gap-6 items-center mx-10">
@@ -24,6 +26,25 @@ const DomainTask = ({ domain, tasks }) => {
                     be asked about your submitted task during the interview.
                 </i>
             </div>
+            <div className="flex justify-center scale-75 md:scale-100">
+                {tasks.map((a, i) => {
+                    return (
+                        <button
+                            key={`pos${i}`}
+                            onClick={() => setTaskIndex(i)}
+                            className="rounded-full w-10 h-10 m-1"
+                            style={{
+                                backgroundColor: a.answer ? `var(--${domain})` : `var(--peach)`,
+                                color: a.answer ? `var(--peach)` : `var(--dark-gray)`,
+                                border: i === taskIndex ? `4px solid var(--${domain})` : 'none',
+                            }}
+                        >
+                            {i + 1}
+                        </button>
+                    );
+                })}
+            </div>
+
             {tasks.map((e, index) => (
                 <Task
                     key={index}
@@ -32,6 +53,7 @@ const DomainTask = ({ domain, tasks }) => {
                     subdomain={e.subDomain}
                     question={e.question.text}
                     link={e.link}
+                    currentActiveTask={taskIndex}
                 />
             ))}
 
