@@ -72,14 +72,18 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
                         </Link>
                     </div>
                 )}
-                <div className="discord bg-[#5d6af2] w-32 rounded-full p-2">
+                <div className="discord bg-[#5d6af2] w-fit rounded-full py-2 px-4 flex items-center gap-4 justify-between fixed bottom-8 right-8">
+                    <p className="font-medium text-lg text-nowrap flex flex-col">
+                        <span>Need Help?</span>
+                        {/* <span className="text-sm -mt-1">Join Discord!</span> */}
+                    </p>
                     <Image
                         src={`/assets/discord-logo.png`}
                         alt="domain"
-                        height={50}
-                        width={60}
+                        height={25}
+                        width={30}
                         priority={true}
-                        className="w-6"
+                        className=""
                     />
                 </div>
             </div>
