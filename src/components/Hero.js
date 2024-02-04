@@ -1,5 +1,6 @@
+'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import L_Piece from '../../public/assets/piece_l.svg';
 import R_Piece from '../../public/assets/piece_r.svg';
 import M_Piece from '../../public/assets/piece_m.svg';
@@ -80,6 +81,12 @@ const Hero = ({ loggedIn }) => {
     };
     const [openUploadModal, setOpenUploadModal] = useState(false);
     const [proofSubmit, setProofSubmit] = useState(false);
+    useEffect(() => {
+        if (typeof window !== 'undefined' && localStorage.getItem('proofUploaded')) {
+            setProofSubmit(localStorage.getItem('proofUploaded'));
+        }
+    }, []);
+
     return (
         <section
             id="Hero"
@@ -112,6 +119,7 @@ const Hero = ({ loggedIn }) => {
                                 onChange={() => {
                                     setOpenUploadModal(false);
                                     setProofSubmit(true);
+                                    localStorage.setItem('proofUploaded', true);
                                 }}
                             />
                             <button
