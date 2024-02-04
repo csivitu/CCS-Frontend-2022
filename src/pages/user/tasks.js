@@ -30,26 +30,34 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
             </Head>
             <Navbar tasksPage={true} loggedIn={true} username={username} dashBoard={true} />
             <div className="flex flex-col items-center justify-center gap-4 pt-10 select-text">
-                <div className="--domain-menu w-[80%] mb-6 md:w-[30%] h-fit border-2 border-white rounded-[10px] p-[4px] flex gap-[1%]">
-                    <button
-                        type="button"
-                        className={`w-[50%] h-full py-1  rounded-[6px] text-lg ${
-                            selectedDomain === domains[0] ? 'bg-white text-black' : ' text-white'
+                {domains.length > 0 && (
+                    <div
+                        className={`--domain-menu w-[80%] mb-6 md:w-[30%] h-fit border-2 border-white rounded-[10px] p-[4px] flex ${
+                            domains.length === 1 ? 'gap-0' : 'gap-[1%]'
                         }`}
-                        onClick={() => setSelectedDomain(domains[0])}
                     >
-                        {domains[0]}
-                    </button>
-                    <button
-                        type="button"
-                        className={`w-[50%] h-full py-1 rounded-[6px] text-lg ${
-                            selectedDomain === domains[1] ? 'bg-white text-black' : ' text-white'
-                        }`}
-                        onClick={() => setSelectedDomain(domains[1])}
-                    >
-                        {domains[1]}
-                    </button>
-                </div>
+                        <button
+                            type="button"
+                            className={`${
+                                domains.length === 1 ? 'w-[100%]' : 'w-[50%]'
+                            } h-full py-1  rounded-[6px] text-lg ${
+                                selectedDomain === domains[0] ? 'bg-white text-black' : ' text-white'
+                            }`}
+                            onClick={() => setSelectedDomain(domains[0])}
+                        >
+                            {domains[0]}
+                        </button>
+                        <button
+                            type="button"
+                            className={`${domains.length === 1 ? 'w-0' : 'w-[50%]'} h-full py-1 rounded-[6px] text-lg ${
+                                selectedDomain === domains[1] ? 'bg-white text-black' : ' text-white'
+                            }`}
+                            onClick={() => setSelectedDomain(domains[1])}
+                        >
+                            {domains[1]}
+                        </button>
+                    </div>
+                )}
                 {techTasks && techTasks.length > 0 && selectedDomain === 'Tech' && (
                     <DomainTask domain={'tech'} tasks={techTasks} />
                 )}
@@ -72,7 +80,10 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
                         </Link>
                     </div>
                 )}
-                <div className="discord bg-[#5d6af2] w-fit rounded-full py-2 px-4 flex items-center gap-4 justify-between fixed bottom-8 right-8">
+                <button
+                    className="discord bg-[#5d6af2] w-fit rounded-full py-2 px-4 flex items-center gap-4 justify-between fixed bottom-8 right-8 scale-75 md:scale-100 active:scale-95 transition-all duration-100 ease-linear"
+                    style={{ userSelect: 'none' }}
+                >
                     <p className="font-medium text-lg text-nowrap flex flex-col">
                         <span>Need Help?</span>
                         {/* <span className="text-sm -mt-1">Join Discord!</span> */}
@@ -85,7 +96,7 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
                         priority={true}
                         className=""
                     />
-                </div>
+                </button>
             </div>
         </>
     );

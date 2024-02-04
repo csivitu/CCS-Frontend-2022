@@ -24,8 +24,9 @@ const DomainTask = ({ domain, tasks }) => {
                     effort put in to learn something when you have been provided with appropriate resources. Please do
                     not be intimidated and/or demotivated if you find the tasks challenging. Also do note that, you will
                     be asked about your submitted task during the interview. If you have any queries related to the
-                    tasks, you can always reach out to us on our <span className="text-[#848df6]">Discord server </span>
-                    or the <span className="text-[#2cd46b]">Whatsapp</span> groups
+                    tasks, you can always reach out to us on our{' '}
+                    <span className="text-[#848df6] cursor-pointer">Discord server </span>
+                    or the <span className="text-[#2cd46b] cursor-pointer">Whatsapp</span> groups
                 </i>
             </div>
             <div className="flex justify-center scale-75 md:scale-100">

@@ -87,7 +87,7 @@ const Hero = ({ loggedIn }) => {
         >
             {!proofSubmit && (
                 <div className="banner w-[90%] md:w-fit px-2 py-2 bg-red-500 rounded-xl text-sm absolute top-4 md:right-4 font-medium">
-                    Due to Re-enrollments, we would appreciate if you can share your proof or registration
+                    Due to Re-enrollments, we would appreciate if you can share your proof of registration
                     <button
                         type="button"
                         className=" text-red-500 bg-white p-1 rounded-lg ml-4 px-2"
