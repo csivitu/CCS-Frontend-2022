@@ -46,7 +46,7 @@ const Hero = ({ loggedIn }) => {
                 <>
                     <p className="font-extralight">
                         <span className="animate-pulse h-2 w-2 md:h-4 md:w-4 bg-video inline-block rounded-full mr-2" />
-                        <span className="font-bold">Round 1</span> is LIVE
+                        <span className="font-bold">Round 1 and Tasks</span> are LIVE
                     </p>
                     <div className="ml-4 md:ml-6">
                         {days === 0 ? (
