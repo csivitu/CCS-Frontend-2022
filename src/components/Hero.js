@@ -190,19 +190,18 @@ const Hero = ({ loggedIn }) => {
                             </Link> */}
                             {loggedIn ? (
                                 <>
-                                    {new Date() > new Date(endDate) ? (
                                         <Link href="/user/tasks" passHref>
-                                            <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                                            <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach first-letter mr-4">
                                                 TASKS
                                             </button>
                                         </Link>
-                                    ) : (
+                                    
                                         <ScrollLink to="domains" smooth={true} duration={500} spy={true} exact="true">
                                             <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
                                                 DOMAINS
                                             </button>
                                         </ScrollLink>
-                                    )}
+                                    
                                 </>
                             ) : (
                                 <Link href="/register" passHref shallow={true}>
