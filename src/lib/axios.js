@@ -2,8 +2,8 @@ import axios from 'axios';
 import { getToken, setToken } from './handleToken';
 
 export const axiosInstance = axios.create({
-    // baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
-    baseURL: "http://localhost:3002",
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
+    // baseURL: "http://localhost:3002",
     withCredentials: true,
 });
 
