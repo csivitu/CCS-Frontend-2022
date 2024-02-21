@@ -80,7 +80,8 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
                         </Link>
                     </div>
                 )}
-                <button
+                <Link
+                    href="https://discord.com/invite/d6WS4vt6bz"
                     className="discord bg-[#5d6af2] w-fit rounded-full py-2 px-4 flex items-center gap-4 justify-between fixed bottom-4 md:bottom-8 right-2 md:right-8 scale-75 md:scale-100 active:scale-[70%] active:md:scale-90 transition-all duration-100 ease-linear"
                     style={{ userSelect: 'none' }}
                 >
@@ -96,7 +97,7 @@ const Tasks = ({ techTasks, designTasks, videoTasks, managementTasks, username }
                         priority={true}
                         className=""
                     />
-                </button>
+                </Link>
             </div>
         </>
     );

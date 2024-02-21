@@ -92,7 +92,7 @@ const Hero = ({ loggedIn }) => {
             id="Hero"
             className="flex w-full h-screen relative items-center justify-center bg-grid bg-no-repeat bg-cover bg-center overflow-hidden"
         >
-            {!proofSubmit && (
+            {loggedIn && !proofSubmit && (
                 <div className="banner w-[90%] md:w-fit px-2 py-2 bg-red-500 rounded-xl text-sm absolute top-4 md:right-4 font-medium">
                     Due to Re-enrollments, we would appreciate if you can share your proof of registration
                     <button
@@ -190,18 +190,17 @@ const Hero = ({ loggedIn }) => {
                             </Link> */}
                             {loggedIn ? (
                                 <>
-                                        <Link href="/user/tasks" passHref>
-                                            <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach first-letter mr-4">
-                                                TASKS
-                                            </button>
-                                        </Link>
-                                    
-                                        <ScrollLink to="domains" smooth={true} duration={500} spy={true} exact="true">
-                                            <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
-                                                DOMAINS
-                                            </button>
-                                        </ScrollLink>
-                                    
+                                    <Link href="/user/tasks" passHref>
+                                        <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach first-letter mr-4">
+                                            TASKS
+                                        </button>
+                                    </Link>
+
+                                    <ScrollLink to="domains" smooth={true} duration={500} spy={true} exact="true">
+                                        <button className="cursor-pointer transition text-md lg:text-xl ease-linear py-1 lg:py-3 px-2 lg:px-5 rounded text-black font-semibold bg-peach hover:bg-transparent hover:text-peach border-2 border-peach">
+                                            DOMAINS
+                                        </button>
+                                    </ScrollLink>
                                 </>
                             ) : (
                                 <Link href="/register" passHref shallow={true}>
